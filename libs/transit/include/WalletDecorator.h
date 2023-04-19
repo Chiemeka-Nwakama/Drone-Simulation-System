@@ -10,7 +10,7 @@
 */
 class WalletDecorator {
     protected:
-        double money;
+        int money;
         IEntity* entity;
     
     public:

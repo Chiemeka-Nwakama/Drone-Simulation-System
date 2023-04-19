@@ -11,7 +11,7 @@
 */
 class DroneWallet : public WalletDecorator {
     protected:
-        double capacity;
+        int capacity;
 
     public:
         /**
@@ -36,7 +36,7 @@ class DroneWallet : public WalletDecorator {
          * 
          * @param amount The payment received/the amount by which the DroneWallet's money will be increased
         */
-        ReceivePayment(double amount);
+        ReceivePayment(int amount);
 
         /**
          * @brief Indicate if the DroneWallet is at its maximum monetary capacity
