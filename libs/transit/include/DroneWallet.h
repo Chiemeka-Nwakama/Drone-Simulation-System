@@ -2,7 +2,7 @@
 #define DRONE_WALLET_H_
 
 #include "WalletDecorator.h"
-#include "Bank.h" // IMPLEMENT THIS IN FACTORY
+#include "IEntity.h"
 
 /**
  * @brief This class inherits from the WalletDecorator class and constitutes
@@ -17,10 +17,9 @@ class DroneWallet : public WalletDecorator {
         /**
          * @brief Construct a new DroneWallet object
          * 
-         * @param strategy the strategy that the entity uses for movement
          * @param entity the entity associated with this wallet
         */
-        DroneWallet(IStrategy* strategy, IEntity* entity);
+        DroneWallet(IEntity* entity);
 
         /**
          * @brief Destructor for the DroneWallet class
