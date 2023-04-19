@@ -26,6 +26,6 @@ class WalletDecorator {
          * to prevent instantiation of bare WalletDecorator object. 
         */
         virtual ~WalletDecorator() = 0;
-}
+};
 
 #endif

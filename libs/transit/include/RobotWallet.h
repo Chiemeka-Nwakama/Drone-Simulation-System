@@ -30,7 +30,7 @@ class RobotWallet : public WalletDecorator {
          * 
          * @param amount The amount of money to be added to the RobotWallet
         */
-        Withdraw(int amount);
+        void Withdraw(int amount);
 
         /**
          * @brief Attempt to pay the Drone driver the assoaciated amount for a ride.
@@ -41,6 +41,6 @@ class RobotWallet : public WalletDecorator {
          * @return If the RobotWallet had sufficient funds to make the payment. Returning false means no payment was made
         */
         bool Pay(int amount, DroneWallet* drone_w);
-}
+};
 
 #endif

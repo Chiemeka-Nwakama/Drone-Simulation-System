@@ -15,7 +15,7 @@ RobotWallet::RobotWallet(IEntity* entity) : WalletDecorator(entity) {
 
 RobotWallet::~RobotWallet(){ delete entity; }
 
-RobotWallet::Withdraw(int amount){
+void RobotWallet::Withdraw(int amount){
     this->money += amount;
 }
 

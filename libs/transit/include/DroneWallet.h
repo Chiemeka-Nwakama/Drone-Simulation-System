@@ -29,14 +29,14 @@ class DroneWallet : public WalletDecorator {
         /**
          * @brief "Deposit" all of the Drone's money into the bank.
         */
-        Deposit();
+        void Deposit();
 
         /**
          * @brief Receive a payment and increase the DroneWallet's money.
          * 
          * @param amount The payment received/the amount by which the DroneWallet's money will be increased
         */
-        ReceivePayment(int amount);
+        void ReceivePayment(int amount);
 
         /**
          * @brief Indicate if the DroneWallet is at its maximum monetary capacity
@@ -44,6 +44,6 @@ class DroneWallet : public WalletDecorator {
          * @return If the DroneWallet cannot hold any more money
         */
         bool IsFull();
-}
+};
 
 #endif

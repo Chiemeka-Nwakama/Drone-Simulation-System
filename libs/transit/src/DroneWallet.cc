@@ -9,9 +9,9 @@ DroneWallet::DroneWallet(IEntity* entity) : WalletDecorator(entity) {
 
 DroneWallet::~DroneWallet() { delete entity; }
 
-DroneWallet::Deposit() { money = 0; }
+void DroneWallet::Deposit() { money = 0; }
 
-DroneWallet::ReceivePayment(int amount){
+void DroneWallet::ReceivePayment(int amount){
     money += amount;
 }
 
