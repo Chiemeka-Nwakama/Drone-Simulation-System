@@ -48,6 +48,20 @@
     	  }
     },
     {
+        "command": "CreateEntity",
+      	"params": {
+      	    "type": "bank",
+            "name": "Bank1",
+      	    "mesh": "assets/model/Bank.glb",
+      	    "position": [548.292, 263, -258.623],
+      	    "scale": [0.1, 0.1, 0.1],
+            "radius": 1.0,
+      	    "start": 2.0,
+      	    "duration": 2.0,
+            "offset": [0, -0.5, 0]
+    	  }
+    },
+    {
         "command": "SetScene",
         "params": {
             "type": "scene",
