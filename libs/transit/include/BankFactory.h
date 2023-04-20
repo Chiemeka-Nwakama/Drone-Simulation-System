@@ -3,8 +3,8 @@
 
 #include <vector>
 
-#include "IEntityFactory.h"
 #include "Bank.h"
+#include "IEntityFactory.h"
 
 /**
  *@brief Bank Factory to produce Bank class.

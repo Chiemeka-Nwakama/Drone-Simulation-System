@@ -3,29 +3,24 @@
 
 #include "IEntity.h"
 
-
 class Bank : public IEntity {
  public:
   /**
    * @brief Bank are created with a name
    * @param obj JSON object containing the bank's information
    */
-Bank(JsonObject& obj);
+  Bank(JsonObject& obj);
 
   /**
    * @brief Destroy the Bank object
    */
   ~Bank();
 
-  
-   /**
+  /**
    * @brief Not needed for bank. Default implementation
-   * 
+   *
    */
-  float GetSpeed() const{
-    return 0;
-  }
-
+  float GetSpeed() const { return 0; }
 
   /**
    * @brief Gets the position of the Bank
@@ -33,21 +28,17 @@ Bank(JsonObject& obj);
    */
   Vector3 GetPosition() const { return position; }
 
-   /**
+  /**
    * @brief Not needed for bank. Default implementation
-   * 
+   *
    */
-  Vector3 GetDirection() const{
-    return Vector3();
-  }
+  Vector3 GetDirection() const { return Vector3(); }
 
-   /**
+  /**
    * @brief Not needed for bank. Default implementation
-   * 
+   *
    */
-  Vector3 GetDestination() const{
-      return Vector3();
-  }
+  Vector3 GetDestination() const { return Vector3(); }
 
   /**
    * @brief Gets the details information of the drone
@@ -62,14 +53,9 @@ Bank(JsonObject& obj);
    */
   void Update(double dt, std::vector<IEntity*> scheduler);
 
- 
- 
-  private:
+ private:
   JsonObject details;
   Vector3 position;
-
-
-
 };
 
 #endif
