@@ -12,6 +12,7 @@ Robot::Robot(JsonObject &obj) : details(obj) {
 
 Robot::~Robot() {
   // Delete dynamically allocated variables
+  delete graph;
   delete wallet;
 }
 
