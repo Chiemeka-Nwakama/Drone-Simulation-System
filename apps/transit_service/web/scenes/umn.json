@@ -48,6 +48,63 @@
     	  }
     },
     {
+        "command": "CreateEntity",
+      	"params": {
+      	    "type": "bank",
+            "name": "Bank1",
+      	    "mesh": "assets/model/Bank.glb",
+      	    "position": [548.292, 265, -258.623],
+      	    "scale": [0.2, 0.2, 0.2],
+            "radius": 1.0,
+      	    "start": 2.0,
+      	    "duration": 2.0,
+            "offset": [0, -0.5, 0]
+    	  }
+    },
+
+    {
+        "command": "CreateEntity",
+      	"params": {
+      	    "type": "bank",
+            "name": "Bank2",
+      	    "mesh": "assets/model/Bank.glb",
+      	    "position": [1180.292, 268, -258.623],
+      	    "scale": [0.2, 0.2, 0.2],
+            "radius": 1.0,
+      	    "start": 2.0,
+      	    "duration": 2.0,
+            "offset": [0, -0.5, 0]
+    	  }
+    },
+    {
+        "command": "CreateEntity",
+      	"params": {
+      	    "type": "bank",
+            "name": "Bank3",
+      	    "mesh": "assets/model/Bank.glb",
+      	    "position": [-948.292, 266, 158.623],
+      	    "scale": [0.2, 0.2, 0.2],
+            "radius": 1.0,
+      	    "start": 2.0,
+      	    "duration": 2.0,
+            "offset": [0, -0.5, 0]
+    	  }
+    },
+    {
+        "command": "CreateEntity",
+      	"params": {
+      	    "type": "bank",
+            "name": "Bank4",
+      	    "mesh": "assets/model/Bank.glb",
+      	    "position": [-748.292, 255, -258.623],
+      	    "scale": [0.2, 0.2, 0.2],
+            "radius": 1.0,
+      	    "start": 2.0,
+      	    "duration": 2.0,
+            "offset": [0, -0.5, 0]
+    	  }
+    },
+    {
         "command": "SetScene",
         "params": {
             "type": "scene",
