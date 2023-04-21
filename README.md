@@ -2,7 +2,9 @@
 
 ## Team Information
 Team Number: 19
+
 Member Names: Chiemeka Nwakama, Emma Ulrich, Madeline Mcginnis, Nicholas Horst
+
 Member x500s: nwaka013, ulric244, mcgin374, horst105
 
 ## Project Overview
@@ -39,9 +41,24 @@ Navigate to http://127.0.0.1:8081/schedule.html and you should see a page to sch
 
 ## New Features
 #### Factory/Decorator
-#### Singleton
+<ul>
+    <li> What does it do?
+    <li> Why is it significantly interesting?
+    <li> How does it add to the existing work?
+    <li> Which design pattern did you choose to implement it with and why?
+    <li> Instructions to use this new feature:
+</ul>
 
-## Sprint Retrospective
+#### Singleton
+<ul>
+    <li> What does it do?
+    <li> Why is it significantly interesting?
+    <li> How does it add to the existing work?
+    <li> Which design pattern did you choose to implement it with and why?
+    <li> Instructions to use this new feature:
+</ul>
+
+## Sprint Retrospectives
 #### Sprint 1 (4/11 - 4/21)
 #### Sprint 2 (4/22 - 4/28)
 #### Sprint 3 (4/29 - 5/5)
