@@ -1,0 +1,31 @@
+THIS CAN BE DELETED ONCE DECORATOR IMPLEMENTATION IS FINISHED!
+
+Big-picture TODOs for integration of decorator design pattern:
+- Associating a wallet decorator with the Robot/Drone objects 
+    - Do this at creation? Make wallet an attribute and access within Drone.cc update loop? 
+- Combining factory with decorator and making the Drone/Robot move to bank when necessary
+    - Use IsFull (drone wallet) and Pay (robot wallet) boolean return values to determine if trip to bank is needed, 
+      then find the nearest bank and move to it? Would it be better to wrap this logic within the decorator itself? 
+      This option might require that the decorator objects also take in a movement IStrategy object. 
+- Possible flow:
+    1. Drone finds the nearest robot/entity like before
+    2. Access the RobotWallet of the nearest entity to determine if they have enough money for the trip 
+        a. If not, the robot first needs to go to the bank 
+        b. If there was enough money, then the payment has already been made. If Pay() returned false, 
+           make sure that it is called again after the robot has withdrawn money. 
+    3. Keep logic of drone picking up robot and bringing it to final destination 
+    4. Before being made available again, Drone checks to see if wallet is full.
+        a. If full, Drone goes to the nearest bank and deposits money (currently just sets money attribute back to 0)
+
+Smaller details to refine decorator design pattern:
+- Determining how much a trip should cost for a robot
+- Determining what seems like a good range for random generation of starting robot wallet amount
+    - Might want to make it so that there's a 50% chance that a robot will need to go to the bank?
+- Determining the capacity for the drone wallets should be 
+- What happens to money that has been deposited?
+    - Right now it just gets thrown away. May want to communicate to singleton at some point to log total amount made. 
+- How can we determine how much money a robot should withdraw?
+    - One option: always withdraw full amount needed for trip, regardless of how much money the robot already has 
+    - Another option: instead of making RobotWallet::Pay a boolean return, make it an int return 
+        - Return value of 0 -> full payment made, no need to withdraw 
+        - Return value > 0 -> return value is the amount of money that needs to be withdrawn to be able to make a payment
