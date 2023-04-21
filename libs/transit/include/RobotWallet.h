@@ -21,8 +21,8 @@ class RobotWallet : public WalletDecorator {
 
         /**
          * @brief Destructor for the RobotWallet class
-        */
-        ~RobotWallet();
+        // */
+        // ~RobotWallet();
 
         /**
          * @brief "Withdraw" the associated amount from a bank, incrementing the

@@ -25,7 +25,7 @@ class WalletDecorator {
          * @brief Pure virtual WalletDecorator destructor. Made pure virtual in order
          * to prevent instantiation of bare WalletDecorator object. 
         */
-        virtual ~WalletDecorator() = 0;
+        // virtual ~WalletDecorator() = 0;
 };
 
 #endif

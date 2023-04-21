@@ -24,7 +24,7 @@ class DroneWallet : public WalletDecorator {
         /**
          * @brief Destructor for the DroneWallet class
         */
-        ~DroneWallet();
+        // ~DroneWallet();
 
         /**
          * @brief "Deposit" all of the Drone's money into the bank.

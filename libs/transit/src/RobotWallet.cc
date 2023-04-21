@@ -13,8 +13,6 @@ RobotWallet::RobotWallet(IEntity* entity) : WalletDecorator(entity) {
 
 }
 
-RobotWallet::~RobotWallet(){}
-
 void RobotWallet::Withdraw(int amount){
     this->money += amount;
 }
