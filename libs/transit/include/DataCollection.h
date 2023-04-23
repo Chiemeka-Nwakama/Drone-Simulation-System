@@ -26,6 +26,9 @@ class DataCollection {
         */
          ~DataCollection();
          DataCollection getInstance(){
+            if(instance == null){
+                instance = new DataCollection();
+            }
            return instance;
          }
   
