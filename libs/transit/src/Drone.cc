@@ -11,6 +11,8 @@
 #include "JumpDecorator.h"
 #include "SpinDecorator.h"
 
+#include "DataCollection.h"
+
 Drone::Drone(JsonObject& obj) : details(obj) {
   JsonArray pos(obj["position"]);
   position = {pos[0], pos[1], pos[2]};
@@ -71,6 +73,7 @@ void Drone::GetNearestEntity(std::vector<IEntity*> scheduler) {
 void Drone::Update(double dt, std::vector<IEntity*> scheduler) {
   if (available)
     GetNearestEntity(scheduler);
+    holdPos = GetPosition();
 
   if (toRobot) {
     toRobot->Move(this, dt);
@@ -79,6 +82,10 @@ void Drone::Update(double dt, std::vector<IEntity*> scheduler) {
       delete toRobot;
       toRobot = nullptr;
       pickedUp = true;
+      
+      //singleton data additions
+      DataCollection* dc = DataCollection::getInstance();
+      dc->writeDeliveryDist(this, holdPos.Distance(GetPosition()));
     }
   } else if (toFinalDestination) {
     toFinalDestination->Move(this, dt);
@@ -94,6 +101,8 @@ void Drone::Update(double dt, std::vector<IEntity*> scheduler) {
       nearestEntity = nullptr;
       available = true;
       pickedUp = false;
+
+
     }
   }
 }

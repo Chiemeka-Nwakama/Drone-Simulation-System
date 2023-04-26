@@ -127,6 +127,9 @@ class Drone : public IEntity {
   Drone(const Drone& drone) = delete;
   Drone& operator=(const Drone& drone) = delete;
 
+  //adding for maps in constructor
+
+
  private:
   JsonObject details;
   Vector3 position;
@@ -142,6 +145,9 @@ class Drone : public IEntity {
   IStrategy* toRobot = nullptr;
   IStrategy* toFinalDestination = nullptr;
   DroneWallet* wallet = nullptr;
+
+  //singleton holding vars
+  Vector3 holdPos;
 };
 
 #endif
