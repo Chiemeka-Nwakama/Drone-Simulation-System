@@ -6,6 +6,7 @@
 #include "IEntity.h"
 #include "IStrategy.h"
 #include "math/vector3.h"
+#include "DroneWallet.h"
 
 // Represents a drone in a physical system.
 // Drones move using euler integration based on a specified
@@ -140,6 +141,7 @@ class Drone : public IEntity {
   IEntity* nearestEntity = nullptr;
   IStrategy* toRobot = nullptr;
   IStrategy* toFinalDestination = nullptr;
+  DroneWallet* wallet = nullptr;
 };
 
 #endif

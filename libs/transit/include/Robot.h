@@ -6,6 +6,7 @@
 #include "IEntity.h"
 #include "math/vector3.h"
 #include "util/json.h"
+#include "RobotWallet.h"
 
 /**
  * @class Robot
@@ -25,7 +26,7 @@ class Robot : public IEntity {
   /**
    * @brief Destructor
    */
-  ~Robot() override = default;
+  ~Robot();
 
   /**
    * @brief Gets the robot's position
@@ -117,6 +118,7 @@ class Robot : public IEntity {
   float speed;
   bool available;
   std::string strategyName;
+  RobotWallet* wallet = nullptr;
 };
 
 #endif  // ROBOT_H
