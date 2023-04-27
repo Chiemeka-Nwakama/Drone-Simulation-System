@@ -64,6 +64,32 @@ class IEntity {
    */
   virtual JsonObject GetDetails() const = 0;
 
+    /**
+   * @brief Gets the nearest Bank to this entity
+   * @return The position of the nearest bank
+   */
+  virtual Vector3 GetNearestBank(){
+    
+    int indexOfClosestBank = 0; // contain index of closest bank
+    Vector3 entitysPos = this->GetPosition(); //gets this entitys position
+    float distanceOfClosestBank = bankPositions.at(0).Distance(entitysPos);
+    
+
+    for(int i = 1; i < bankPositions.size(); i++){
+        
+         float currDistance = bankPositions.at(i).Distance(entityPos);
+         if(currDistance < distanceOfClosestBank){ // compares the next banks distance with the current banls
+            distanceOfClosestBank = currDistance;
+            indexOfClosestBank = i;
+         }
+    }
+
+    return bankPosition.at(indexOfClosestBank); // returns the coordinates/position of the nearest bank to this entity
+
+   
+
+  }
+
   /**
    * @brief Gets the color of the drone
    * @return The color of the drone
@@ -158,6 +184,7 @@ class IEntity {
  protected:
   int id;
   const IGraph* graph;
+  static vector<Vector3> bankPositions;
 };
 
 #endif
