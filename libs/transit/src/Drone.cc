@@ -43,10 +43,27 @@ void Drone::GetNearestEntity(std::vector<IEntity*> scheduler) {
   }
 
   if (nearestEntity) {
-      // set availability to the nearest entity
+    // Set availability to the nearest entity
     nearestEntity->SetAvailability(false);
     available = false;
     pickedUp = false;
+
+    // Check robot wallet and move to bank if necessary, needs trip amount
+    if (nearestEntity->GetWallet()->GetMoney() < 20) {
+      Vector3 bankDestination = nearestEntity->GetNearestBank();
+      nearestEntity->SetDestination(bankDestination);
+      nearestEntity->Update(0.25, scheduler);
+      nearestEntity->GetWallet()->Withdraw(nearestEntity->GetWallet()->GetCapacity() - nearestEntity->GetWallet()->GetMoney());
+    }
+
+    // Check drone wallet and move to bank if necessary, needs room for trip
+    if (wallet->GetMoney() > (wallet->GetCapacity() - 20)) {
+      destination = GetNearestBank();
+      toFinalDestination = new AstarStrategy(position, destination, graph);
+      toFinalDestination->Move(this, 0.25);
+      position = destination;
+      wallet->Deposit();
+    }
 
     destination = nearestEntity->GetPosition();
     Vector3 finalDestination = nearestEntity->GetDestination();

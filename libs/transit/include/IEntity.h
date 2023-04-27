@@ -68,26 +68,19 @@ class IEntity {
    * @brief Gets the nearest Bank to this entity
    * @return The position of the nearest bank
    */
-  virtual Vector3 GetNearestBank(){
-    
+  virtual Vector3 GetNearestBank() {
     int indexOfClosestBank = 0; // contain index of closest bank
     Vector3 entitysPos = this->GetPosition(); //gets this entitys position
     float distanceOfClosestBank = bankPositions.at(0).Distance(entitysPos);
     
-
-    for(int i = 1; i < bankPositions.size(); i++){
-        
-         float currDistance = bankPositions.at(i).Distance(entityPos);
-         if(currDistance < distanceOfClosestBank){ // compares the next banks distance with the current banls
-            distanceOfClosestBank = currDistance;
-            indexOfClosestBank = i;
-         }
+    for(int i = 1; i < bankPositions.size(); i++) {
+      float currDistance = bankPositions.at(i).Distance(entitysPos);
+      if(currDistance < distanceOfClosestBank) { // compares the next banks distance with the current banks
+        distanceOfClosestBank = currDistance;
+        indexOfClosestBank = i;
+      }
     }
-
-    return bankPosition.at(indexOfClosestBank); // returns the coordinates/position of the nearest bank to this entity
-
-   
-
+    return bankPositions.at(indexOfClosestBank); // returns the coordinates/position of the nearest bank to this entity
   }
 
   /**
@@ -114,6 +107,13 @@ class IEntity {
    * @return Streategy name
    */
   virtual std::string GetStrategyName() const {}
+
+  /**
+   * @brief Get the Wallet
+   *
+   * @return Wallet
+   */
+  WalletDecorator* GetWallet() const { return wallet; }
 
   /**
    * @brief Set the Strategy Name
@@ -184,7 +184,8 @@ class IEntity {
  protected:
   int id;
   const IGraph* graph;
-  static vector<Vector3> bankPositions;
+  static std::vector<Vector3> bankPositions;
+  WalletDecorator* wallet;
 };
 
 #endif

@@ -17,11 +17,11 @@ void RobotWallet::Withdraw(int amount){
     this->money += amount;
 }
 
-bool RobotWallet::Pay(int amount, DroneWallet* drone_w){
+bool RobotWallet::Pay(int amount, WalletDecorator* entity_w){
     // only withdraw money if the wallet has sufficieent funds
     if (money >= amount){
         this->money -= amount;
-        drone_w->ReceivePayment(amount);
+        entity_w->ReceivePayment(amount);
         return true;
     }
     return false;

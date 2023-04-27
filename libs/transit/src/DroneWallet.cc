@@ -13,8 +13,3 @@ void DroneWallet::Deposit() { money = 0; }
 void DroneWallet::ReceivePayment(int amount){
     money += amount;
 }
-
-bool DroneWallet::IsFull(){
-    // possible that receiving a payment surpasses capacity
-    return money >= capacity;
-}

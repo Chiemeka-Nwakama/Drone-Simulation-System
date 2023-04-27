@@ -25,3 +25,9 @@ void Robot::Rotate(double angle) {
   direction.x = dirTmp.x * std::cos(angle) - dirTmp.z * std::sin(angle);
   direction.z = dirTmp.x * std::sin(angle) + dirTmp.z * std::cos(angle);
 }
+
+void Robot::Update(double dt, std::vector<IEntity*> scheduler) {
+  toDestination = new AstarStrategy(position, destination, graph);
+  toDestination->Move(this, dt);
+  position = destination;
+}

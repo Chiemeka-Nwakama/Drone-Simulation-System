@@ -4,3 +4,7 @@
 WalletDecorator::WalletDecorator(IEntity* entity){
     this->entity = entity;
 }
+
+int WalletDecorator::GetCapacity() {
+    return this->capacity;
+}

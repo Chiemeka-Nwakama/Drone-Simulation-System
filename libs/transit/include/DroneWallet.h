@@ -37,13 +37,6 @@ class DroneWallet : public WalletDecorator {
          * @param amount The payment received/the amount by which the DroneWallet's money will be increased
         */
         void ReceivePayment(int amount);
-
-        /**
-         * @brief Indicate if the DroneWallet is at its maximum monetary capacity
-         * 
-         * @return If the DroneWallet cannot hold any more money
-        */
-        bool IsFull();
 };
 
 #endif

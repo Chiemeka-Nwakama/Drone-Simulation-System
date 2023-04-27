@@ -40,7 +40,7 @@ class RobotWallet : public WalletDecorator {
          * 
          * @return If the RobotWallet had sufficient funds to make the payment. Returning false means no payment was made
         */
-        bool Pay(int amount, DroneWallet* drone_w);
+        bool Pay(int amount, WalletDecorator* entity_w);
 };
 
 #endif
