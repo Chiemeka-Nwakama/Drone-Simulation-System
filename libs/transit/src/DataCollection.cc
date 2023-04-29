@@ -40,3 +40,9 @@ void  DataCollection::writeNumDelTrip(IEntity* entity){
     }
     std::cout << "Testing trip number: " << totalDelTrips[entity] << std::endl;
 }  
+
+double DataCollection::calcDelDistPerTrip(IEntity* entity){
+    double distper = totalDistTrav[entity] / totalDelTrips[entity];
+    std::cout << "Delivery Distance per Trip: " << distper << std::endl;
+    return distper;
+}

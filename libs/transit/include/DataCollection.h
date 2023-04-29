@@ -77,7 +77,7 @@ class DataCollection {
     //function placeholders, will add doxygen later
     //writing functions
     //is money int or double?
-      void writeDeliveryDist(IEntity* dr, float dist);
+    void writeDeliveryDist(IEntity* dr, float dist);
   
     // void writeDroneMoney(Drone, int);
     void writeNumDelTrip(IEntity* dr);
@@ -89,7 +89,7 @@ class DataCollection {
 
     //analysis functions
     //is money int or double?
-    // double calcDistPerTrip();
+    double calcDelDistPerTrip(IEntity* dr);
     // int calcMoneyPerTrip();
     // int calcPopularBank();
     // double calcMoneyPerDeposit();

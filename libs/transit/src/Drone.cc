@@ -112,6 +112,7 @@ void Drone::Update(double dt, std::vector<IEntity*> scheduler) {
       DataCollection* dc = DataCollection::getInstance();
       dc->writeDeliveryDist(this, (holdPos.Distance(GetPosition()))); //total distance drone has travelled, what is unit (m, km, etc.)?
       dc->writeNumDelTrip(this); //total amount of robot delivery trips completed
+      dc->calcDelDistPerTrip(this); //calculating delivery distance per trip
 
     }
   }
