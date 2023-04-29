@@ -54,6 +54,8 @@ void Drone::GetNearestEntity(std::vector<IEntity*> scheduler) {
     Vector3 finalDestination = nearestEntity->GetDestination();
 
     toRobot = new BeelineStrategy(position, destination);
+    
+    holdPos = GetPosition(); //changed holdPos into getnearestentity
 
     std::string strat = nearestEntity->GetStrategyName();
     if (strat == "astar")
@@ -73,7 +75,7 @@ void Drone::GetNearestEntity(std::vector<IEntity*> scheduler) {
 void Drone::Update(double dt, std::vector<IEntity*> scheduler) {
   if (available)
     GetNearestEntity(scheduler);
-    holdPos = GetPosition();
+    
 
   if (toRobot) {
     toRobot->Move(this, dt);
@@ -86,6 +88,8 @@ void Drone::Update(double dt, std::vector<IEntity*> scheduler) {
       //singleton data additions
       DataCollection* dc = DataCollection::getInstance();
       dc->writeDeliveryDist(this, (holdPos.Distance(GetPosition())));
+      holdPos = GetPosition(); //holding the position of picking the drone up to record trip distance
+      //std::cout << "holdPos after pickup: " << holdPos.Magnitude() << std::endl;
     }
   } else if (toFinalDestination) {
     toFinalDestination->Move(this, dt);
@@ -102,6 +106,12 @@ void Drone::Update(double dt, std::vector<IEntity*> scheduler) {
       available = true;
       pickedUp = false;
 
+      //singleton stuff
+      //std::cout << "holdPos before finish write: " << holdPos.Magnitude() << std::endl;
+      //std::cout << "getPosition() before finish write: " << GetPosition().Magnitude() << std::endl;
+      DataCollection* dc = DataCollection::getInstance();
+      dc->writeDeliveryDist(this, (holdPos.Distance(GetPosition()))); //total distance drone has travelled, what is unit (m, km, etc.)?
+      dc->writeNumDelTrip(this); //total amount of robot delivery trips completed
 
     }
   }

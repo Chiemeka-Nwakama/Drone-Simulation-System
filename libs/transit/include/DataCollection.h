@@ -67,10 +67,10 @@ class DataCollection {
     //changed
     static DataCollection* getInstance(){
         if (instance == nullptr){
-            std::cout << "no instance yet, making one now" << std::endl;
+            //std::cout << "no instance yet, making one now" << std::endl;
             instance = new DataCollection();
         }
-        std::cout << "instance made, returning details" << std::endl;
+        //std::cout << "instance made, returning details" << std::endl;
         return instance;
     }
 
@@ -80,7 +80,7 @@ class DataCollection {
       void writeDeliveryDist(IEntity* dr, float dist);
   
     // void writeDroneMoney(Drone, int);
-    // void writeNumDelTrip(Drone);
+    void writeNumDelTrip(IEntity* dr);
     // void writeNumBankTrip(Drone);
     // void writeMoneyDeposited(Drone, int);
     // void writeBankVisit(Bank);
