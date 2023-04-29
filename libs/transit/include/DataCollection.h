@@ -2,9 +2,13 @@
 #define DATA_COLLECTION_H_
 
 #include "IEntity.h"
-#include "Drone.h"
+
+#include "DataCollection.h"
+
 #include "Robot.h"
+#include "Drone.h"
 #include "Bank.h"
+
 
 /**
  * @brief This class is the singleton Data Collection class
@@ -40,7 +44,9 @@ class DataCollection {
     * 
     * 
     */
-    DataCollection();
+    DataCollection(){
+        
+    }
 
     //DataCollection* instance = nullptr;
 
@@ -48,7 +54,7 @@ class DataCollection {
     DataCollection(DataCollection &other) = delete;
 
     //singletons should not be assignable
-    void operator=(const DataCollection &) = delete;
+    void operator=(const DataCollection &data) = delete;
 
     /**
      * @brief DataCollection Deconstructor
@@ -71,7 +77,8 @@ class DataCollection {
     //function placeholders, will add doxygen later
     //writing functions
     //is money int or double?
-    void writeDeliveryDist(Drone*, float);
+      void writeDeliveryDist(IEntity* dr, float dist);
+  
     // void writeDroneMoney(Drone, int);
     // void writeNumDelTrip(Drone);
     // void writeNumBankTrip(Drone);

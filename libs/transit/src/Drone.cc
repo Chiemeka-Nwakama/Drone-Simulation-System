@@ -85,7 +85,7 @@ void Drone::Update(double dt, std::vector<IEntity*> scheduler) {
       
       //singleton data additions
       DataCollection* dc = DataCollection::getInstance();
-      dc->writeDeliveryDist(this, holdPos.Distance(GetPosition()));
+      dc->writeDeliveryDist(this, (holdPos.Distance(GetPosition())));
     }
   } else if (toFinalDestination) {
     toFinalDestination->Move(this, dt);

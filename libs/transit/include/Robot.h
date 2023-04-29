@@ -7,6 +7,7 @@
 #include "math/vector3.h"
 #include "util/json.h"
 #include "RobotWallet.h"
+#include "DataCollection.h"
 
 /**
  * @class Robot
