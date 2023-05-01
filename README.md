@@ -89,5 +89,40 @@ While overall layout is better laid out in the attached UML and .cc files, a gen
 
 ## Sprint Retrospectives
 #### Sprint 1 (4/11 - 4/21)
+<ul>
+    <li> What went well?
+        <ol>
+            <li> Communication went really well for us right off the bat. The group chat we have was always very talkative, and we did a great job on assiging tasks and helping out wherever help was needed.
+        </ol>
+    <li> What didn't go well?
+        <ol>
+            <li> Implementation of the wallet in conjunction with the banks is turning out to be a little more complicated than we expected.
+        </ol>
+    <li> What can we get better at?
+        <ol>
+            <li> Office hours is going to be a tool we are going to use a lot throughout this project. We will get better at checking in with TA's and making sure we are on the right direction, code-wise.
+        </ol>
+</ul>
+
 #### Sprint 2 (4/22 - 4/28)
+<ul>
+    <li> What went well?
+        <ol>
+            <li> Starting the data collection integration was straightforward. We got a good start on it, and it shouldn't be a huge problem to finish as we continue development.
+        </ol>
+    <li> What didn't go well?
+        <ol>
+            <li> Merging the wallet + bank integration in with the data collection may prove to be an issue. Syntactical and logical issues may prove difficult for us when finishing out the project.
+        </ol>
+    <li> What can we get better at?
+        <ol>
+            <li> We did a good job of attending office hours throughout the sprint, but could probably go even more. More help from knowledgable TA's will always help us.
+        </ol>
+</ul>
+
 #### Sprint 3 (4/29 - 5/5)
+<ul>
+    <li> What went well?
+    <li> What didn't go well?
+    <li> What can we get better at?
+</ul>
