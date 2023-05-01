@@ -2,7 +2,8 @@
 #define DATA_COLLECTION_H_
 
 #include "IEntity.h"
-
+#include <iostream>
+#include <fstream>
 #include "DataCollection.h"
 
 #include "Robot.h"
@@ -20,6 +21,9 @@ class DataCollection {
 
     //map variables added below
     //is money int or double?
+    static DataCollection* instance;
+    static std::ofstream myfile; //the csv file for the data collection class
+
 
     protected:
 
@@ -45,6 +49,7 @@ class DataCollection {
     * 
     */
     DataCollection(){
+      
         
     }
 
@@ -62,11 +67,12 @@ class DataCollection {
     */
     ~DataCollection();
 
-    static DataCollection* instance;
+    
 
     //changed
     static DataCollection* getInstance(){
         if (instance == nullptr){
+           //creates a data csv file
             //std::cout << "no instance yet, making one now" << std::endl;
             instance = new DataCollection();
         }
@@ -96,7 +102,7 @@ class DataCollection {
     // double calcDistToBank();
 
     //CSV function
-    //void writeToCSV();
+    void writeToCSV();
 
     // bool operator<(const Drone& other1, const Drone& other2){
     //     return true;
