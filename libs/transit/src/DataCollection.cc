@@ -59,7 +59,7 @@ double DataCollection::calcDelDistPerTrip(IEntity* entity){
  void DataCollection::writeToCSV(){
     myfile.open("data.csv");
     //prints ou the first row, the heading
-    myfile << "Enitity, Totat Distance, Total Money, Total Trips, Total Money Paid, Money Collected, etc., Distance per Trip, Money per Trip, etc.\n";
+    myfile << "Enitity, Total Distance, Total Money, Total Trips, Total Money Paid, Money Collected, etc., Distance per Trip, Money per Trip, etc.\n";
     
 
     // examples
