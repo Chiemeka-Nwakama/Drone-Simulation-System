@@ -19,7 +19,7 @@ void DroneWallet::Update(double dt, std::vector<IEntity*> scheduler) {
     }
 
     // Calculate trip cost here
-    int cost = 0;
+    int cost = 100;
 
     if (capacity - money < cost) {
         entity->MoveToBank(dt, scheduler, cost);
