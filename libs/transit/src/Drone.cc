@@ -10,6 +10,7 @@
 #include "DijkstraStrategy.h"
 #include "JumpDecorator.h"
 #include "SpinDecorator.h"
+#include "RobotWallet.h"
 
 Drone::Drone(JsonObject& obj) : details(obj) {
   JsonArray pos(obj["position"]);
@@ -18,7 +19,6 @@ Drone::Drone(JsonObject& obj) : details(obj) {
   direction = {dir[0], dir[1], dir[2]};
   speed = obj["speed"];
   available = true;
-  wallet = new DroneWallet(this);
 }
 
 Drone::~Drone() {
@@ -27,7 +27,6 @@ Drone::~Drone() {
   delete nearestEntity;
   delete toRobot;
   delete toFinalDestination;
-  delete wallet;
 }
 
 void Drone::GetNearestEntity(std::vector<IEntity*> scheduler) {
@@ -47,23 +46,6 @@ void Drone::GetNearestEntity(std::vector<IEntity*> scheduler) {
     nearestEntity->SetAvailability(false);
     available = false;
     pickedUp = false;
-
-    // Check robot wallet and move to bank if necessary, needs trip amount
-    if (nearestEntity->GetWallet()->GetMoney() < 20) {
-      Vector3 bankDestination = nearestEntity->GetNearestBank();
-      nearestEntity->SetDestination(bankDestination);
-      nearestEntity->Update(0.25, scheduler);
-      nearestEntity->GetWallet()->Withdraw(nearestEntity->GetWallet()->GetCapacity() - nearestEntity->GetWallet()->GetMoney());
-    }
-
-    // Check drone wallet and move to bank if necessary, needs room for trip
-    if (wallet->GetMoney() > (wallet->GetCapacity() - 20)) {
-      destination = GetNearestBank();
-      toFinalDestination = new AstarStrategy(position, destination, graph);
-      toFinalDestination->Move(this, 0.25);
-      position = destination;
-      wallet->Deposit();
-    }
 
     destination = nearestEntity->GetPosition();
     Vector3 finalDestination = nearestEntity->GetDestination();
@@ -86,9 +68,6 @@ void Drone::GetNearestEntity(std::vector<IEntity*> scheduler) {
 }
 
 void Drone::Update(double dt, std::vector<IEntity*> scheduler) {
-  if (available)
-    GetNearestEntity(scheduler);
-
   if (toRobot) {
     toRobot->Move(this, dt);
 
@@ -113,6 +92,37 @@ void Drone::Update(double dt, std::vector<IEntity*> scheduler) {
       pickedUp = false;
     }
   }
+}
+
+void Drone::MoveToBank(double dt, std::vector<IEntity*> scheduler, int cost) {
+  Vector3 oldDestination = destination;
+  Vector3 bank = GetNearestBank();
+  SetDestination(bank);
+
+  if (toRobot) {
+    toRobot->Move(this, dt);
+  }
+
+  SetDestination(oldDestination);
+
+  // Update robot as necessary, also information/strategy
+  RobotWallet* tempEntity = (RobotWallet*) nearestEntity;
+  tempEntity->Update(dt, scheduler, cost);
+  nearestEntity = (IEntity*) tempEntity;
+  Vector3 finalDestination = nearestEntity->GetDestination();
+  std::string strat = nearestEntity->GetStrategyName();
+
+  if (strat == "astar")
+    toFinalDestination =
+      new JumpDecorator(new AstarStrategy(destination, finalDestination, graph));
+  else if (strat == "dfs")
+    toFinalDestination =
+      new SpinDecorator(new JumpDecorator(new DfsStrategy(destination, finalDestination, graph)));
+  else if (strat == "dijkstra")
+    toFinalDestination =
+      new JumpDecorator(new SpinDecorator(new DijkstraStrategy(destination, finalDestination, graph)));
+  else
+    toFinalDestination = new BeelineStrategy(destination, finalDestination);
 }
 
 void Drone::Rotate(double angle) {

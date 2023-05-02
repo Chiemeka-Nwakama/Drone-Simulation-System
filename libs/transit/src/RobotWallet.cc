@@ -1,28 +1,33 @@
 #include "WalletDecorator.h"
 #include "RobotWallet.h"
-#include "DroneWallet.h"
-#include "IEntity.h"
 
 #include <ctime>
 #include <cstdlib>
 
-RobotWallet::RobotWallet(IEntity* entity) : WalletDecorator(entity) {
+RobotWallet::RobotWallet(Robot* entity_) : WalletDecorator(entity) {
     // initialize money to random amount between 0 and 100
     std::srand(std::time(nullptr));
     money = std::rand() % 101;
 
+    // $100 capacity - standard for drones/robots
+    capacity = 100;
+
+    entity = entity_;
 }
 
-void RobotWallet::Withdraw(int amount){
-    this->money += amount;
+RobotWallet::~RobotWallet() {
+    delete entity;
 }
 
-bool RobotWallet::Pay(int amount, WalletDecorator* entity_w){
-    // only withdraw money if the wallet has sufficieent funds
-    if (money >= amount){
-        this->money -= amount;
-        entity_w->ReceivePayment(amount);
-        return true;
+void RobotWallet::Update(double dt, std::vector<IEntity*> scheduler, int cost) {
+    if (money < cost) {
+        Vector3 oldDestination = entity->GetDestination();
+        Vector3 bank = entity->GetNearestBank();
+        entity->SetDestination(bank);
+        entity->Update(dt, scheduler);
+        SetDestination(oldDestination);
     }
-    return false;
+
+    // Add as much money to reach capacity
+    Add(capacity-money);
 }

@@ -20,55 +20,42 @@ class WalletDecorator {
          * 
          * @param entity the entity associated with this Wallet
         */
-        WalletDecorator(IEntity* entity);
+        WalletDecorator(IEntity* entity_);
 
         /**
          * @brief Virtual method for returning the amount of money in the wallet
          * 
          * @return Amount of money in wallet 
         */
-        virtual int GetMoney() { return money; }
+        int GetMoney() { return money; }
 
         /**
-         * @brief Virtual method for withdrawing from the bank
+         * @brief Virtual method for adding money to wallet
          * 
          * @param amount how much money to add to wallet 
         */
-        virtual void Withdraw(int amount) {}
+        virtual void Add(int amount) {}
 
         /**
-         * @brief Virtual method for depositing to bank
+         * @brief Virtual method for removing money from wallet -
+         * paying or depositing
          * 
          * @param amount how much money to remove from wallet
         */
-        virtual void Deposit(int amount) {}
-
-        /**
-         * @brief Virtual method for recieving money from other entities
-         * 
-         * @param amount how of money to add to wallet
-        */
-        virtual void ReceivePayment(int amount) {}
-
-        /**
-         * @brief Virtual method for recieving money from other entities
-         * 
-         * @param amount how of money to pay other entity
-        */
-        virtual void Pay(int amount) {}
+        virtual void Remove(int amount) {}
 
         /**
          * @brief How much money the entity can carry
          * 
          * @return The maximum capacity of the wallet
         */
-        virtual int GetCapacity();
+        int GetCapacity() { return capacity; }
 
         /**
          * @brief Pure virtual WalletDecorator destructor. Made pure virtual in order
          * to prevent instantiation of bare WalletDecorator object. 
         */
-        // virtual ~WalletDecorator() = 0;
+        virtual ~WalletDecorator() = 0;
 };
 
 #endif

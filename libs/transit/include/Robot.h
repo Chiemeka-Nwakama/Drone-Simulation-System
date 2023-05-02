@@ -6,7 +6,6 @@
 #include "IEntity.h"
 #include "math/vector3.h"
 #include "util/json.h"
-#include "RobotWallet.h"
 #include "AstarStrategy.h"
 
 /**
@@ -73,13 +72,6 @@ class Robot : public IEntity {
   std::string GetStrategyName() const { return strategyName; }
 
   /**
-   * @brief Get the Wallet
-   *
-   * @return Wallet
-   */
-  RobotWallet* GetWallet() const { return wallet; }
-
-  /**
    * @brief Set the Strategy Name
    *
    * @param strategyName_ Strategy name
@@ -134,7 +126,6 @@ class Robot : public IEntity {
   bool available;
   std::string strategyName;
   IStrategy* toDestination = nullptr;
-  RobotWallet* wallet = nullptr;
 };
 
 #endif  // ROBOT_H

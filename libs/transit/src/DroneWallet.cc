@@ -1,15 +1,30 @@
-#include "DroneWallet.h"
 #include "WalletDecorator.h"
-#include "IEntity.h"
+#include "DroneWallet.h"
 
-DroneWallet::DroneWallet(IEntity* entity) : WalletDecorator(entity) {
-    // arbitrary capacity
+DroneWallet::DroneWallet(Drone* entity_) : WalletDecorator(entity) {
+    // $100 capacity - standard for drones/robots
     capacity = 100;
+
     money = 0;
+    entity = entity_;
 }
 
-void DroneWallet::Deposit() { money = 0; }
+DroneWallet::~DroneWallet() {
+    delete entity;
+}
 
-void DroneWallet::ReceivePayment(int amount){
-    money += amount;
+void DroneWallet::Update(double dt, std::vector<IEntity*> scheduler) {
+    if (entity->GetAvailability()) {
+        entity->GetNearestEntity(scheduler);
+    }
+
+    // Calculate trip cost here
+    int cost = 0;
+
+    if (capacity - money < cost) {
+        entity->MoveToBank(dt, scheduler, cost);
+        Remove(money);
+    }
+
+    entity->Update(dt, scheduler);
 }
