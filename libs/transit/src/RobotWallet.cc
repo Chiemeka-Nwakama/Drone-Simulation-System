@@ -33,13 +33,13 @@ RobotWallet::~RobotWallet() {
 void RobotWallet::Update(double dt, std::vector<IEntity*> scheduler) {
    // robot does not need funds; can be picked up 
    if (start){
-        if (start && (money >= tripCost)){
+        if ((money >= tripCost)){
             Remove(tripCost);  
             entity->SetAvailability(true);
             start = false; // update function should now do nothing
         }
         // if robot needs funds and has not started moving to the bank yet
-        else if (start && (!toBank) && (money < tripCost)){
+        else if ((!toBank) && (money < tripCost)){
                 std::cout << "Insufficient funds. Visiting bank." << std::endl;
                 Vector3 nearestBank = entity->GetNearestBank();
                 std::string strat = entity->GetStrategyName(); // set toBank to that location
@@ -51,14 +51,16 @@ void RobotWallet::Update(double dt, std::vector<IEntity*> scheduler) {
                     toBank = new DijkstraStrategy(entity->GetPosition(), nearestBank, graph);
         }
         // robot is moving towards bank
-        else if (start && toBank && !toBank->IsCompleted()){
+        else if (toBank && !toBank->IsCompleted()){
             toBank->Move(entity, dt);
         }
         // robot is at the bank
-        else if (start && toBank && toBank->IsCompleted()){
+        else if (toBank && toBank->IsCompleted()){
             delete toBank;
             toBank = nullptr;
-            tripCost = (int) ceil(0.1 * entity->GetPosition().Distance(entity->GetDestination()));
+            entity->
+            entity->SetTripDistance(entity->GetPosition().Distance(entity->GetDestination())); // set trip distance
+            tripCost = (int) ceil(0.1 * entity->GetTripDistance());
             std::cout << "From the bank, the robot will now pay $" << tripCost << " for this trip." << std::endl;
             Add(tripCost-money); // add only amount that is needed
             entity->SetAvailability(true);
