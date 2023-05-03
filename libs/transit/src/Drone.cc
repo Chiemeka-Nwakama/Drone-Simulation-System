@@ -95,6 +95,7 @@ void Drone::Update(double dt, std::vector<IEntity*> scheduler) {
       // remove entity from scheduler; prevents double-pickup of robots and simplifies robot wallet logic
         for (int i = 0; i < scheduler.size(); i++){
             if (scheduler.at(i)->GetId() == nearestEntity->GetId()){
+              std::cout << "Removing robot from scheduler" << std::endl;
               scheduler.erase(scheduler.begin()+i);
               break;
             }
