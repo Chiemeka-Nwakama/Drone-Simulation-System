@@ -32,7 +32,6 @@ void RobotWallet::Update(double dt, std::vector<IEntity*> scheduler) {
    // only do this if the robot is not already at its destination
    if (!entity->GetAvailability() && (money >= tripCost) && (entity->GetPosition().Distance(entity->GetDestination()) >= 4.0)){
       entity->SetAvailability(true);
-      // make sure robot is added to the scheduler
    }
    // if robot needs funds and has not started moving to the bank yet
    else if (!toBank && (money < tripCost)){
