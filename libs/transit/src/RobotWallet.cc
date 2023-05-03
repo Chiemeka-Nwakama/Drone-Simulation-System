@@ -18,7 +18,7 @@ RobotWallet::RobotWallet(Robot* entity_) : WalletDecorator(entity) {
     entity = entity_;
 
     // calculate trip cost; hard coded right now to 30
-    tripCost = 30;
+    tripCost = 0;
 }
 
 RobotWallet::~RobotWallet() {
