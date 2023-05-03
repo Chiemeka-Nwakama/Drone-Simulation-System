@@ -34,7 +34,7 @@ void Drone::GetNearestEntity(std::vector<IEntity*> scheduler) {
   float minDis = std::numeric_limits<float>::max();
   for (auto entity : scheduler) {
     if (entity->GetAvailability()) {
-      std::cout << "Found available entity" << std::endl;
+      std::cout << "Found available entity" << std:
       float disToEntity = this->position.Distance(entity->GetPosition());
       if (disToEntity <= minDis) {
         minDis = disToEntity;
@@ -92,14 +92,6 @@ void Drone::Update(double dt, std::vector<IEntity*> scheduler) {
     if (toFinalDestination->IsCompleted()) {
       delete toFinalDestination;
       toFinalDestination = nullptr;
-      // remove entity from scheduler; prevents double-pickup of robots and simplifies robot wallet logic
-        for (int i = 0; i < scheduler.size(); i++){
-            if (scheduler.at(i)->GetId() == nearestEntity->GetId()){
-              std::cout << "Removing robot from scheduler" << std::endl;
-              scheduler.erase(scheduler.begin()+i);
-              break;
-            }
-        }
       nearestEntity = nullptr;
       available = true;
       pickedUp = false;
