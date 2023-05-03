@@ -6,7 +6,6 @@
 #include "IEntity.h"
 #include "math/vector3.h"
 #include "util/json.h"
-#include "AstarStrategy.h"
 
 /**
  * @class Robot
@@ -26,7 +25,7 @@ class Robot : public IEntity {
   /**
    * @brief Destructor
    */
-  ~Robot();
+  ~Robot() override = default;
 
   /**
    * @brief Gets the robot's position
@@ -110,13 +109,6 @@ class Robot : public IEntity {
    */
   void Rotate(double angle);
 
-  /**
-   * @brief Updates the entity's position in the physical system.
-   * @param dt The time step of the update.
-   * @param scheduler The list of all entities in the system.
-   */
-  void Update(double dt, std::vector<IEntity*> scheduler);
-
  private:
   JsonObject details;
   Vector3 position;
@@ -125,7 +117,6 @@ class Robot : public IEntity {
   float speed;
   bool available;
   std::string strategyName;
-  IStrategy* toDestination = nullptr;
 };
 
 #endif  // ROBOT_H

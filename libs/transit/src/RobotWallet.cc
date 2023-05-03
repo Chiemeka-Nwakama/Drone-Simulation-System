@@ -20,17 +20,6 @@ RobotWallet::~RobotWallet() {
     delete entity;
 }
 
-void RobotWallet::Update(double dt, std::vector<IEntity*> scheduler, int cost) {
-    // if (money < cost) {
-    //     std::cout << "Insufficient funds! Moving to bank first." << std::endl;
-    //     Vector3 oldDestination = entity->GetDestination();
-    //     Vector3 bank = entity->GetNearestBank();
-    //     entity->SetDestination(bank);
-    //     entity->Update(dt, scheduler);
-    //     SetDestination(oldDestination);
-    // }
-
-    // // Add as much money to reach capacity
-    // Add(capacity-money);
-    
+void RobotWallet::Update(double dt, std::vector<IEntity*> scheduler) {
+   
 }

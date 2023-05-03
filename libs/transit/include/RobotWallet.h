@@ -160,7 +160,7 @@ class RobotWallet : public WalletDecorator {
          * @param dt The time step of the update.
          * @param scheduler The list of all entities in the system.
          */
-        void Update(double dt, std::vector<IEntity*> scheduler) { entity->Update(dt, scheduler); }
+        void Update(double dt, std::vector<IEntity*> scheduler);
 
     private:
         int money;
