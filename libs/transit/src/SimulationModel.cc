@@ -6,6 +6,8 @@
 #include "HelicopterFactory.h"
 #include "BankFactory.h"
 
+#include <typeinfo>
+
 SimulationModel::SimulationModel(IController& controller)
     : controller(controller) {
   compFactory = new CompositeFactory();
@@ -68,9 +70,8 @@ void SimulationModel::ScheduleTrip(JsonObject& details) {
 /// Updates the simulation
 void SimulationModel::Update(double dt) {
   for (int i = 0; i < entities.size(); i++) {
-    std::cout << i << ": with ID of " << entities[i]->GetId() << std::endl;
     entities[i]->Update(dt, scheduler);
-    std::cout << "The problem is not the Update function itself" << std::endl;
+    std::cout << "Calling update for " << typeid(entities[i]).name() << std::endl;
     controller.UpdateEntity(*entities[i]);
   }
 }
