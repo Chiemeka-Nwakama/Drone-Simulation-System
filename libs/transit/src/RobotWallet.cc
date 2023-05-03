@@ -32,7 +32,7 @@ void RobotWallet::Update(double dt, std::vector<IEntity*> scheduler) {
       entity->SetAvailability(true);
    }
    // if robot needs funds and has not started moving to the bank yet
-   else if (!toBank && (money >= tripCost)){
+   else if (!toBank && (money < tripCost)){
         std::cout << "Insufficient funds. Visiting bank." << std::endl;
         // find closeset bank
         Vector3 nearestBank = entity->GetNearestBank();
@@ -46,11 +46,11 @@ void RobotWallet::Update(double dt, std::vector<IEntity*> scheduler) {
             toBank = new DijkstraStrategy(entity->GetPosition(), nearestBank, graph);
    }
    // robot is moving towards bank
-   else if (!toBank->IsCompleted()){
+   else if (toBank && !toBank->IsCompleted()){
       toBank->Move(entity, dt);
    }
    // robot is at the bank
-   else if (toBank->IsCompleted()){
+   else if (toBank && toBank->IsCompleted()){
       delete toBank;
       toBank = nullptr;
       // recalculate what trip will now cost if pickup is from bank
