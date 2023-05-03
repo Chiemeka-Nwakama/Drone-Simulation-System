@@ -21,6 +21,7 @@ RobotWallet::~RobotWallet() {
 }
 
 void RobotWallet::Update(double dt, std::vector<IEntity*> scheduler, int cost) {
+    std::cout << "In robot wallet update loop" << std::cout;
     if (money < cost) {
         Vector3 oldDestination = entity->GetDestination();
         Vector3 bank = entity->GetNearestBank();
