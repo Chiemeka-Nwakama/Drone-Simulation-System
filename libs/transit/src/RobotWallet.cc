@@ -13,6 +13,8 @@ RobotWallet::RobotWallet(Robot* entity_) : WalletDecorator(entity) {
     capacity = 100;
 
     entity = entity_;
+
+    std::cout << "Robot Wallet constructor" << std::endl;
 }
 
 RobotWallet::~RobotWallet() {
