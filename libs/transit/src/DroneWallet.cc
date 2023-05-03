@@ -39,7 +39,9 @@ void DroneWallet::Update(double dt, std::vector<IEntity*> scheduler) {
         entity->Update(dt, scheduler);
         // trip will be made if availability has changed; add cost of trip here. 
         if (!entity->GetAvailability()) {
-            Add(30);
+            int tripCost = (int) ceil(0.1 * entity->GetPosition().Distance(entity->GetDestination()));
+            std::cout << "Drone will be paid $" << tripCost << "for this trip." << std::endl;
+            Add(tripCost);
         }
     }
     // otherwise call Drone update; making trip
