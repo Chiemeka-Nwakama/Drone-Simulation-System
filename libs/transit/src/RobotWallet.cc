@@ -21,11 +21,9 @@ RobotWallet::~RobotWallet() {
 }
 
 void RobotWallet::Update(double dt, std::vector<IEntity*> scheduler, int cost) {
-    std::cout << "In update function" << std::endl;
     if (money < cost) {
         Vector3 oldDestination = entity->GetDestination();
         Vector3 bank = entity->GetNearestBank();
-        std::cout << "Before setters" << std::endl;
         entity->SetDestination(bank);
         entity->Update(dt, scheduler);
         SetDestination(oldDestination);
