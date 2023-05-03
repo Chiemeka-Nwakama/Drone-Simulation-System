@@ -1,5 +1,6 @@
 #include "WalletDecorator.h"
 #include "DroneWallet.h"
+#include "BeelineStrategy.h"
 
 DroneWallet::DroneWallet(Drone* entity_) : WalletDecorator(entity) {
     // $100 capacity - standard for drones/robots
