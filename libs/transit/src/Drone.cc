@@ -51,6 +51,7 @@ void Drone::GetNearestEntity(std::vector<IEntity*> scheduler) {
 
     destination = nearestEntity->GetPosition();
     Vector3 finalDestination = nearestEntity->GetDestination();
+    tripDistance = destination.Distance(finalDestination);
 
     toRobot = new BeelineStrategy(position, destination);
 

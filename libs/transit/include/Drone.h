@@ -83,6 +83,13 @@ class Drone : public IEntity {
   void GetNearestEntity(std::vector<IEntity*> scheduler);
 
   /**
+   * @brief Get the trip distance
+   * 
+   * @return Distance of robot's trip from drone
+  */
+ float GetTripDistance() const { return tripDistance; }
+
+  /**
    * @brief Updates the drone's position
    * @param dt Delta time
    * @param scheduler Vector containing all the entities in the system
@@ -122,6 +129,12 @@ class Drone : public IEntity {
   void SetColor(std::string col_) { color = col_; }
 
   /**
+   * @brief Sets the robot's trip distance
+   * @param dis_ The new trip distance for the ride
+  */
+ void SetTripDistance(float dis_) {tripDistance = dis_;}
+
+  /**
    * @brief Rotates the drone
    * @param angle The angle by which the drone should be rotated
    */
@@ -154,6 +167,7 @@ class Drone : public IEntity {
   IEntity* nearestEntity = nullptr;
   IStrategy* toRobot = nullptr;
   IStrategy* toFinalDestination = nullptr;
+  float tripDistance;  
 };
 
 #endif

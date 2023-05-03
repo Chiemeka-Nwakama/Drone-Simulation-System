@@ -19,6 +19,7 @@ RobotWallet::RobotWallet(Robot* entity_) : WalletDecorator(entity) {
     entity = entity_;
 
     // calculate trip cost
+    entity->SetTripDistance(entity->GetPosition().Distance(entity->GetDestination())); // set trip distance
     tripCost = (int) ceil(0.1 * entity->GetPosition().Distance(entity->GetDestination()));
     std::cout << "Robot will pay $" << tripCost << " for this trip." << std::endl;
     start = true;
