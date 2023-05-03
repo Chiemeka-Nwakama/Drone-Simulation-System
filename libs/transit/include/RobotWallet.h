@@ -144,6 +144,12 @@ class RobotWallet : public WalletDecorator {
         void SetDestination(Vector3 des_) { entity->SetDestination(des_); }
 
         /**
+         * @brief Sets the robot's graph and the wallet's graph
+         * @param graph The IGraph object to be used.
+        */
+       void SetGraph(const IGraph* graph) { this->graph = graph; entity->graph = graph;}
+
+        /**
          * @brief Rotates the robot
          * @param angle The angle by which the robot should be rotated
          */

@@ -53,9 +53,7 @@ void Drone::GetNearestEntity(std::vector<IEntity*> scheduler) {
 
     toRobot = new BeelineStrategy(position, destination);
 
-    std::cout << "Calculating strategy" << std::endl;
     std::string strat = nearestEntity->GetStrategyName();
-    std::cout << "Got strategy name" << std::endl;
     if (strat == "astar"){
       toFinalDestination =
         new JumpDecorator(new AstarStrategy(destination, finalDestination, graph));
