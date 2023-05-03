@@ -6,8 +6,6 @@
 #include "HelicopterFactory.h"
 #include "BankFactory.h"
 
-#include <typeinfo>
-
 SimulationModel::SimulationModel(IController& controller)
     : controller(controller) {
   compFactory = new CompositeFactory();
@@ -71,7 +69,7 @@ void SimulationModel::ScheduleTrip(JsonObject& details) {
 void SimulationModel::Update(double dt) {
   for (int i = 0; i < entities.size(); i++) {
     entities[i]->Update(dt, scheduler);
-    std::cout << "Calling update for " << typeid(&entities[i]).name() << std::endl;
+    std::cout << "Calling update for entity at position " << entities[i]->GetPosition() <<  << std::endl;
     controller.UpdateEntity(*entities[i]);
   }
 }
