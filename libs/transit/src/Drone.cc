@@ -33,9 +33,7 @@ Drone::~Drone() {
 void Drone::GetNearestEntity(std::vector<IEntity*> scheduler) {
   float minDis = std::numeric_limits<float>::max();
   for (auto entity : scheduler) {
-    std::cout << "Robot Status: " << entity->GetAvailability();
     if (entity->GetAvailability()) {
-      std::cout << "Robot available!" << std::endl;
       float disToEntity = this->position.Distance(entity->GetPosition());
       if (disToEntity <= minDis) {
         minDis = disToEntity;
