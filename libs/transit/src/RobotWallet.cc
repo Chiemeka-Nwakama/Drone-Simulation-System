@@ -18,7 +18,7 @@ RobotWallet::RobotWallet(Robot* entity_) : WalletDecorator(entity) {
     entity = entity_;
 
     // calculate trip cost; hard coded right now to 30
-    tripCost = 0;
+    tripCost = 30;
 }
 
 RobotWallet::~RobotWallet() {
@@ -28,11 +28,11 @@ RobotWallet::~RobotWallet() {
 
 void RobotWallet::Update(double dt, std::vector<IEntity*> scheduler) {
    // robot does not need funds; can be picked up 
-   if (!entity->GetAvailability() && money >= tripCost){
+   if (!entity->GetAvailability() && (money >= tripCost)){
       entity->SetAvailability(true);
    }
    // if robot needs funds and has not started moving to the bank yet
-   else if (!toBank){
+   else if (!toBank && (money >= tripCost)){
         std::cout << "Insufficient funds. Visiting bank." << std::endl;
         // find closeset bank
         Vector3 nearestBank = entity->GetNearestBank();
