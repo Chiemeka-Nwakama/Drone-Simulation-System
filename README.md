@@ -123,16 +123,20 @@ While overall layout is better laid out in the attached UML and .cc files, a gen
 </ul>
 
 ## New Features
-#### Factory/Decorator
+#### Wallet and Bank Functionality for Drones and Robots
 <ul>
     <li> What does it do?
+     <ol>
+        <li> This new feature implements a payment system for rides and features banks on the map at which entities can make deposits or withdrawals. The price per ride is calculated as a function of the beeline distance from the starting and ending points for the robot passenger. If the passenger has insufficient funds in their wallet, then they must first walk to a bank, withdraw the appropriate amount of money, and will get picked up from the drone at this new location. The drones are then paid this amount at the start of the ride. Drones' wallets have a maximum capacity, and once this value is reached then they must visit the banks to make a deposit. 
     <li> Why is it significantly interesting?
+     <ol>
+        <li> This added functionality allows our simulation to more closely model real-world rideshare systems like Lyft or Uber. Additionally, by adding banks to our simulation, we have added an additional layer of interaction with the simulation environment. It may be advantageous for robots to start their trips close to banks, in case their randomly generated starting wallet value is too low to pay for the trip, necessitating a walk. 
     <li> How does it add to the existing work?
     <li> Which design pattern did you choose to implement it with and why?
     <li> Instructions to use this new feature:
 </ul>
 
-#### Singleton
+#### Singleton Data Collection
 <ul>
     <li> What does it do?
      <ol>
