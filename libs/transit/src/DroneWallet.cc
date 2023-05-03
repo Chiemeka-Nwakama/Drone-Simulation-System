@@ -36,7 +36,7 @@ void DroneWallet::Update(double dt, std::vector<IEntity*> scheduler) {
     }
     // otherwise if available, find nearest entity to pick up
     else if (entity->GetAvailability()){
-        entity->GetNearestEntity(scheduler);
+        entity->Update(dt, scheduler);
         // trip will be made if availability has changed; add cost of trip here. 
         if (!entity->GetAvailability()) {
             Add(30);
