@@ -66,6 +66,6 @@ void RobotWallet::Update(double dt, std::vector<IEntity*> scheduler) {
       Add(tripCost-money);
       entity->SetAvailability(true);
       Remove(tripCost); // a little weird; but necessary for data tracking.
-      start = false // update function should now do nothing
+      start = false; // update function should now do nothing
    }
 }
