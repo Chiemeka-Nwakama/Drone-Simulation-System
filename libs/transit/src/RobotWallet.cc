@@ -29,6 +29,7 @@ RobotWallet::~RobotWallet() {
 void RobotWallet::Update(double dt, std::vector<IEntity*> scheduler) {
    // robot does not need funds; can be picked up 
    if (money >= tripCost){
+      std::cout << "Sufficient funds" << std::endl;
       entity->SetAvailability(true);
    }
    // if robot needs funds and has not started moving to the bank yet
@@ -57,6 +58,7 @@ void RobotWallet::Update(double dt, std::vector<IEntity*> scheduler) {
       // TODO THIS WHEN CALCULATION IS DONE
       // add only amount that is needed
       Add(tripCost-money);
+      Remove(tripCost-money); // a little weird; but necessary for data tracking.
       entity->SetAvailability(true);
    }
 }
