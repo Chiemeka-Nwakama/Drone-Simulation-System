@@ -25,9 +25,15 @@ class IEntity {
    */
   IEntity() {
     static int currentId = 0;
+    
     id = currentId;
     currentId++;
+    bankPositions = { Vector3(1, 2, 3), Vector3(4, 5, 6), Vector3(7, 8, 9) };
+
+    
+ 
   }
+
 
   /**
    * @brief Virtual destructor for IEntity.
@@ -63,6 +69,12 @@ class IEntity {
    * @return The details of the entity.
    */
   virtual JsonObject GetDetails() const = 0;
+
+    /**
+   * @brief Gets the nearest Bank to this entity
+   * @return The position of the nearest bank
+   */
+  virtual Vector3 GetNearestBank();
 
   /**
    * @brief Gets the color of the drone
@@ -113,7 +125,7 @@ class IEntity {
    * @brief Sets the graph object used by the entity in the simulation.
    * @param graph The IGraph object to be used.
    */
-  void SetGraph(const IGraph* graph) { this->graph = graph; }
+  virtual void SetGraph(const IGraph* graph) { this->graph = graph; }
 
   /**
    * @brief Sets the position of the entity.
@@ -158,6 +170,7 @@ class IEntity {
  protected:
   int id;
   const IGraph* graph;
+  static std::vector<Vector3> bankPositions;
 };
 
 #endif

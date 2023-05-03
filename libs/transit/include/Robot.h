@@ -6,7 +6,6 @@
 #include "IEntity.h"
 #include "math/vector3.h"
 #include "util/json.h"
-#include "RobotWallet.h"
 
 /**
  * @class Robot
@@ -26,7 +25,7 @@ class Robot : public IEntity {
   /**
    * @brief Destructor
    */
-  ~Robot();
+  ~Robot() override = default;
 
   /**
    * @brief Gets the robot's position
@@ -72,6 +71,13 @@ class Robot : public IEntity {
   std::string GetStrategyName() const { return strategyName; }
 
   /**
+   * @brief Get the trip distance
+   * 
+   * @return Distance of robot's trip from drone
+  */
+ float GetTripDistance() const { return tripDistance; }
+
+  /**
    * @brief Set the Strategy Name
    *
    * @param strategyName_ Strategy name
@@ -105,6 +111,12 @@ class Robot : public IEntity {
   void SetDestination(Vector3 des_) { destination = des_; }
 
   /**
+   * @brief Sets the robot's trip distance
+   * @param dis_ The new trip distance for the ride
+  */
+ void SetTripDistance(float dis_) {tripDistance = dis_;}
+
+  /**
    * @brief Rotates the robot
    * @param angle The angle by which the robot should be rotated
    */
@@ -118,7 +130,7 @@ class Robot : public IEntity {
   float speed;
   bool available;
   std::string strategyName;
-  RobotWallet* wallet = nullptr;
+  float tripDistance;
 };
 
 #endif  // ROBOT_H

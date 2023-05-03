@@ -5,6 +5,7 @@
 
 #include "IEntityFactory.h"
 #include "Robot.h"
+#include "RobotWallet.h"
 
 /**
  *@brief Drone Factory to produce Drones class.

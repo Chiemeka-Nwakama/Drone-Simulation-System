@@ -6,14 +6,8 @@ Robot::Robot(JsonObject &obj) : details(obj) {
   JsonArray dir(obj["direction"]);
   direction = {dir[0], dir[1], dir[2]};
   speed = obj["speed"];
-  available = true;
-  wallet = new RobotWallet(this);
-}
-
-Robot::~Robot() {
-  // Delete dynamically allocated variables
-  delete graph;
-  delete wallet;
+  // now needs to be false to fit with wallet integration
+  available = false;
 }
 
 JsonObject Robot::GetDetails() const { return details; }

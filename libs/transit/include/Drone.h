@@ -6,7 +6,6 @@
 #include "IEntity.h"
 #include "IStrategy.h"
 #include "math/vector3.h"
-#include "DroneWallet.h"
 
 // Represents a drone in a physical system.
 // Drones move using euler integration based on a specified
@@ -72,10 +71,23 @@ class Drone : public IEntity {
   bool GetAvailability() const { return available; }
 
   /**
+   * @brief Gets the movement strategy to a robot
+   * @return The movement strategy if getting a robot
+   */
+  IStrategy* GetToRobot() const { return toRobot; }
+
+  /**
    * @brief Gets the nearest entity in the scheduler
    * @param scheduler Vector containing all the entities in the system
    */
   void GetNearestEntity(std::vector<IEntity*> scheduler);
+
+  /**
+   * @brief Get the trip distance
+   * 
+   * @return Distance of robot's trip from drone
+  */
+ float GetTripDistance() const { return tripDistance; }
 
   /**
    * @brief Updates the drone's position
@@ -83,6 +95,14 @@ class Drone : public IEntity {
    * @param scheduler Vector containing all the entities in the system
    */
   void Update(double dt, std::vector<IEntity*> scheduler);
+
+  /**
+   * @brief Moves the drone to the nearest Bank
+   * @param dt Delta time
+   * @param scheduler Vector containing all the entities in the system
+   * @param cost Cost of trip
+   */
+  void MoveToBank(double dt, std::vector<IEntity*> scheduler, int cost);
 
   /**
    * @brief Sets the position of the drone
@@ -107,6 +127,12 @@ class Drone : public IEntity {
    * @param col_ The new color of the drone
    */
   void SetColor(std::string col_) { color = col_; }
+
+  /**
+   * @brief Sets the robot's trip distance
+   * @param dis_ The new trip distance for the ride
+  */
+ void SetTripDistance(float dis_) {tripDistance = dis_;}
 
   /**
    * @brief Rotates the drone
@@ -141,7 +167,7 @@ class Drone : public IEntity {
   IEntity* nearestEntity = nullptr;
   IStrategy* toRobot = nullptr;
   IStrategy* toFinalDestination = nullptr;
-  DroneWallet* wallet = nullptr;
+  float tripDistance;  
 };
 
 #endif
