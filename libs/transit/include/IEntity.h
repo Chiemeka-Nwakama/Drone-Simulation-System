@@ -74,7 +74,7 @@ class IEntity {
    * @brief Gets the nearest Bank to this entity
    * @return The position of the nearest bank
    */
-  virtual Vector3 GetNearestBank() {}
+  virtual Vector3 GetNearestBank();
 
   /**
    * @brief Gets the color of the drone
