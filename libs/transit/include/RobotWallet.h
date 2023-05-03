@@ -147,7 +147,7 @@ class RobotWallet : public WalletDecorator {
          * @brief Sets the robot's graph and the wallet's graph
          * @param graph The IGraph object to be used.
         */
-       void SetGraph(const IGraph* graph) { this->graph = graph; entity->graph = graph;}
+       void SetGraph(const IGraph* graph) { this->graph = graph; entity.SetGraph(graph);}
 
         /**
          * @brief Rotates the robot
