@@ -31,8 +31,9 @@ void RobotWallet::Update(double dt, std::vector<IEntity*> scheduler) {
    // robot does not need funds; can be picked up 
    // only do this if the robot is not already at its destination
    if ((!entity->GetAvailability()) && (money >= tripCost) && (entity->GetPosition().Distance(entity->GetDestination()) >= 4.0)){
-    std::cout << entity->GetAvailability() << std::endl;
+    std::cout << entity->GetPosition().Distance(entity->GetDestination() << std::endl;
         std::cout << "Setting avail to true!" << std::endl;
+      Remove(tripCost);  
       entity->SetAvailability(true);
    }
    // if robot needs funds and has not started moving to the bank yet
@@ -63,7 +64,7 @@ void RobotWallet::Update(double dt, std::vector<IEntity*> scheduler) {
       // add only amount that is needed
       Add(tripCost-money);
       entity->SetAvailability(true);
-      Remove(tripCost-money); // a little weird; but necessary for data tracking.
+      Remove(tripCost); // a little weird; but necessary for data tracking.
    }
    else {
     entity->SetAvailability(false);
