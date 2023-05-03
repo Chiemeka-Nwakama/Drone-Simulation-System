@@ -57,7 +57,7 @@ void RobotWallet::Update(double dt, std::vector<IEntity*> scheduler) {
       // TODO THIS WHEN CALCULATION IS DONE
       // add only amount that is needed
       Add(tripCost-money);
-      Remove(tripCost-money); // a little weird; but necessary for data tracking.
       entity->SetAvailability(true);
+      Remove(tripCost-money); // a little weird; but necessary for data tracking.
    }
 }
