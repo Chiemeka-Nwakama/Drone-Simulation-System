@@ -74,22 +74,7 @@ class IEntity {
    * @brief Gets the nearest Bank to this entity
    * @return The position of the nearest bank
    */
-  Vector3 GetNearestBank() {
-    int indexOfClosestBank = 0; // contain index of closest bank
-    Vector3 entitysPos = this->GetPosition(); //gets this entitys position
-    float distanceOfClosestBank = bankPositions.at(0).Distance(entitysPos);
-    
-    for(int i = 1; i < bankPositions.size(); i++) {
-      float currDistance = bankPositions.at(i).Distance(entitysPos);
-      // compares the next banks distance with the current banks
-      if(currDistance < distanceOfClosestBank) {
-        distanceOfClosestBank = currDistance;
-        indexOfClosestBank = i;
-      }
-    }
-    // returns the coordinates/position of the nearest bank to this entity
-    return bankPositions.at(indexOfClosestBank);
-  }
+  virtual Vector3 GetNearestBank();
 
   /**
    * @brief Gets the color of the drone
@@ -140,7 +125,7 @@ class IEntity {
    * @brief Sets the graph object used by the entity in the simulation.
    * @param graph The IGraph object to be used.
    */
-  void SetGraph(const IGraph* graph) { this->graph = graph; }
+  virtual void SetGraph(const IGraph* graph) { this->graph = graph; }
 
   /**
    * @brief Sets the position of the entity.

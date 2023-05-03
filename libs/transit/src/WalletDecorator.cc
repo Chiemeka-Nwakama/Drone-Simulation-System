@@ -5,4 +5,4 @@ WalletDecorator::WalletDecorator(IEntity* entity) {
     this->entity = entity;
 }
 
-WalletDecorator::~WalletDecorator() {}
+WalletDecorator::~WalletDecorator() { delete toBank; }

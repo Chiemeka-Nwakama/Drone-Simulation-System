@@ -6,12 +6,8 @@ Robot::Robot(JsonObject &obj) : details(obj) {
   JsonArray dir(obj["direction"]);
   direction = {dir[0], dir[1], dir[2]};
   speed = obj["speed"];
-  available = true;
-}
-
-Robot::~Robot() {
-  // Delete dynamically allocated variables
-  delete graph;
+  // now needs to be false to fit with wallet integration
+  available = false;
 }
 
 JsonObject Robot::GetDetails() const { return details; }
@@ -22,10 +18,4 @@ void Robot::Rotate(double angle) {
   Vector3 dirTmp = direction;
   direction.x = dirTmp.x * std::cos(angle) - dirTmp.z * std::sin(angle);
   direction.z = dirTmp.x * std::sin(angle) + dirTmp.z * std::cos(angle);
-}
-
-void Robot::Update(double dt, std::vector<IEntity*> scheduler) {
-  toDestination = new AstarStrategy(position, destination, graph);
-  toDestination->Move(this, dt);
-  position = destination;
 }

@@ -144,6 +144,12 @@ class RobotWallet : public WalletDecorator {
         void SetDestination(Vector3 des_) { entity->SetDestination(des_); }
 
         /**
+         * @brief Sets the robot's graph and the wallet's graph
+         * @param graph The IGraph object to be used.
+        */
+       void SetGraph(const IGraph* graph) { this->graph = graph; entity->SetGraph(graph);}
+
+        /**
          * @brief Rotates the robot
          * @param angle The angle by which the robot should be rotated
          */
@@ -154,12 +160,13 @@ class RobotWallet : public WalletDecorator {
          * @param dt The time step of the update.
          * @param scheduler The list of all entities in the system.
          */
-        void Update(double dt, std::vector<IEntity*> scheduler) { entity->Update(dt, scheduler); }
+        void Update(double dt, std::vector<IEntity*> scheduler);
 
     private:
         int money;
         int capacity;
         Robot* entity;
+        int tripCost;
 };
 
 #endif

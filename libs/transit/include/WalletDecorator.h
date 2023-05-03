@@ -2,6 +2,7 @@
 #define WALLET_DECORATOR_H_
 
 #include "IEntity.h"
+#include "IStrategy.h"
 
 /**
  * @brief This class is the base abstract Wallet Decorator class that will hold 
@@ -13,6 +14,7 @@ class WalletDecorator : public IEntity {
         int money;
         int capacity;
         IEntity* entity;
+        IStrategy* toBank = nullptr;
     
     public:
         /**

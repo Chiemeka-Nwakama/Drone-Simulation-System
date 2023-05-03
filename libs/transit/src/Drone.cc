@@ -10,15 +10,15 @@
 #include "DijkstraStrategy.h"
 #include "JumpDecorator.h"
 #include "SpinDecorator.h"
-#include "RobotWallet.h"
-
 
 Drone::Drone(JsonObject& obj) : details(obj) {
   JsonArray pos(obj["position"]);
   position = {pos[0], pos[1], pos[2]};
   JsonArray dir(obj["direction"]);
   direction = {dir[0], dir[1], dir[2]};
+
   speed = obj["speed"];
+
   available = true;
 }
 
@@ -34,6 +34,7 @@ void Drone::GetNearestEntity(std::vector<IEntity*> scheduler) {
   float minDis = std::numeric_limits<float>::max();
   for (auto entity : scheduler) {
     if (entity->GetAvailability()) {
+      std::cout << "Robot available!" << std::endl;
       float disToEntity = this->position.Distance(entity->GetPosition());
       if (disToEntity <= minDis) {
         minDis = disToEntity;
@@ -43,7 +44,7 @@ void Drone::GetNearestEntity(std::vector<IEntity*> scheduler) {
   }
 
   if (nearestEntity) {
-    // Set availability to the nearest entity
+      // set availability to the nearest entity
     nearestEntity->SetAvailability(false);
     available = false;
     pickedUp = false;
@@ -69,6 +70,9 @@ void Drone::GetNearestEntity(std::vector<IEntity*> scheduler) {
 }
 
 void Drone::Update(double dt, std::vector<IEntity*> scheduler) {
+  if (available)
+    GetNearestEntity(scheduler);
+
   if (toRobot) {
     toRobot->Move(this, dt);
 
@@ -93,37 +97,6 @@ void Drone::Update(double dt, std::vector<IEntity*> scheduler) {
       pickedUp = false;
     }
   }
-}
-
-void Drone::MoveToBank(double dt, std::vector<IEntity*> scheduler, int cost) {
-  Vector3 oldDestination = destination;
-  Vector3 bank = GetNearestBank();
-  SetDestination(bank);
-
-  if (toRobot) {
-    toRobot->Move(this, dt);
-  }
-
-  SetDestination(oldDestination);
-
-  // Update robot as necessary, also information/strategy
-  RobotWallet* tempEntity = (RobotWallet*) nearestEntity;
-  tempEntity->Update(dt, scheduler, cost);
-  nearestEntity = (IEntity*) tempEntity;
-  Vector3 finalDestination = nearestEntity->GetDestination();
-  std::string strat = nearestEntity->GetStrategyName();
-
-  if (strat == "astar")
-    toFinalDestination =
-      new JumpDecorator(new AstarStrategy(destination, finalDestination, graph));
-  else if (strat == "dfs")
-    toFinalDestination =
-      new SpinDecorator(new JumpDecorator(new DfsStrategy(destination, finalDestination, graph)));
-  else if (strat == "dijkstra")
-    toFinalDestination =
-      new JumpDecorator(new SpinDecorator(new DijkstraStrategy(destination, finalDestination, graph)));
-  else
-    toFinalDestination = new BeelineStrategy(destination, finalDestination);
 }
 
 void Drone::Rotate(double angle) {

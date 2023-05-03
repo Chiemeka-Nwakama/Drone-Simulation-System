@@ -135,6 +135,12 @@ class DroneWallet : public WalletDecorator {
   void SetColor(std::string col_) { entity->SetColor(col_); }
 
   /**
+   * @brief Sets the robot's graph and the wallet's graph
+   * @param graph The IGraph object to be used.
+  */
+  void SetGraph(const IGraph* graph) { this->graph = graph; entity->SetGraph(graph);}
+
+  /**
    * @brief Rotates the drone
    * @param angle The angle by which the drone should be rotated
    */
