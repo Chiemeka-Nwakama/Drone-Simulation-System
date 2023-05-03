@@ -8,7 +8,7 @@
  * an entity's money, used to either receive payments (Drone) or make payments
  * for rides (Robot).
 */
-class WalletDecorator {
+class WalletDecorator : public IEntity {
     protected:
         int money;
         int capacity;

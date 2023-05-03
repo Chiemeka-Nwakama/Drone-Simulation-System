@@ -107,6 +107,12 @@ class RobotWallet : public WalletDecorator {
         std::string GetStrategyName() const { return entity->GetStrategyName(); }
 
         /**
+         * @brief Gets the robot's details
+         * @return The robot's details
+         */
+        JsonObject GetDetails() const { return entity->GetDetails(); };
+
+        /**
          * @brief Set the Strategy Name
          *
          * @param strategyName_ Strategy name
