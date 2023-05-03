@@ -56,10 +56,10 @@ void Drone::GetNearestEntity(std::vector<IEntity*> scheduler) {
     std::cout << "Calculating strategy" << std::endl;
     std::string strat = nearestEntity->GetStrategyName();
     std::cout << "Got strategy name" << std::endl;
-    if (strat == "astar")
+    if (strat == "astar"){
       toFinalDestination =
         new JumpDecorator(new AstarStrategy(destination, finalDestination, graph));
-        std::cout << "Set AstarStrategy successfully" << std::endl;
+        std::cout << "Set AstarStrategy successfully" << std::endl;}
     else if (strat == "dfs")
       toFinalDestination =
         new SpinDecorator(new JumpDecorator(new DfsStrategy(destination, finalDestination, graph)));
