@@ -35,38 +35,37 @@ void RobotWallet::Update(double dt, std::vector<IEntity*> scheduler) {
    if (start && (money >= tripCost)){
       Remove(tripCost);  
       entity->SetAvailability(true);
+      start = false; // update function should now do nothing
    }
-   else {
-        start = false;
-        // if robot needs funds and has not started moving to the bank yet
-        if ((!toBank) && (money < tripCost)){
-            std::cout << "Insufficient funds. Visiting bank." << std::endl;
-            // find closeset bank
-            Vector3 nearestBank = entity->GetNearestBank();
-            // set toBank to that location
-            std::string strat = entity->GetStrategyName();
-            if (strat == "astar")
-                toBank = new AstarStrategy(entity->GetPosition(), nearestBank, graph);
-            else if (strat == "dfs")
-                toBank = new DfsStrategy(entity->GetPosition(), nearestBank, graph);
-            else // default to Dijkstra; robots canot do beeline movement
-                toBank = new DijkstraStrategy(entity->GetPosition(), nearestBank, graph);
-        }
-    // robot is moving towards bank
-    else if (toBank && !toBank->IsCompleted()){
-        toBank->Move(entity, dt);
-    }
-    // robot is at the bank
-    else if (toBank && toBank->IsCompleted()){
-        delete toBank;
-        toBank = nullptr;
-        // recalculate what trip will now cost if pickup is from bank
-        tripCost = (int) ceil(0.1 * entity->GetPosition().Distance(entity->GetDestination()));
-        std::cout << "From the bank, the robot will now pay $" << tripCost << " for this trip." << std::endl;
-        // add only amount that is needed
-        Add(tripCost-money);
-        entity->SetAvailability(true);
-        Remove(tripCost); // a little weird; but necessary for data tracking.
-    }
+   // if robot needs funds and has not started moving to the bank yet
+   else if (start && (!toBank) && (money < tripCost)){
+        std::cout << "Insufficient funds. Visiting bank." << std::endl;
+        // find closeset bank
+        Vector3 nearestBank = entity->GetNearestBank();
+        // set toBank to that location
+        std::string strat = entity->GetStrategyName();
+        if (strat == "astar")
+            toBank = new AstarStrategy(entity->GetPosition(), nearestBank, graph);
+        else if (strat == "dfs")
+            toBank = new DfsStrategy(entity->GetPosition(), nearestBank, graph);
+        else // default to Dijkstra; robots canot do beeline movement
+            toBank = new DijkstraStrategy(entity->GetPosition(), nearestBank, graph);
+   }
+   // robot is moving towards bank
+   else if (start && toBank && !toBank->IsCompleted()){
+      toBank->Move(entity, dt);
+   }
+   // robot is at the bank
+   else if (start && toBank && toBank->IsCompleted()){
+      delete toBank;
+      toBank = nullptr;
+      // recalculate what trip will now cost if pickup is from bank
+      tripCost = (int) ceil(0.1 * entity->GetPosition().Distance(entity->GetDestination()));
+      std::cout << "From the bank, the robot will now pay $" << tripCost << " for this trip." << std::endl;
+      // add only amount that is needed
+      Add(tripCost-money);
+      entity->SetAvailability(true);
+      Remove(tripCost); // a little weird; but necessary for data tracking.
+      start = false // update function should now do nothing
    }
 }
