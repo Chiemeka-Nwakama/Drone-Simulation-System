@@ -16,9 +16,10 @@ Drone::Drone(JsonObject& obj) : details(obj) {
   position = {pos[0], pos[1], pos[2]};
   JsonArray dir(obj["direction"]);
   direction = {dir[0], dir[1], dir[2]};
+
   speed = obj["speed"];
+
   available = true;
-  wallet = new DroneWallet(this);
 }
 
 Drone::~Drone() {
@@ -27,7 +28,6 @@ Drone::~Drone() {
   delete nearestEntity;
   delete toRobot;
   delete toFinalDestination;
-  delete wallet;
 }
 
 void Drone::GetNearestEntity(std::vector<IEntity*> scheduler) {
