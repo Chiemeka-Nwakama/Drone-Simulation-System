@@ -14,6 +14,7 @@ DroneWallet::~DroneWallet() {
 }
 
 void DroneWallet::Update(double dt, std::vector<IEntity*> scheduler) {
+      std::cout << "Drone wallet update function" << std::endl;
     if (entity->GetAvailability()) {
         entity->GetNearestEntity(scheduler);
     }
