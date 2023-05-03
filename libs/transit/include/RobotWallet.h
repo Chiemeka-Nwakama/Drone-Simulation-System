@@ -167,6 +167,7 @@ class RobotWallet : public WalletDecorator {
         int capacity;
         Robot* entity;
         int tripCost;
+        bool start;
 };
 
 #endif
