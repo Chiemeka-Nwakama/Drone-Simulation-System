@@ -70,8 +70,8 @@ void SimulationModel::Update(double dt) {
   for (int i = 0; i < entities.size(); i++) {
     std::cout << "Calling update function for " << entities[i]->GetId() << std::endl;
     entities[i]->Update(dt, scheduler);
-    controller.UpdateEntity(*entities[i]);
     std::cout << "Finishing update function for " << entities[i]->GetId() << std::endl;
+    controller.UpdateEntity(*entities[i]);
   }
 }
 
