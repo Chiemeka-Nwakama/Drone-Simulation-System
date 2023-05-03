@@ -12,6 +12,7 @@ DroneWallet::DroneWallet(Drone* entity_) : WalletDecorator(entity) {
 
 DroneWallet::~DroneWallet() {
     delete entity;
+    delete toBank;
 }
 
 void DroneWallet::Update(double dt, std::vector<IEntity*> scheduler) {

@@ -14,12 +14,46 @@ RobotWallet::RobotWallet(Robot* entity_) : WalletDecorator(entity) {
 
     entity = entity_;
 
+    // calculate trip cost; hard coded right now to 30
+    tripCost = 30;
 }
 
 RobotWallet::~RobotWallet() {
     delete entity;
+    delete toBank;
 }
 
 void RobotWallet::Update(double dt, std::vector<IEntity*> scheduler) {
-   
+   // robot does not need funds; can be picked up 
+   if (money >= tripCost){
+      entity->SetAvailability(true);
+   }
+   // if robot needs funds and has not started moving to the bank yet
+   else if (!toBank){
+        std::cout << "Insufficient funds. Visiting bank." << std::endl;
+        // find closeset bank
+        Vector3 nearestBank = entity->GetNearestBank();
+        // set toBank to that location
+        std::string strat = entity->GetStrategyName();
+        if (strat == "astar")
+            toBank = new AstarStrategy(entity->GetPosition(), nearestBank, graph);
+        else if (strat == "dfs")
+            toBank = new DfsStrategy(entity->GetPosition(), nearestBank, graph);
+        else // default to Dijkstra; robots canot do beeline movement
+            toBank = new DijkstraStrategy(entity->GetPosition(), nearestBank, graph);
+   }
+   // robot is moving towards bank
+   else if (!toBank->IsCompleted()){
+      toBank->Move(entity, dt);
+   }
+   // robot is at the bank
+   else {
+      delete toBank;
+      toBank = nullptr;
+      // recalculate what trip will now cost if pickup is from bank
+      // TODO THIS WHEN CALCULATION IS DONE
+      // add only amount that is needed
+      Add(tripCost-money);
+      entity->SetAvailability(true);
+   }
 }
