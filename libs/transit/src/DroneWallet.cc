@@ -14,18 +14,32 @@ DroneWallet::~DroneWallet() {
 }
 
 void DroneWallet::Update(double dt, std::vector<IEntity*> scheduler) {
-    if (entity->GetAvailability()) {
+    // if the drone is available, check if it needs to go to the bank
+    if (entity->GetAvailability() && (money >= capacity)){
+        if (!toBank){ //if not already moving to a bank
+            std::cout << "Wallet full! Visiting bank." << std::endl;
+            // find closeset bank
+            Vector3 nearestBank = entity->GetNearestBank();
+            // set toBank to that location
+            entity->toBank = new BeelineStrategy(entity->position, nearestBank);
+        }
+        else if (!toBank->IsCompleted()){
+          toBank->Move(entity, dt); // move to bank
+        }
+        else if (toBank->IsCompleted()){
+            delete toBank;
+            toBank = nullptr;
+            Remove(money);
+        }
+    }
+    // otherwise if available, find nearest entity to pick up
+    else if (entity->GetAvailability()){
         entity->GetNearestEntity(scheduler);
+        // trip will be made, add cost of trip here. for testing purposes; 30
+        Add(30);
     }
-
-    // Calculate trip cost here
-    int cost = 100;
-
-    if (capacity - money < cost) {
-        std::cout << "Wallet full! Visiting bank." << std::endl;
-        entity->MoveToBank(dt, scheduler, cost);
-        Remove(money);
+    // otherwise call Drone update; making trip
+    else {
+        entity->Update(dt, scheduler);
     }
-
-    entity->Update(dt, scheduler);
 }
