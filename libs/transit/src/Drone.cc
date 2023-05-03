@@ -102,6 +102,12 @@ void Drone::Update(double dt, std::vector<IEntity*> scheduler) {
     if (toFinalDestination->IsCompleted()) {
       delete toFinalDestination;
       toFinalDestination = nullptr;
+
+      //csv testing
+      DataCollection* dc = DataCollection::getInstance();
+      float moneyTest = (holdPos.Distance(GetPosition())) * 0.01;
+      dc->writeRobotMoneyGiven(nearestEntity, moneyTest);
+
       nearestEntity = nullptr;
       available = true;
       pickedUp = false;
@@ -109,11 +115,11 @@ void Drone::Update(double dt, std::vector<IEntity*> scheduler) {
       //singleton stuff
       //std::cout << "holdPos before finish write: " << holdPos.Magnitude() << std::endl;
       //std::cout << "getPosition() before finish write: " << GetPosition().Magnitude() << std::endl;
-      DataCollection* dc = DataCollection::getInstance();
+      //DataCollection* dc = DataCollection::getInstance();
       dc->writeDeliveryDist(this, (holdPos.Distance(GetPosition()))); //total distance drone has travelled, what is unit (m, km, etc.)?
       dc->writeNumDelTrip(this); //total amount of robot delivery trips completed
       dc->calcDelDistPerTrip(this); //calculating delivery distance per trip
-      dc->writeToCSV();
+      dc->writeToCSV(); //placeholder for testing. a button will be made later
 
     }
   }

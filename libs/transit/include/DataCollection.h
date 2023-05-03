@@ -86,6 +86,7 @@ class DataCollection {
     void writeDeliveryDist(IEntity* dr, float dist);
   
     // void writeDroneMoney(Drone, int);
+    void writeRobotMoneyGiven(IEntity* rb, float money);
     void writeNumDelTrip(IEntity* dr);
     // void writeNumBankTrip(Drone);
     // void writeMoneyDeposited(Drone, int);

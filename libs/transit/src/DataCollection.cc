@@ -11,9 +11,12 @@ using namespace std;
 #include <cmath>
 #include <limits>
 
+#include <map>
+
 static std::map<IEntity*, float> totalDistTrav;
 // std::map<Drone, int> totalMoney;
 static std::map<IEntity*, int> totalDelTrips;
+static std::map<IEntity*, float> robotsAndMoney;
 
 // std::map<Drone, int> totalBankTrips;
 // std::map<Drone, int> moneyDeposited;
@@ -23,6 +26,7 @@ static std::map<IEntity*, int> totalDelTrips;
 
 //writeToCSV helpers
 static IEntity* droneName;
+
 
 
 DataCollection* DataCollection::instance = nullptr;
@@ -51,6 +55,12 @@ void  DataCollection::writeNumDelTrip(IEntity* entity){
     std::cout << "Testing trip number: " << totalDelTrips[entity] << std::endl;
 }  
 
+//not logically functional, adding it for testing with robots
+void DataCollection::writeRobotMoneyGiven(IEntity* entity, float money){
+    robotsAndMoney.insert(std::pair<IEntity*, float>(entity, money));
+    std::cout << "Robot gave this much money: " << robotsAndMoney[entity] << std::endl;
+}  
+
 double DataCollection::calcDelDistPerTrip(IEntity* entity){
     double distper = totalDistTrav[entity] / totalDelTrips[entity];
     std::cout << "Delivery Distance per Trip: " << distper << std::endl;
@@ -73,6 +83,16 @@ double DataCollection::calcDelDistPerTrip(IEntity* entity){
     myfile << "Bank 2," << "N/A," << "N/A," << "N/A," << "N/A," << "$ HOLDER," << "etc.," << "N/A," << "N/A," << "etc.,\n";
     myfile << "Bank 3," << "N/A," << "N/A," << "N/A," << "N/A," << "$ HOLDER," << "etc.," << "N/A," << "N/A," << "etc.,\n";
     myfile << "Bank 4," << "N/A," << "N/A," << "N/A," << "N/A," << "$ HOLDER," << "etc.," << "N/A," << "N/A," << "etc.,\n";
+
+    // for (int i = 0; i++; i > robotsAndMoney.size()){
+    //     myfile << "Robot " << (i + 1) << "," << "N/A," << "N/A," << "N/A," << robotsAndMoney.at(i) << "," << "N/A," << "etc.," << "N/A," << "N/A," << "etc.,\n";
+    // }
+
+    int count = 1;
+    for (auto& i: robotsAndMoney){
+        myfile << "Robot " << count << "," << "N/A," << "N/A," << "N/A," << i.second << "," << "N/A," << "etc.," << "N/A," << "N/A," << "etc.,\n";
+        count++;
+    }
 
     // examples
     // myfile<< "a,b,c,\n";
