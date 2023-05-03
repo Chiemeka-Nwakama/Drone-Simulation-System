@@ -41,7 +41,6 @@ void DroneWallet::Update(double dt, std::vector<IEntity*> scheduler) {
         if (!entity->GetAvailability()) {
             Add(30);
         }
-
     }
     // otherwise call Drone update; making trip
     else {

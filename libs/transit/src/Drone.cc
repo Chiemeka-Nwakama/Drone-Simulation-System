@@ -92,7 +92,13 @@ void Drone::Update(double dt, std::vector<IEntity*> scheduler) {
     if (toFinalDestination->IsCompleted()) {
       delete toFinalDestination;
       toFinalDestination = nullptr;
-      nearestEntity->SetAvailability(false);
+      // remove entity from scheduler; prevents double-pickup of robots and simplifies robot wallet logic
+        for (int i = 0; i < scheduler.size(); i++){
+            if (scheduler.at(i)->GetId() == nearestEntity->GetId()){
+              scheduler.erase(scheduler.begin()+i);
+              break;
+            }
+        }
       nearestEntity = nullptr;
       available = true;
       pickedUp = false;
