@@ -69,6 +69,7 @@ void Drone::GetNearestEntity(std::vector<IEntity*> scheduler) {
 }
 
 void Drone::Update(double dt, std::vector<IEntity*> scheduler) {
+  std::cout << "Drone update function beginning" << std::endl;
   if (toRobot) {
     toRobot->Move(this, dt);
 
