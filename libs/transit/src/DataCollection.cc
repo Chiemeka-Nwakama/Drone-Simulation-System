@@ -21,8 +21,8 @@ static std::map<IEntity*, int> totalDelTrips;
 // std::map<Bank, int> numVisits;
 // std::map<Robot, int> tripCost;
 
-
-
+//writeToCSV helpers
+static IEntity* droneName;
 
 
 DataCollection* DataCollection::instance = nullptr;
@@ -32,6 +32,7 @@ void  DataCollection::writeDeliveryDist(IEntity* entity, float dist){
     //std::cout << "Distance inputted: " << dist << std::endl;
     if (totalDistTrav.size() == 0){
         totalDistTrav.insert(std::pair<IEntity*, float>(entity, dist));
+        droneName = entity; //to help with accessing in CSV
     }
     else {
         totalDistTrav[entity] += dist;  
@@ -57,15 +58,26 @@ double DataCollection::calcDelDistPerTrip(IEntity* entity){
 }
 
  void DataCollection::writeToCSV(){
+    std::cout << "write to csv is being called..." << std::endl;
+
+    ofstream myfile;
     myfile.open("data.csv");
     //prints ou the first row, the heading
     myfile << "Enitity, Total Distance, Total Money, Total Trips, Total Money Paid, Money Collected, etc., Distance per Trip, Money per Trip, etc.\n";
-    
+
+    //drone data
+    myfile << "Drone," << totalDistTrav.at(droneName) << ",$ HOLDER," << totalDelTrips.at(droneName) << ", N/A," << "$ HOLDER," << "etc.," << calcDelDistPerTrip(droneName) << ",$ HOLDER," << "etc.,\n";
+
+    //bank data
+    myfile << "Bank 1," << "N/A," << "N/A," << "N/A," << "N/A," << "$ HOLDER," << "etc.," << "N/A," << "N/A," << "etc.,\n";
+    myfile << "Bank 2," << "N/A," << "N/A," << "N/A," << "N/A," << "$ HOLDER," << "etc.," << "N/A," << "N/A," << "etc.,\n";
+    myfile << "Bank 3," << "N/A," << "N/A," << "N/A," << "N/A," << "$ HOLDER," << "etc.," << "N/A," << "N/A," << "etc.,\n";
+    myfile << "Bank 4," << "N/A," << "N/A," << "N/A," << "N/A," << "$ HOLDER," << "etc.," << "N/A," << "N/A," << "etc.,\n";
 
     // examples
-    myfile<< "a,b,c,\n";
-    myfile<< "c,s,v,\n";
-    myfile << "1,2,3.456\n";
-    myfile << "semi;colon";
+    // myfile<< "a,b,c,\n";
+    // myfile<< "c,s,v,\n";
+    // myfile << "1,2,3.456\n";
+    // myfile << "semi;colon";
     myfile.close();
 }
