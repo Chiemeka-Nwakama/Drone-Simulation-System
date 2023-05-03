@@ -70,6 +70,7 @@ void SimulationModel::Update(double dt) {
   for (int i = 0; i < entities.size(); i++) {
     std::cout << i << ": with ID of " << entities[i]->GetId() << std::endl;
     entities[i]->Update(dt, scheduler);
+    std::cout << "The problem is not the Update function itself" << std::endl;
     controller.UpdateEntity(*entities[i]);
   }
 }
