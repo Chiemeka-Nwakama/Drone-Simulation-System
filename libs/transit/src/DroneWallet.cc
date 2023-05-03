@@ -18,6 +18,7 @@ void DroneWallet::Update(double dt, std::vector<IEntity*> scheduler) {
     // if the drone is available, check if it needs to go to the bank
     if (entity->GetAvailability() && (money >= capacity)){
         if (!toBank){ //if not already moving to a bank
+            std::cout << money << std::endl;
             std::cout << "Wallet full! Visiting bank." << std::endl;
             // find closeset bank
             Vector3 nearestBank = entity->GetNearestBank();
