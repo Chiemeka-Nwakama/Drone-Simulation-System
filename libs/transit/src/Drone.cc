@@ -31,7 +31,6 @@ Drone::~Drone() {
 }
 
 void Drone::GetNearestEntity(std::vector<IEntity*> scheduler) {
-  std::cout << "Get nearest entity" << std::endl;
   float minDis = std::numeric_limits<float>::max();
   for (auto entity : scheduler) {
     if (entity->GetAvailability()) {
@@ -42,7 +41,6 @@ void Drone::GetNearestEntity(std::vector<IEntity*> scheduler) {
       }
     }
   }
-  std::cout << "After for loop" << std::endl;
 
   if (nearestEntity) {
     // Set availability to the nearest entity
@@ -55,6 +53,7 @@ void Drone::GetNearestEntity(std::vector<IEntity*> scheduler) {
 
     toRobot = new BeelineStrategy(position, destination);
 
+    std::cout << "Calculating strategy" << std::endl;
     std::string strat = nearestEntity->GetStrategyName();
     if (strat == "astar")
       toFinalDestination =
