@@ -68,7 +68,6 @@ void SimulationModel::ScheduleTrip(JsonObject& details) {
 /// Updates the simulation
 void SimulationModel::Update(double dt) {
   for (int i = 0; i < entities.size(); i++) {
-    std::cout << "Calling update for entity at position [" << entities[i]->GetPosition().x << " ," << entities[i]->GetPosition().y << "]" << std::endl;
     entities[i]->Update(dt, scheduler);
     controller.UpdateEntity(*entities[i]);
   }
