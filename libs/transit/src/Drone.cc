@@ -92,6 +92,7 @@ void Drone::Update(double dt, std::vector<IEntity*> scheduler) {
     if (toFinalDestination->IsCompleted()) {
       delete toFinalDestination;
       toFinalDestination = nullptr;
+      nearestEntity->SetAvailability(false);
       nearestEntity = nullptr;
       available = true;
       pickedUp = false;
