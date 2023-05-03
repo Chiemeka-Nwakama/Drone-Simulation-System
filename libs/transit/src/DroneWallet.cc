@@ -22,6 +22,7 @@ void DroneWallet::Update(double dt, std::vector<IEntity*> scheduler) {
     int cost = 100;
 
     if (capacity - money < cost) {
+        std::cout << "Wallet full! Visiting bank." << std::endl;
         entity->MoveToBank(dt, scheduler, cost);
         Remove(money);
     }

@@ -22,6 +22,7 @@ RobotWallet::~RobotWallet() {
 
 void RobotWallet::Update(double dt, std::vector<IEntity*> scheduler, int cost) {
     if (money < cost) {
+        std::cout << "Insufficient funds! Moving to bank first." << std::endl;
         Vector3 oldDestination = entity->GetDestination();
         Vector3 bank = entity->GetNearestBank();
         entity->SetDestination(bank);
