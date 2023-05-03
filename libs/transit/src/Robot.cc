@@ -9,10 +9,10 @@
 //   available = true;
 // }
 
-// Robot::~Robot() {
-//   // Delete dynamically allocated variables
-//   delete graph;
-// }
+Robot::~Robot() {
+  // Delete dynamically allocated variables
+  delete graph;
+}
 
 // JsonObject Robot::GetDetails() const { return details; }
 
