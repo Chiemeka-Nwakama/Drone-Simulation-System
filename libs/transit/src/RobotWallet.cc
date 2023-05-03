@@ -55,7 +55,8 @@ void RobotWallet::Update(double dt, std::vector<IEntity*> scheduler) {
       delete toBank;
       toBank = nullptr;
       // recalculate what trip will now cost if pickup is from bank
-      // TODO THIS WHEN CALCULATION IS DONE
+      tripCost = (int) ceil(0.1 * entity->GetPosition().Distance(entity->GetDestination()));
+      std::cout << "Robot will pay $" << tripCost << " for this trip." << std::endl;
       // add only amount that is needed
       Add(tripCost-money);
       entity->SetAvailability(true);
