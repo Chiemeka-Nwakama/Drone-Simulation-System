@@ -97,7 +97,9 @@ void Drone::Update(double dt, std::vector<IEntity*> scheduler) {
 
 void Drone::MoveToBank(double dt, std::vector<IEntity*> scheduler, int cost) {
   Vector3 oldDestination = destination;
+  std::cout << "Before get nearest bank" << std::endl;
   Vector3 bank = GetNearestBank();
+  std::cout << "Made it past getNearest Bank" << std::endl;
   SetDestination(bank);
 
   if (toRobot) {
