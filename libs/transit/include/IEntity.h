@@ -70,12 +70,6 @@ class IEntity {
    */
   virtual JsonObject GetDetails() const = 0;
 
-    /**
-   * @brief Gets the nearest Bank to this entity
-   * @return The position of the nearest bank
-   */
-  virtual Vector3 GetNearestBank();
-
   /**
    * @brief Gets the color of the drone
    * @return The color of the drone
@@ -97,7 +91,7 @@ class IEntity {
   /**
    * @brief Get the Strategy Name
    *
-   * @return Streategy name
+   * @return Strategy name
    */
   virtual std::string GetStrategyName() const {}
 

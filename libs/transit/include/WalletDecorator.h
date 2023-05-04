@@ -1,8 +1,11 @@
 #ifndef WALLET_DECORATOR_H_
 #define WALLET_DECORATOR_H_
 
+#include <vector>
+#include "math/vector3.h"
 #include "IEntity.h"
 #include "IStrategy.h"
+#include 
 
 /**
  * @brief This class is the base abstract Wallet Decorator class that will hold 
@@ -58,6 +61,13 @@ class WalletDecorator : public IEntity {
          * to prevent instantiation of bare WalletDecorator object. 
         */
         virtual ~WalletDecorator() = 0;
+
+        /**
+         * @brief Determines the position of the nearest bank in the simulation.
+         * 
+         * @return The position of the nearest bank.
+        */
+        Vector3 GetNearestBank(std::vector<IEntity*> scheduler) {}
 };
 
 #endif

@@ -42,7 +42,7 @@ void RobotWallet::Update(double dt, std::vector<IEntity*> scheduler) {
         // if robot needs funds and has not started moving to the bank yet
         else if ((!toBank) && (money < tripCost)){
                 std::cout << "Insufficient funds. Visiting bank." << std::endl;
-                Vector3 nearestBank = entity->GetNearestBank();
+                Vector3 nearestBank = GetNearestBank(scheduler);
                 std::string strat = entity->GetStrategyName(); // set toBank to that location
                 if (strat == "astar")
                     toBank = new AstarStrategy(entity->GetPosition(), nearestBank, graph);

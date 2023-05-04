@@ -21,7 +21,7 @@ void DroneWallet::Update(double dt, std::vector<IEntity*> scheduler) {
         if (!toBank){ //if not already moving to a bank
             std::cout << "Wallet full! Visiting bank." << std::endl;
             // find closeset bank
-            Vector3 nearestBank = entity->GetNearestBank();
+            Vector3 nearestBank = GetNearestBank(scheduler);
             // set toBank to that location
             toBank = new BeelineStrategy(entity->GetPosition(), nearestBank);
         }
