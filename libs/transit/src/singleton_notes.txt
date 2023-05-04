@@ -1,0 +1,80 @@
+SINGLETON IMPLEMENTATION
+------------------------
+- Going to implement different data collection variables:
+    - total distance travelled (totalDistTrav)
+    - total money made (totalMoney)
+    - total number of delivery trips made (totalDelTrips)
+    - total number of bank trips made (totalBankTrips)
+    - total money deposited (moneyDeposited)
+    - bank visits per bank (numVisits)
+    - total distance to bank before deposit (totalDistToBank)
+    - robot's money spent (tripCost)
+
+- From the variables initially collected, we can find
+    - avg. distance per trip
+    - avg. money per trip
+    - most popular banks
+    - avg. money per deposit
+    - avg. distance to bank (when depositing is ready, how far does the drone have to go on average?)
+
+- Trends and analysis of variables will all be printed in the CSV file
+
+- Variables: (are we representing money as int or double?)
+    - map<Drone, double> totalDistTrav;
+    - map<Drone, int> totalMoney;
+    - map<Drone, int> totalDelTrips;
+    - map<Drone, int> totalBankTrips;
+    - map<Drone, int> moneyDeposited;
+    - map<Drone, double> totalDistToBank
+    - map<Bank, int> numVisits;
+    - map<Robot, int> tripCost;
+
+- Functions:
+    - writeDeliveryDist(Drone, double)
+        - will add delivery distance to total distance
+        - only occurs after trip completions, not bank runs
+    - writeDroneMoney(Drone, int)
+        - will increase total money made
+        - only occurs after trip completions, not bank runs
+    - writeNumDelTrip(Drone)
+        - will increase total delivery trips by 1
+        - only occurs after trip completions, not bank runs
+    - writeNumBankTrip(Drone)
+        - will increase total bank trips by 1
+        - only occurs after bank runs, not trip completions
+    - writeMoneyDeposited(Drone, int)
+        - will increase money deposited
+        - only occurs after a bank run
+    - writeBankVisit(Bank)
+        - will increase the # of visits to the bank
+        - only occurs after a bank run
+    - writeTripCost(Robot, int)
+        - will record the cost of the trip
+        - only occurs after a trip is finished
+    - writeDistToBank(Drone, double)
+        - will record the distance to the bank before bank run
+        - only occurs after a trip is finished
+    - calcDistPerTrip()
+        - will calculate the avg. distance per trip 
+        - only occurs when called in writeToCSV()
+    - calcMoneyPerTrip()
+        - will calculate the avg. money per trip 
+        - only occurs when called in writeToCSV()
+    - calcPopularBank()
+        - will calculate the most popular bank, with visits 
+        - only occurs when called in writeToCSV()
+    - calcMoneyPerDeposit()
+        - will calculate the avg. money deposited each trip
+        - only occurs when called in writeToCSV()
+    - calcDistToBank()
+        - will calculate the avg. trip needed to go to bank
+        - only occurs when called in writeToCSV()
+    - writeToCSV()
+        - File I/O 
+        - button click calls the function
+        - outputted to "sim_data.csv"
+
+- Thoughts/Notes:
+    - is money an int or double?
+    - is distance calcs to banks going to be too complex
+    - figure out sim_data.csv format
