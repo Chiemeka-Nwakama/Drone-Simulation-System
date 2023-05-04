@@ -5,7 +5,6 @@
 #include "math/vector3.h"
 #include "IEntity.h"
 #include "IStrategy.h"
-#include 
 
 /**
  * @brief This class is the base abstract Wallet Decorator class that will hold 
