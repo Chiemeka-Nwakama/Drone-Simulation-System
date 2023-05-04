@@ -170,11 +170,19 @@ int DataCollection::calcMoneyPerDeposit(){
 }
 
 int DataCollection::calcPopularBank(){
-    int greatest = bank1Visits;
-    if (bank2Visits > greatest){greatest = bank2Visits;}
-    if (bank3Visits > greatest){greatest = bank3Visits;}
-    if (bank4Visits > greatest){greatest = bank4Visits;}
-    return greatest;
+    if ((bank1Visits >= bank2Visits) && (bank1Visits >= bank3Visits) && (bank1Visits >= bank4Visits)){
+        return 1;
+    }
+    if ((bank2Visits >= bank1Visits) && (bank2Visits >= bank3Visits) && (bank2Visits >= bank4Visits)){
+        return 2;
+    }
+    if ((bank3Visits >= bank2Visits) && (bank3Visits >= bank1Visits) && (bank3Visits >= bank4Visits)){
+        return 3;
+    }
+    if ((bank4Visits >= bank2Visits) && (bank4Visits >= bank3Visits) && (bank4Visits >= bank1Visits)){
+        return 4;
+    }
+    return 0;
 }
 
  void DataCollection::writeToCSV(){
@@ -210,14 +218,9 @@ int DataCollection::calcPopularBank(){
     //robot data
     int count = 1;
     for (auto& i: robotsAndMoney){
-        myfile << "Robot " << count << "," << "N/A," << "N/A," << "N/A," << i.second << "," << "N/A," << "etc.," << "N/A," << "N/A," << "etc.,\n";
+        myfile << "Robot " << count << "," << "N/A," << "N/A," << "N/A," << "N/A," << "N/A," << "N/A," << "N/A," << i.second << ", N/A" << "N/A," << "N/A," << "N/A,\n";
         count++;
     }
 
-    // examples
-    // myfile<< "a,b,c,\n";
-    // myfile<< "c,s,v,\n";
-    // myfile << "1,2,3.456\n";
-    // myfile << "semi;colon";
     myfile.close();
 }
