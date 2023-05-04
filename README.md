@@ -128,12 +128,23 @@ While overall layout is better laid out in the attached UML and .cc files, a gen
     <li> What does it do?
      <ol>
         <li> This new feature implements a payment system for rides and features banks on the map at which entities can make deposits or withdrawals. The price per ride is calculated as a function of the beeline distance from the starting and ending points for the robot passenger. If the passenger has insufficient funds in their wallet, then they must first walk to a bank, withdraw the appropriate amount of money, and will get picked up from the drone at this new location. The drones are then paid this amount at the start of the ride. Drones' wallets have a maximum capacity, and once this value is reached then they must visit the banks to make a deposit. 
+     <ol>
     <li> Why is it significantly interesting?
      <ol>
         <li> This added functionality allows our simulation to more closely model real-world rideshare systems like Lyft or Uber. Additionally, by adding banks to our simulation, we have added an additional layer of interaction with the simulation environment. It may be advantageous for robots to start their trips close to banks, in case their randomly generated starting wallet value is too low to pay for the trip, necessitating a walk. 
+     <ol>
     <li> How does it add to the existing work?
+     <ol>
+        <li> This extension builds upon the existing simulation by adding additional conditions under which a robot can be made available for pickup and also adds additional tasks for the drone to perform. Previously, as soon as the robot is added to the simulation, it is available for pickup and added to the queue of waiting passengers. Now, robots are only made available for rides if they have sufficient funds to pay for their ride. This also explores additional movement options for robots, as they did not do any independent movement around the map before. The logic for the drones is altered as well, since they are now responsible for monitoring their wallet capacity in addition to looking for available passengers. 
+     <ol>       
     <li> Which design pattern did you choose to implement it with and why?
+     <ol>
+        <li> For the banks, we chose to implement the Factory design pattern. This design pattern allows us to add the Banks to the simulation in the same entity loop that adds other simulation features, such as the drones, robots, and helicopter. This also allows us to reference the banks and their locations easily using other IEntity methods, while allowing them to maintain a specific type and associated functionality. For the wallet functions, we chose to implement the Decorator design pattern. The decorator design pattern allowed us to "wrap" the drone and robot objects in their associated wallet types, essentially providing an additional layer of functionality on top of the existing methods. We were able to do this with only very minimal changes to the Drone and Robot classes. Now, the wallet wrapper classes are essentially treated as their associated entity types by the simulation model. The creation of these objects also follows the Factory design pattern, for the same reasons that we chose to use Factory to create the banks and add them to the system.
+     <ol>    
     <li> Instructions to use this new feature:
+     <ol> 
+        <li> There are no changes that a user would need to make to use the new bank and wallet features. Information from this feature is logged using the singleton data collection feature, explained below. Additionally, statements written to the terminal on the running machine give indication of how much a trip will cost, whether or not the passenger first needs to visit a bank, the updated cost of the ride from the bank, and the payment received by the drone. 
+     <ol>     
 </ul>
 
 #### Singleton Data Collection
