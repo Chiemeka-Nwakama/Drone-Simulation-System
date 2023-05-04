@@ -207,6 +207,15 @@ While overall layout is better laid out in the attached UML and .cc files, a gen
 #### Sprint 3 (4/29 - 5/5)
 <ul>
     <li> What went well?
+        <ol>
+            <li> Communication was strong this week and everyone was pretty consistently available to work on whatever tasks we had remaining. The wallet functionalities were refined and going to office hours helped to clarify how we should be implementing this feature. We have also done a good job of working on unrelated tasks simultaneously, which should make integrating everything at the end go smoother. 
+        <\ol>
     <li> What didn't go well?
+        <ol>
+            <li> Locating the nearest bank to the drones and robots is proving to be challenging given how we have added them to the simulation. Since we are coming to the end of the assignment, we have had to deal with some of our more challenging bugs or tasks.
+        <\ol>
     <li> What can we get better at?
+        <ol>
+            <li> We could have made better use of Jira for keeping track of which tasks were ongoing and which we still needed to do. We did a good job of communicating in our group chat, but it's always easier to be able to have everything in one place.
+        <\ol>
 </ul>
