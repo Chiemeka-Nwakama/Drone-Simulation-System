@@ -85,22 +85,20 @@ class DataCollection {
     //is money int or double?
     void writeDeliveryDist(IEntity* dr, float dist);
   
-    // void writeDroneMoney(Drone, int);
+    void writeDroneTotalMoney(IEntity* dr, int money);
     void writeRobotMoneyGiven(IEntity* rb, float money);
     void writeNumDelTrip(IEntity* dr);
-    // void writeNumBankTrip(Drone);
-    // void writeMoneyDeposited(Drone, int);
-    // void writeBankVisit(Bank);
+    void writeNumBankTrip(IEntity* dr);
+    void writeMoneyDeposited(IEntity* dr, int money);
+    void writeBankVisit(int check);
     // void writeTripCose(Robot, int);
-    // void writeDistToBank(Drone, double);
 
     //analysis functions
     //is money int or double?
     double calcDelDistPerTrip(IEntity* dr);
-    // int calcMoneyPerTrip();
-    // int calcPopularBank();
-    // double calcMoneyPerDeposit();
-    // double calcDistToBank();
+    int calcMoneyPerTrip();
+    int calcPopularBank();
+    int calcMoneyPerDeposit();
 
     //CSV function
     void writeToCSV();

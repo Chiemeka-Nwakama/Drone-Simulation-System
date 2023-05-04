@@ -105,7 +105,7 @@ void Drone::Update(double dt, std::vector<IEntity*> scheduler) {
 
       //csv testing
       DataCollection* dc = DataCollection::getInstance();
-      float moneyTest = (holdPos.Distance(GetPosition())) * 0.01;
+      int moneyTest = (holdPos.Distance(GetPosition())) * 0.1;
       dc->writeRobotMoneyGiven(nearestEntity, moneyTest);
 
       nearestEntity = nullptr;
@@ -120,7 +120,6 @@ void Drone::Update(double dt, std::vector<IEntity*> scheduler) {
       dc->writeNumDelTrip(this); //total amount of robot delivery trips completed
       dc->calcDelDistPerTrip(this); //calculating delivery distance per trip
       dc->writeToCSV(); //placeholder for testing. a button will be made later
-
     }
   }
 }

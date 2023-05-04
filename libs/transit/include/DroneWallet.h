@@ -156,6 +156,7 @@ class DroneWallet : public WalletDecorator {
   int money;
   int capacity;
   Drone* entity;
+  Vector3 holdWalletPos;
 };
 
 #endif

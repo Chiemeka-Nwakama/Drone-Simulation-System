@@ -5,6 +5,7 @@
 #include "math/vector3.h"
 #include "util/json.h"
 #include "IEntity.h"
+#include "DataCollection.h"
 using namespace routing;
 
 std::vector<Vector3> IEntity::bankPositions{};
@@ -22,6 +23,11 @@ Vector3 IEntity::GetNearestBank() {
         indexOfClosestBank = i;
       }
     }
+
+    //singleton
+    DataCollection* dc = DataCollection::getInstance();
+    dc->writeBankVisit(indexOfClosestBank);
+
     // returns the coordinates/position of the nearest bank to this entity
     return bankPositions.at(indexOfClosestBank);
   }

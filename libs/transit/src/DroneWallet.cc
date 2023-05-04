@@ -24,6 +24,9 @@ void DroneWallet::Update(double dt, std::vector<IEntity*> scheduler) {
             Vector3 nearestBank = entity->GetNearestBank();
             // set toBank to that location
             toBank = new BeelineStrategy(entity->GetPosition(), nearestBank);
+
+            holdWalletPos = GetPosition();
+            
         }
         else if (!toBank->IsCompleted()){
           toBank->Move(entity, dt); // move to bank
@@ -31,6 +34,13 @@ void DroneWallet::Update(double dt, std::vector<IEntity*> scheduler) {
         else if (toBank->IsCompleted()){
             delete toBank;
             toBank = nullptr;
+
+            //singleton
+            DataCollection* dc = DataCollection::getInstance();
+            dc->writeMoneyDeposited(this, money);
+            dc->writeNumBankTrip(this);
+            dc->writeDeliveryDist(this, holdWalletPos.Distance(GetPosition()));
+
             Remove(money);
         }
     }
@@ -41,6 +51,11 @@ void DroneWallet::Update(double dt, std::vector<IEntity*> scheduler) {
         if (!entity->GetAvailability()) {
             int tripCost = (int) ceil(0.1 * entity->GetTripDistance());
             std::cout << "Drone will be paid $" << tripCost << " for this trip." << std::endl;
+            
+            //singleton
+            DataCollection* dc = DataCollection::getInstance();
+            dc->writeDroneTotalMoney(this, tripCost);
+            
             Add(tripCost);
         }
     }
