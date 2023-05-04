@@ -60,7 +60,7 @@ void SimulationModel::ScheduleTrip(JsonObject& details) {
     bankNames.push_back("back4");
     bool validName = (nameTemp.compare(name) == 0);
     // if first call, check bank names as well
-    if (start){
+    if (this->start){
       for (int i = 0; i < bankNames.size(); i++){
         if (validName) break;
         validName = validName.compare(bankNames.at(i));
