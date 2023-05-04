@@ -35,11 +35,12 @@ void DroneWallet::Update(double dt, std::vector<IEntity*> scheduler) {
             delete toBank;
             toBank = nullptr;
 
-            //singleton
+            //singleton data collection
             DataCollection* dc = DataCollection::getInstance();
             dc->writeMoneyDeposited(this, money);
             dc->writeNumBankTrip(this);
             dc->writeDeliveryDist(this, holdWalletPos.Distance(GetPosition()));
+            
             Remove(money);
         }
     }
@@ -51,7 +52,7 @@ void DroneWallet::Update(double dt, std::vector<IEntity*> scheduler) {
             int tripCost = (int) ceil(0.1 * entity->GetTripDistance());
             std::cout << "Drone will be paid $" << tripCost << " for this trip." << std::endl;
             
-            //singleton
+            //singleton data collection
             DataCollection* dc = DataCollection::getInstance();
             dc->writeDroneTotalMoney(this, tripCost);
             

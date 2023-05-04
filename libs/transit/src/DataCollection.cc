@@ -13,6 +13,7 @@ using namespace std;
 
 #include <map>
 
+//map variables, hold all of the simulation data
 static std::map<IEntity*, float> totalDistTrav;
 static std::map<IEntity*, int> totalMoney;
 static std::map<IEntity*, int> totalDelTrips;
@@ -21,10 +22,6 @@ static std::map<IEntity*, float> robotsAndMoney;
 static std::map<IEntity*, int> moneyDeposited;
 static std::map<IEntity*, int> bankVisits;
 
-// std::map<Drone, double> totalDistToBank;
-// std::map<Bank, int> numVisits;
-// std::map<Robot, int> tripCost;
-
 //writeToCSV helpers
 static IEntity* droneName;
 static IEntity* droneNameWal;
@@ -32,60 +29,52 @@ static IEntity* droneNameDelTrip;
 static IEntity* droneNameBankTrip;
 static IEntity* droneNameDepos;
 
-//bank visit helpers
-// int bank1Visits = 0;
-// int bank2Visits = 0;
-// int bank3Visits = 0;
-// int bank4Visits = 0;
-
-
-
+//tracking the singleton instance and csv file
 DataCollection* DataCollection::instance = nullptr;
 std::ofstream DataCollection::myfile;
 
 void DataCollection::writeDeliveryDist(IEntity* entity, float dist){
-    //std::cout << "Distance inputted: " << dist << std::endl;
-    if (totalDistTrav.size() == 0){
+    //if there is nothing entered into the map yet, enter in the first element
+    if (totalDistTrav.size() == 0){ 
         totalDistTrav.insert(std::pair<IEntity*, float>(entity, dist));
         droneName = entity; //to help with accessing in CSV
     }
     else {
         totalDistTrav[entity] += dist;  
     }
-    //std::cout << "Testing distance: " << totalDistTrav[entity] << std::endl;
 }   
 
 void DataCollection::writeNumDelTrip(IEntity* entity){
+    //if there is nothing entered into the map yet, enter in the first element
     if (totalDelTrips.size() == 0){
-   	int trips = 1;
+   	    int trips = 1;
         totalDelTrips.insert(std::pair<IEntity*, int>(entity, trips));
         droneNameDelTrip = entity;
     }
     else {
         totalDelTrips[entity] += 1;  
     }
-    //std::cout << "Testing delivery trip number: " << totalDelTrips[entity] << std::endl;
 }
 
 void DataCollection::writeNumBankTrip(IEntity* entity){
+    //if there is nothing entered into the map yet, enter in the first element
     if (totalBankTrips.size() == 0){
-   	int trips = 1;
+   	    int trips = 1;
         totalBankTrips.insert(std::pair<IEntity*, int>(entity, trips));
         droneNameBankTrip = entity;
     }
     else {
         totalBankTrips[entity] += 1;  
     }
-    //std::cout << "Testing bank trip number: " << totalBankTrips[entity] << std::endl;
 }  
 
-//not logically functional, adding it for testing with robots
 void DataCollection::writeRobotMoneyGiven(IEntity* entity, float money){
+    //since all robots are different, can just add in the element
     robotsAndMoney.insert(std::pair<IEntity*, float>(entity, money));
-    //std::cout << "Robot gave this much money: " << robotsAndMoney[entity] << std::endl;
 }
 
 void DataCollection::writeDroneTotalMoney(IEntity* entity, int money){
+    //if there is nothing entered into the map yet, enter in the first element
     if (totalMoney.size() == 0){
         totalMoney.insert(std::pair<IEntity*, int>(entity, money));
         droneNameWal = entity; //to help with accessing in CSV
@@ -93,10 +82,10 @@ void DataCollection::writeDroneTotalMoney(IEntity* entity, int money){
     else {
         totalMoney[entity] += money;  
     }
-    //std::cout << "Testing total money paid: " << totalMoney[entity] << std::endl;
 }
 
 void DataCollection::writeMoneyDeposited(IEntity* entity, int money){
+    //if there is nothing entered into the map yet, enter in the first element
     if (moneyDeposited.size() == 0){
         moneyDeposited.insert(std::pair<IEntity*, int>(entity, money));
         droneNameDepos = entity; //to help with accessing in CSV
@@ -104,10 +93,10 @@ void DataCollection::writeMoneyDeposited(IEntity* entity, int money){
     else {
         moneyDeposited[entity] += money;  
     }
-    //std::cout << "Testing total money paid: " << moneyDeposited[entity] << std::endl;
 }
 
 void DataCollection::writeBankVisit(IEntity* bk){
+    //if there is nothing entered into the map yet, enter in the first element
     if (bankVisits.find(bk) == bankVisits.end()){
         bankVisits.insert(std::pair<IEntity*, int>(bk, 1));
     }
@@ -117,17 +106,18 @@ void DataCollection::writeBankVisit(IEntity* bk){
 }
 
 double DataCollection::calcDelDistPerTrip(IEntity* entity){
-    //double distper = totalDistTrav[entity] / (totalDelTrips[entity] + totalBankTrips[entity]);
+    //if there is nothing entered into the maps, just return zero
     if ((totalDelTrips.size() == 0) && (totalBankTrips.size() == 0)){
         return 0;
     }
     else {
+        //takes all of the distance travelled
         double numerator;
         for (auto& i: totalDistTrav){
             numerator += i.second;
         }
-        //std::cout << "numerator: " << numerator << std::endl;
         
+        //takes all of the trips completed
         double denominator;
         for (auto& i: totalDelTrips){
             denominator += i.second;
@@ -135,27 +125,26 @@ double DataCollection::calcDelDistPerTrip(IEntity* entity){
         for (auto& i: totalBankTrips){
             denominator += i.second;
         }
-        //std::cout << "denominator: " << denominator << std::endl;
 
         double distper = numerator / denominator;
-        //std::cout << "Delivery Distance per Trip: " << distper << std::endl;
         return distper;
     }
 }
 
 int DataCollection::calcMoneyPerTrip(){ 
-    //double distper = totalDistTrav[entity] / (totalDelTrips[entity] + totalBankTrips[entity]);
-    //std::cout << "--------------------" << std::endl;
+    //if there is nothing entered into the maps, just return zero
     if ((totalDelTrips.size() == 0) && (totalBankTrips.size() == 0)){
         return 0;
     }
     else {
+
+        //gets all of the money collected
         int numerator;
         for (auto& i: totalMoney){
             numerator = i.second;
         }
-        //std::cout << "mpt numerator: " << numerator << std::endl;
         
+        //gets all of the trips completed
         double denominator;
         for (auto& i: totalDelTrips){
             denominator += i.second;
@@ -163,94 +152,100 @@ int DataCollection::calcMoneyPerTrip(){
         for (auto& i: totalBankTrips){
             denominator += i.second;
         }
-        //std::cout << "mpt denominator: " << denominator << std::endl;
 
         int moneyper = numerator / denominator;
-        //std::cout << "Money per Trip: " << moneyper << std::endl;
-        //std::cout << "--------------------" << std::endl;
         return moneyper;
     }
 }
 
 int DataCollection::calcMoneyPerDeposit(){ 
+    //if there is nothing entered into the map, just return zero
     if (totalBankTrips.size() == 0){
         return 0;
     }
     else {
+
+        //gets all of the money in the bank
         int numerator;
         for (auto& i: moneyDeposited){
             numerator = i.second;
         }
-        //std::cout << "mpd numerator: " << numerator << std::endl;
         
+        //gets all of the bank trips
         int denominator;
         for (auto& i: totalBankTrips){
             denominator = i.second;
         }
-        //std::cout << "mpd denominator: " << denominator << std::endl;
 
         int moneyper = numerator / denominator;
-        //std::cout << "Money per Deposit: " << moneyper << std::endl;
         return moneyper;
     }
 }
 
 int DataCollection::calcPopularBank(){
+    //variables for tracking the current greatest bank
     int greatest = 0;
     int returnVal = 0;
+
+    //runs through each bank that has been visited
     for (auto& i: bankVisits){
         if (i.second >= greatest){
+            //if the bank has more visits than the last, replace the holder and move to the next index
             greatest = i.second;
             returnVal++;
         }
     }
+    //return the index of the bank, will be the same variable as the other
     return returnVal;
 }
 
  void DataCollection::writeToCSV(){
-    std::cout << "write to csv is being called..." << std::endl;
+    //std::cout << "write to csv is being called..." << std::endl;
 
+    //file io operations
     ofstream myfile;
     myfile.open("data.csv");
-    //prints ou the first row, the heading
+
+    //prints out the first row, the heading
     myfile << "Enitity, Total Distance, Total Money Collected, Total Delivery Trips, Total Bank Trips, Total Trips, Bank Visits, Total Money Deposited, Trip Cost, Distance per Trip, Money per Trip, Money Per Deposit, Most Popular Bank \n";
 
-    //drone data
+    //drone data holders
     float tDist;
     int tMon;
     int tDTrips;
     int tBTrips;
     int tMDep;
 
+    //makes sure that somesort of data has been entered into the map
+    //if not, the csv will return 0 in that cell
     if (totalDistTrav.size() == 0){tDist = 0;} else {tDist = totalDistTrav.at(droneName);}
     if (totalMoney.size() == 0){tMon = 0;} else {tMon = totalMoney.at(droneNameWal);}
     if (totalDelTrips.size() == 0){tDTrips = 0;} else {tDTrips = totalDelTrips.at(droneNameDelTrip);}
     if (totalBankTrips.size() == 0){tBTrips = 0;} else {tBTrips = totalBankTrips.at(droneNameBankTrip);}
     if (moneyDeposited.size() == 0){tMDep = 0;} else {tMDep = moneyDeposited.at(droneNameDepos);}
 
+    //calculates the total amount of trips
     int totalTrips = tDTrips + tBTrips;
+
+    //drone data
     myfile << "Drone," << tDist << "," << tMon << "," << tDTrips << "," << tBTrips << "," << totalTrips << ", N/A," << tMDep << ", N/A," << calcDelDistPerTrip(droneName) << "," << calcMoneyPerTrip() << "," << calcMoneyPerDeposit() << "," << calcPopularBank() << "\n";
 
     //bank data
-    int bkVisits[4];
-
     int bankCount = 1;
     for (auto& k: bankVisits){
+        //only data for banks currently is how many times they have been visited
         myfile << "Bank " << bankCount << "," << "N/A," << "N/A," << "N/A," << "N/A," << "N/A," << k.second << "," << "N/A," << "N/A," << "N/A," << "N/A," << "N/A," << "N/A," << "\n";
         bankCount++;
     }
 
-    // myfile << "Bank 1," << "N/A," << "N/A," << "N/A," << "N/A," << "N/A," << bank1Visits << "," << "N/A," << "N/A," << "N/A," << "N/A," << "N/A," << "N/A," << "\n";
-    // myfile << "Bank 2," << "N/A," << "N/A," << "N/A," << "N/A," << "N/A," << bank2Visits << "," << "N/A," << "N/A," << "N/A," << "N/A," << "N/A," << "N/A," << "\n";
-    // myfile << "Bank 3," << "N/A," << "N/A," << "N/A," << "N/A," << "N/A," << bank3Visits << "," << "N/A," << "N/A," << "N/A," << "N/A," << "N/A," << "N/A," << "\n";
-    // myfile << "Bank 4," << "N/A," << "N/A," << "N/A," << "N/A," << "N/A," << bank4Visits << "," << "N/A," << "N/A," << "N/A," << "N/A," << "N/A," << "N/A," << "\n";
-    
     //robot data
     int count = 1;
     for (auto& i: robotsAndMoney){
+        //only data for banks currently is how much their trip costed
         myfile << "Robot " << count << "," << "N/A," << "N/A," << "N/A," << "N/A," << "N/A," << "N/A," << "N/A," << i.second << ", N/A," << "N/A," << "N/A," << "N/A,\n";
         count++;
     }
 
+    //closes the file
     myfile.close();
 }

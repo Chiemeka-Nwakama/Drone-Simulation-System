@@ -1,0 +1,6 @@
+<map id="WalletDecorator" name="WalletDecorator">
+<area shape="rect" id="node1" title="This class is the base abstract Wallet Decorator class that will hold an entity&#39;s money,..." alt="" coords="55,80,183,107"/>
+<area shape="rect" id="node3" href="$classDroneWallet.html" title="This class inherits from the WalletDecorator class and constitutes the wallets that will be used by t..." alt="" coords="5,155,108,181"/>
+<area shape="rect" id="node4" href="$classRobotWallet.html" title="This class inherits from the WalletDecorator class and constitutes the wallets that will be used by t..." alt="" coords="132,155,235,181"/>
+<area shape="rect" id="node2" href="$classIEntity.html" title="Represents an entity in a physical system." alt="" coords="87,5,151,32"/>
+</map>

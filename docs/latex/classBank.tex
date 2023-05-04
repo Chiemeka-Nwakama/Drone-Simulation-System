@@ -1,0 +1,165 @@
+\hypertarget{classBank}{}\doxysection{Bank Class Reference}
+\label{classBank}\index{Bank@{Bank}}
+
+
+Inheritance diagram for Bank\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=128pt]{classBank__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Bank\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=128pt]{classBank__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classBank_a612ad04955324e30ac1d52e819814399}{Bank}} (Json\+Object \&obj)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classBank}{Bank}} are created with a name. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classBank_a86eb33b90cf9dbf0a528155c5bfde004}\label{classBank_a86eb33b90cf9dbf0a528155c5bfde004}} 
+\mbox{\hyperlink{classBank_a86eb33b90cf9dbf0a528155c5bfde004}{$\sim$\+Bank}} ()
+\begin{DoxyCompactList}\small\item\em Destroy the \mbox{\hyperlink{classBank}{Bank}} object. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classBank_aab3b15a3756681acf6153be63192de35}{Get\+Speed}} () const
+\begin{DoxyCompactList}\small\item\em Not needed for bank. Default implementation. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVector3}{Vector3}} \mbox{\hyperlink{classBank_a09f7bb3c207de41f4b65f3f75c32cc84}{Get\+Position}} () const
+\begin{DoxyCompactList}\small\item\em Gets the position of the \mbox{\hyperlink{classBank}{Bank}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVector3}{Vector3}} \mbox{\hyperlink{classBank_a312a6eead85f0efa9ec47cf8b11fce41}{Get\+Direction}} () const
+\begin{DoxyCompactList}\small\item\em Not needed for bank. Default implementation. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVector3}{Vector3}} \mbox{\hyperlink{classBank_a8b41efa8aebff9bfc84f02f4b645a098}{Get\+Destination}} () const
+\begin{DoxyCompactList}\small\item\em Not needed for bank. Default implementation. \end{DoxyCompactList}\item 
+Json\+Object \mbox{\hyperlink{classBank_ab0f87c528b82ee09b503b2493fb49c35}{Get\+Details}} () const
+\begin{DoxyCompactList}\small\item\em Gets the details information of the drone. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBank_a619f9f34cc89cc17f9433cd9f18afbca}{Update}} (double dt, std\+::vector$<$ \mbox{\hyperlink{classIEntity}{I\+Entity}} $\ast$ $>$ scheduler)
+\begin{DoxyCompactList}\small\item\em Updates the drone\textquotesingle{}s position. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBank_a612ad04955324e30ac1d52e819814399}\label{classBank_a612ad04955324e30ac1d52e819814399}} 
+\index{Bank@{Bank}!Bank@{Bank}}
+\index{Bank@{Bank}!Bank@{Bank}}
+\doxysubsubsection{\texorpdfstring{Bank()}{Bank()}}
+{\footnotesize\ttfamily Bank\+::\+Bank (\begin{DoxyParamCaption}\item[{Json\+Object \&}]{obj }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{classBank}{Bank}} are created with a name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em obj} & J\+S\+ON object containing the bank\textquotesingle{}s information \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBank_a8b41efa8aebff9bfc84f02f4b645a098}\label{classBank_a8b41efa8aebff9bfc84f02f4b645a098}} 
+\index{Bank@{Bank}!GetDestination@{GetDestination}}
+\index{GetDestination@{GetDestination}!Bank@{Bank}}
+\doxysubsubsection{\texorpdfstring{GetDestination()}{GetDestination()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classVector3}{Vector3}} Bank\+::\+Get\+Destination (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Not needed for bank. Default implementation. 
+
+
+
+Implements \mbox{\hyperlink{classIEntity_a0dcaf865938ab1fb49c8389b5e580d90}{I\+Entity}}.
+
+\mbox{\Hypertarget{classBank_ab0f87c528b82ee09b503b2493fb49c35}\label{classBank_ab0f87c528b82ee09b503b2493fb49c35}} 
+\index{Bank@{Bank}!GetDetails@{GetDetails}}
+\index{GetDetails@{GetDetails}!Bank@{Bank}}
+\doxysubsubsection{\texorpdfstring{GetDetails()}{GetDetails()}}
+{\footnotesize\ttfamily Json\+Object Bank\+::\+Get\+Details (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Gets the details information of the drone. 
+
+\begin{DoxyReturn}{Returns}
+The details information of the drone 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classIEntity_a97c799400ce05e2ff2566adc4d7b9634}{I\+Entity}}.
+
+\mbox{\Hypertarget{classBank_a312a6eead85f0efa9ec47cf8b11fce41}\label{classBank_a312a6eead85f0efa9ec47cf8b11fce41}} 
+\index{Bank@{Bank}!GetDirection@{GetDirection}}
+\index{GetDirection@{GetDirection}!Bank@{Bank}}
+\doxysubsubsection{\texorpdfstring{GetDirection()}{GetDirection()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classVector3}{Vector3}} Bank\+::\+Get\+Direction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Not needed for bank. Default implementation. 
+
+
+
+Implements \mbox{\hyperlink{classIEntity_aa99a8fef8b22195a5113c38ef51f086d}{I\+Entity}}.
+
+\mbox{\Hypertarget{classBank_a09f7bb3c207de41f4b65f3f75c32cc84}\label{classBank_a09f7bb3c207de41f4b65f3f75c32cc84}} 
+\index{Bank@{Bank}!GetPosition@{GetPosition}}
+\index{GetPosition@{GetPosition}!Bank@{Bank}}
+\doxysubsubsection{\texorpdfstring{GetPosition()}{GetPosition()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classVector3}{Vector3}} Bank\+::\+Get\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Gets the position of the \mbox{\hyperlink{classBank}{Bank}}. 
+
+\begin{DoxyReturn}{Returns}
+The position of the \mbox{\hyperlink{classBank}{Bank}} 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classIEntity_a9bc32587aab91761fc0e718612498199}{I\+Entity}}.
+
+\mbox{\Hypertarget{classBank_aab3b15a3756681acf6153be63192de35}\label{classBank_aab3b15a3756681acf6153be63192de35}} 
+\index{Bank@{Bank}!GetSpeed@{GetSpeed}}
+\index{GetSpeed@{GetSpeed}!Bank@{Bank}}
+\doxysubsubsection{\texorpdfstring{GetSpeed()}{GetSpeed()}}
+{\footnotesize\ttfamily float Bank\+::\+Get\+Speed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Not needed for bank. Default implementation. 
+
+
+
+Implements \mbox{\hyperlink{classIEntity_a6520d2b1dc71d092bab38ef9f5cc9ff4}{I\+Entity}}.
+
+\mbox{\Hypertarget{classBank_a619f9f34cc89cc17f9433cd9f18afbca}\label{classBank_a619f9f34cc89cc17f9433cd9f18afbca}} 
+\index{Bank@{Bank}!Update@{Update}}
+\index{Update@{Update}!Bank@{Bank}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Bank\+::\+Update (\begin{DoxyParamCaption}\item[{double}]{dt,  }\item[{std\+::vector$<$ \mbox{\hyperlink{classIEntity}{I\+Entity}} $\ast$ $>$}]{scheduler }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Updates the drone\textquotesingle{}s position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dt} & Delta time \\
+\hline
+{\em scheduler} & Vector containing all the entities in the system \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classIEntity_a9a8e8588fd85c7b0d813d60686d4dc2c}{I\+Entity}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/horst105/csci-\/3081w-\/\+S23/hw4/\+Team-\/010-\/19-\/homework4/libs/transit/include/Bank.\+h\item 
+/home/horst105/csci-\/3081w-\/\+S23/hw4/\+Team-\/010-\/19-\/homework4/libs/transit/src/Bank.\+cc\end{DoxyCompactItemize}

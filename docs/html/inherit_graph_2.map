@@ -1,0 +1,11 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classIEntity.html" title="Represents an entity in a physical system." alt="" coords="5,132,69,159"/>
+<area shape="rect" id="node2" href="$classBank.html" title=" " alt="" coords="154,5,209,32"/>
+<area shape="rect" id="node3" href="$classDrone.html" title="Represents a drone in a physical system. Drones move using euler integration based on a specified vel..." alt="" coords="151,56,212,83"/>
+<area shape="rect" id="node4" href="$classHelicopter.html" title=" " alt="" coords="137,107,226,133"/>
+<area shape="rect" id="node5" href="$classHuman.html" title=" " alt="" coords="147,157,216,184"/>
+<area shape="rect" id="node6" href="$classRobot.html" title="Represents a robot in a physical system." alt="" coords="151,208,211,235"/>
+<area shape="rect" id="node7" href="$classWalletDecorator.html" title="This class is the base abstract Wallet Decorator class that will hold an entity&#39;s money,..." alt="" coords="117,259,245,285"/>
+<area shape="rect" id="node8" href="$classDroneWallet.html" title="This class inherits from the WalletDecorator class and constitutes the wallets that will be used by t..." alt="" coords="293,233,396,260"/>
+<area shape="rect" id="node9" href="$classRobotWallet.html" title="This class inherits from the WalletDecorator class and constitutes the wallets that will be used by t..." alt="" coords="293,284,396,311"/>
+</map>

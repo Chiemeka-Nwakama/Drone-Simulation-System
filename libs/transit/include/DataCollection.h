@@ -13,39 +13,18 @@
 
 /**
  * @brief This class is the singleton Data Collection class
- * This class collects data regarding the drone, tips, banks, and other simulation entities
+ * This class collects and analyzes data regarding the drone, tips, banks, and other simulation entities.
  * 
 */
 class DataCollection {
     private:
 
-    //map variables added below
-    //is money int or double?
     static DataCollection* instance;
     static std::ofstream myfile; //the csv file for the data collection class
-
-
-    protected:
-
-    //DataCollection instance; changed
-    //shouldn't be publicly accessable
-    
     
     public:
-
-    // std::map<Drone, double> totalDistTrav;
-    // std::map<Drone, int> totalMoney;
-    // std::map<Drone, int> totalDelTrips;
-    // std::map<Drone, int> totalBankTrips;
-    // std::map<Drone, int> moneyDeposited;
-    // std::map<Drone, double> totalDistToBank;
-    // std::map<Bank, int> numVisits;
-    // std::map<Robot, int> tripCost;
-
-    //added to the protected sector, prevents users from calling it directly
     /**
     * @brief Construct a new single* Data Collection object
-    * 
     * 
     */
     DataCollection(){
@@ -53,12 +32,16 @@ class DataCollection {
         
     }
 
-    //DataCollection* instance = nullptr;
-
-    //singletons should not be copyable
+    /**
+    * @brief Deletes the copy constuctor for the singleton object, ensuring there is only one
+    * 
+    */
     DataCollection(DataCollection &other) = delete;
 
-    //singletons should not be assignable
+    /**
+    * @brief Deletes the assignment constuctor for the singleton object, ensuring there is only one
+    * 
+    */
     void operator=(const DataCollection &data) = delete;
 
     /**
@@ -67,45 +50,82 @@ class DataCollection {
     */
     ~DataCollection();
 
-    
-
-    //changed
+    /**
+     * @brief Everytime data collection needs to occur, the instance needs to be referenced in order to use writing and analysis functions.
+     * @return An instance of the data collection object.
+    */
     static DataCollection* getInstance(){
         if (instance == nullptr){
-           //creates a data csv file
-            //std::cout << "no instance yet, making one now" << std::endl;
             instance = new DataCollection();
         }
-        //std::cout << "instance made, returning details" << std::endl;
         return instance;
     }
 
-    //function placeholders, will add doxygen later
     //writing functions
-    //is money int or double?
+    /**
+     * @brief Records the distance of the drone
+    */
     void writeDeliveryDist(IEntity* dr, float dist);
-  
+
+    /**
+     * @brief Records the money of the drone
+    */
     void writeDroneTotalMoney(IEntity* dr, int money);
+
+    /**
+     * @brief Records the trip cost of each robot
+    */
     void writeRobotMoneyGiven(IEntity* rb, float money);
+
+    /**
+     * @brief Records the number of delivery trips of the drone
+    */
     void writeNumDelTrip(IEntity* dr);
+
+    /**
+     * @brief Records the number of bank trips of the drone
+    */
     void writeNumBankTrip(IEntity* dr);
+
+    /**
+     * @brief Records the money deposited into the bank of the drone
+    */
     void writeMoneyDeposited(IEntity* dr, int money);
+
+    /**
+     * @brief Records the number of visits in each bank
+    */
     void writeBankVisit(IEntity* bk);
-    // void writeTripCose(Robot, int);
 
     //analysis functions
-    //is money int or double?
+    /**
+     * @brief Calculates the distance per trips of the drone
+     * @return The distance per trip value
+    */
     double calcDelDistPerTrip(IEntity* dr);
+
+    /**
+     * @brief Calculates the money per trips of the drone
+     * @return The money per trip value
+    */
     int calcMoneyPerTrip();
+
+    /**
+     * @brief Calculates the most popular bank
+     * @return The integer value of the bank (Bank 1, 2, 3, or 4)
+    */
     int calcPopularBank();
+
+    /**
+     * @brief Calculates the money per deposit of the drone
+     * @return The money per deposit value
+    */
     int calcMoneyPerDeposit();
 
-    //CSV function
+    /**
+     * @brief Publishes all of the taken data and calculations onto the csv
+    */
     void writeToCSV();
-
-    // bool operator<(const Drone& other1, const Drone& other2){
-    //     return true;
-    // }
   
 };
 

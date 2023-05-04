@@ -1,0 +1,190 @@
+\hypertarget{classWalletDecorator}{}\doxysection{Wallet\+Decorator Class Reference}
+\label{classWalletDecorator}\index{WalletDecorator@{WalletDecorator}}
+
+
+This class is the base abstract Wallet Decorator class that will hold an entity\textquotesingle{}s money, used to either receive payments (\mbox{\hyperlink{classDrone}{Drone}}) or make payments for rides (\mbox{\hyperlink{classRobot}{Robot}}).  
+
+
+
+
+{\ttfamily \#include $<$Wallet\+Decorator.\+h$>$}
+
+
+
+Inheritance diagram for Wallet\+Decorator\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=252pt]{classWalletDecorator__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Wallet\+Decorator\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=215pt]{classWalletDecorator__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classWalletDecorator_ad5412f01e560e20333ed1ec385fd71e9}{Wallet\+Decorator}} (\mbox{\hyperlink{classIEntity}{I\+Entity}} $\ast$entity\+\_\+)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classWalletDecorator}{Wallet\+Decorator}} object. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classWalletDecorator_a0e8fc85898568c576f626099543b29d7}{Get\+Money}} ()
+\begin{DoxyCompactList}\small\item\em Virtual method for returning the amount of money in the wallet. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classWalletDecorator_aa99bf84402fb94aa16afccb830a411fe}{Add}} (int amount)
+\begin{DoxyCompactList}\small\item\em Virtual method for adding money to wallet. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classWalletDecorator_a998af697c2b6274bec1ee717fdc50f52}{Remove}} (int amount)
+\begin{DoxyCompactList}\small\item\em Virtual method for removing money from wallet -\/ paying or depositing. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classWalletDecorator_acfe2a44da799e749e7cb48f9092481b6}{Get\+Capacity}} ()
+\begin{DoxyCompactList}\small\item\em How much money the entity can carry. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classWalletDecorator_aed5d2acc6c887e56cb82822b19e34770}\label{classWalletDecorator_aed5d2acc6c887e56cb82822b19e34770}} 
+virtual \mbox{\hyperlink{classWalletDecorator_aed5d2acc6c887e56cb82822b19e34770}{$\sim$\+Wallet\+Decorator}} ()=0
+\begin{DoxyCompactList}\small\item\em Pure virtual \mbox{\hyperlink{classWalletDecorator}{Wallet\+Decorator}} destructor. Made pure virtual in order to prevent instantiation of bare \mbox{\hyperlink{classWalletDecorator}{Wallet\+Decorator}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVector3}{Vector3}} \mbox{\hyperlink{classWalletDecorator_a364a2fb66dd7e1a305b257760a3cc2d5}{Get\+Nearest\+Bank}} ()
+\begin{DoxyCompactList}\small\item\em Determines the position of the nearest bank in the simulation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classWalletDecorator_a2eab0ed49f974f934574636b9449e1cb}{Set\+Entities}} (std\+::vector$<$ \mbox{\hyperlink{classIEntity}{I\+Entity}} $\ast$ $>$ entities\+\_\+)
+\begin{DoxyCompactList}\small\item\em Sets the vector of entities accessed by the wallet decorator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classWalletDecorator_a9b67eef2cbcf037b04064f8d6f59b61e}\label{classWalletDecorator_a9b67eef2cbcf037b04064f8d6f59b61e}} 
+int {\bfseries money}
+\item 
+\mbox{\Hypertarget{classWalletDecorator_a79fbc8fe11a200aa20595c882d688cee}\label{classWalletDecorator_a79fbc8fe11a200aa20595c882d688cee}} 
+int {\bfseries capacity}
+\item 
+\mbox{\Hypertarget{classWalletDecorator_ad6fed9c2dca6c82681ec427caf7407e5}\label{classWalletDecorator_ad6fed9c2dca6c82681ec427caf7407e5}} 
+\mbox{\hyperlink{classIEntity}{I\+Entity}} $\ast$ {\bfseries entity}
+\item 
+\mbox{\Hypertarget{classWalletDecorator_a75e862ce14560d5928f55f37dd825639}\label{classWalletDecorator_a75e862ce14560d5928f55f37dd825639}} 
+\mbox{\hyperlink{classIStrategy}{I\+Strategy}} $\ast$ {\bfseries to\+Bank} = nullptr
+\item 
+\mbox{\Hypertarget{classWalletDecorator_a2dd4e85d76c96e9539d5ca1ab9de3217}\label{classWalletDecorator_a2dd4e85d76c96e9539d5ca1ab9de3217}} 
+std\+::vector$<$ \mbox{\hyperlink{classIEntity}{I\+Entity}} $\ast$ $>$ {\bfseries entities}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+This class is the base abstract Wallet Decorator class that will hold an entity\textquotesingle{}s money, used to either receive payments (\mbox{\hyperlink{classDrone}{Drone}}) or make payments for rides (\mbox{\hyperlink{classRobot}{Robot}}). 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classWalletDecorator_ad5412f01e560e20333ed1ec385fd71e9}\label{classWalletDecorator_ad5412f01e560e20333ed1ec385fd71e9}} 
+\index{WalletDecorator@{WalletDecorator}!WalletDecorator@{WalletDecorator}}
+\index{WalletDecorator@{WalletDecorator}!WalletDecorator@{WalletDecorator}}
+\doxysubsubsection{\texorpdfstring{WalletDecorator()}{WalletDecorator()}}
+{\footnotesize\ttfamily Wallet\+Decorator\+::\+Wallet\+Decorator (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classIEntity}{I\+Entity}} $\ast$}]{entity\+\_\+ }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classWalletDecorator}{Wallet\+Decorator}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & the entity associated with this Wallet \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classWalletDecorator_aa99bf84402fb94aa16afccb830a411fe}\label{classWalletDecorator_aa99bf84402fb94aa16afccb830a411fe}} 
+\index{WalletDecorator@{WalletDecorator}!Add@{Add}}
+\index{Add@{Add}!WalletDecorator@{WalletDecorator}}
+\doxysubsubsection{\texorpdfstring{Add()}{Add()}}
+{\footnotesize\ttfamily virtual void Wallet\+Decorator\+::\+Add (\begin{DoxyParamCaption}\item[{int}]{amount }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Virtual method for adding money to wallet. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em amount} & how much money to add to wallet \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \mbox{\hyperlink{classDroneWallet_a15773c4f657c66ef3d701f7958507a4a}{Drone\+Wallet}}, and \mbox{\hyperlink{classRobotWallet_add73c845e87818e273948629be2a3295}{Robot\+Wallet}}.
+
+\mbox{\Hypertarget{classWalletDecorator_acfe2a44da799e749e7cb48f9092481b6}\label{classWalletDecorator_acfe2a44da799e749e7cb48f9092481b6}} 
+\index{WalletDecorator@{WalletDecorator}!GetCapacity@{GetCapacity}}
+\index{GetCapacity@{GetCapacity}!WalletDecorator@{WalletDecorator}}
+\doxysubsubsection{\texorpdfstring{GetCapacity()}{GetCapacity()}}
+{\footnotesize\ttfamily int Wallet\+Decorator\+::\+Get\+Capacity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+How much money the entity can carry. 
+
+\begin{DoxyReturn}{Returns}
+The maximum capacity of the wallet 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classWalletDecorator_a0e8fc85898568c576f626099543b29d7}\label{classWalletDecorator_a0e8fc85898568c576f626099543b29d7}} 
+\index{WalletDecorator@{WalletDecorator}!GetMoney@{GetMoney}}
+\index{GetMoney@{GetMoney}!WalletDecorator@{WalletDecorator}}
+\doxysubsubsection{\texorpdfstring{GetMoney()}{GetMoney()}}
+{\footnotesize\ttfamily int Wallet\+Decorator\+::\+Get\+Money (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Virtual method for returning the amount of money in the wallet. 
+
+\begin{DoxyReturn}{Returns}
+Amount of money in wallet 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classWalletDecorator_a364a2fb66dd7e1a305b257760a3cc2d5}\label{classWalletDecorator_a364a2fb66dd7e1a305b257760a3cc2d5}} 
+\index{WalletDecorator@{WalletDecorator}!GetNearestBank@{GetNearestBank}}
+\index{GetNearestBank@{GetNearestBank}!WalletDecorator@{WalletDecorator}}
+\doxysubsubsection{\texorpdfstring{GetNearestBank()}{GetNearestBank()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classVector3}{Vector3}} Wallet\+Decorator\+::\+Get\+Nearest\+Bank (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Determines the position of the nearest bank in the simulation. 
+
+\begin{DoxyReturn}{Returns}
+The position of the nearest bank. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classWalletDecorator_a998af697c2b6274bec1ee717fdc50f52}\label{classWalletDecorator_a998af697c2b6274bec1ee717fdc50f52}} 
+\index{WalletDecorator@{WalletDecorator}!Remove@{Remove}}
+\index{Remove@{Remove}!WalletDecorator@{WalletDecorator}}
+\doxysubsubsection{\texorpdfstring{Remove()}{Remove()}}
+{\footnotesize\ttfamily virtual void Wallet\+Decorator\+::\+Remove (\begin{DoxyParamCaption}\item[{int}]{amount }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Virtual method for removing money from wallet -\/ paying or depositing. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em amount} & how much money to remove from wallet \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \mbox{\hyperlink{classDroneWallet_aa306937e430502bb35e821a06bfc64f9}{Drone\+Wallet}}, and \mbox{\hyperlink{classRobotWallet_a0b25c509a51c23e9e178b81ec21f6256}{Robot\+Wallet}}.
+
+\mbox{\Hypertarget{classWalletDecorator_a2eab0ed49f974f934574636b9449e1cb}\label{classWalletDecorator_a2eab0ed49f974f934574636b9449e1cb}} 
+\index{WalletDecorator@{WalletDecorator}!SetEntities@{SetEntities}}
+\index{SetEntities@{SetEntities}!WalletDecorator@{WalletDecorator}}
+\doxysubsubsection{\texorpdfstring{SetEntities()}{SetEntities()}}
+{\footnotesize\ttfamily void Wallet\+Decorator\+::\+Set\+Entities (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{classIEntity}{I\+Entity}} $\ast$ $>$}]{entities\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets the vector of entities accessed by the wallet decorator. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entities\+\_\+} & The vector of entities \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/horst105/csci-\/3081w-\/\+S23/hw4/\+Team-\/010-\/19-\/homework4/libs/transit/include/Wallet\+Decorator.\+h\item 
+/home/horst105/csci-\/3081w-\/\+S23/hw4/\+Team-\/010-\/19-\/homework4/libs/transit/src/Wallet\+Decorator.\+cc\end{DoxyCompactItemize}

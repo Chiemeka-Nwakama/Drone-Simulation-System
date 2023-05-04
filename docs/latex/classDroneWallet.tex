@@ -1,0 +1,460 @@
+\hypertarget{classDroneWallet}{}\doxysection{Drone\+Wallet Class Reference}
+\label{classDroneWallet}\index{DroneWallet@{DroneWallet}}
+
+
+This class inherits from the \mbox{\hyperlink{classWalletDecorator}{Wallet\+Decorator}} class and constitutes the wallets that will be used by the Drones (\mbox{\hyperlink{classDrone}{Drone}} simulation drivers). \mbox{\hyperlink{classDrone}{Drone}} wallets can deposit money into banks or receive payments.  
+
+
+
+
+{\ttfamily \#include $<$Drone\+Wallet.\+h$>$}
+
+
+
+Inheritance diagram for Drone\+Wallet\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=176pt]{classDroneWallet__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Drone\+Wallet\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=215pt]{classDroneWallet__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classDroneWallet_a704593c0366ed5ea7414c12ab34979f0}{Drone\+Wallet}} (\mbox{\hyperlink{classDrone}{Drone}} $\ast$entity\+\_\+)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classDroneWallet}{Drone\+Wallet}} object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDroneWallet_a48844e008a6389db06832bad5733142a}\label{classDroneWallet_a48844e008a6389db06832bad5733142a}} 
+\mbox{\hyperlink{classDroneWallet_a48844e008a6389db06832bad5733142a}{$\sim$\+Drone\+Wallet}} ()
+\begin{DoxyCompactList}\small\item\em Destructor for the \mbox{\hyperlink{classDroneWallet}{Drone\+Wallet}} class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDroneWallet_a15773c4f657c66ef3d701f7958507a4a}{Add}} (int amount)
+\begin{DoxyCompactList}\small\item\em Virtual method for adding money to wallet. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDroneWallet_aa306937e430502bb35e821a06bfc64f9}{Remove}} (int amount)
+\begin{DoxyCompactList}\small\item\em Virtual method for removing money from wallet -\/ paying or depositing. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classDroneWallet_a8837804cf9f3389fdb034e9b6f5c0e94}{Get\+Capacity}} ()
+\begin{DoxyCompactList}\small\item\em How much money the entity can carry. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classDroneWallet_a9adb6c2110d93691d085756198ba337b}{Get\+Money}} ()
+\begin{DoxyCompactList}\small\item\em method for returning the amount of money in the wallet \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classDroneWallet_a85b0ec86758bd3b939f6f3322393bb9d}{Get\+Speed}} () const
+\begin{DoxyCompactList}\small\item\em Gets the speed of the drone. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVector3}{Vector3}} \mbox{\hyperlink{classDroneWallet_aadc4338a2ad607c56771a0582e2db4f3}{Get\+Position}} () const
+\begin{DoxyCompactList}\small\item\em Gets the position of the drone. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVector3}{Vector3}} \mbox{\hyperlink{classDroneWallet_a5845ca0373134d3aa253475a02fa270e}{Get\+Direction}} () const
+\begin{DoxyCompactList}\small\item\em Gets the direction of the drone. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVector3}{Vector3}} \mbox{\hyperlink{classDroneWallet_a85fb9e43b7dc2ca4588af05d43aed8ef}{Get\+Destination}} () const
+\begin{DoxyCompactList}\small\item\em Gets the destination of the drone. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classDroneWallet_ad6a60e50fb476b4d844da3ed012b91e5}{Get\+Color}} () const
+\begin{DoxyCompactList}\small\item\em Gets the color of the drone. \end{DoxyCompactList}\item 
+Json\+Object \mbox{\hyperlink{classDroneWallet_a32bb7a495808c2c5e48329ee6008c0fe}{Get\+Details}} () const
+\begin{DoxyCompactList}\small\item\em Gets the details information of the drone. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classDroneWallet_a3db42aa1d1965e442d18d3a36a240e69}{Get\+Availability}} () const
+\begin{DoxyCompactList}\small\item\em Gets the availability of the drone. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDroneWallet_a51fa37d89ab61fbdb5a57ec5d03a9476}{Get\+Nearest\+Entity}} (std\+::vector$<$ \mbox{\hyperlink{classIEntity}{I\+Entity}} $\ast$ $>$ scheduler)
+\begin{DoxyCompactList}\small\item\em Gets the nearest entity in the scheduler. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDroneWallet_ac6e97fc46dc82115ae450eec2c269280}{Update}} (double dt, std\+::vector$<$ \mbox{\hyperlink{classIEntity}{I\+Entity}} $\ast$ $>$ scheduler)
+\begin{DoxyCompactList}\small\item\em Updates the drone\textquotesingle{}s position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDroneWallet_ae6bc343361f6f9d82a3527a17d4bd7b6}{Set\+Position}} (\mbox{\hyperlink{classVector3}{Vector3}} pos\+\_\+)
+\begin{DoxyCompactList}\small\item\em Sets the position of the drone. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDroneWallet_a79a434a45c9dd2c9ecfe045053d4e187}{Set\+Direction}} (\mbox{\hyperlink{classVector3}{Vector3}} dir\+\_\+)
+\begin{DoxyCompactList}\small\item\em Sets the direction of the drone. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDroneWallet_ad31c9d7c6ebe20f3a29abc8ec29789f2}{Set\+Destination}} (\mbox{\hyperlink{classVector3}{Vector3}} des\+\_\+)
+\begin{DoxyCompactList}\small\item\em Sets the destination of the drone. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDroneWallet_a8d4cfca56fab582bd601b37bcc96f967}{Set\+Color}} (std\+::string col\+\_\+)
+\begin{DoxyCompactList}\small\item\em Sets the color of the drone. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDroneWallet_a3a0468e9d080c7a022c5b6aaa9fcd9be}{Set\+Graph}} (const I\+Graph $\ast$graph)
+\begin{DoxyCompactList}\small\item\em Sets the robot\textquotesingle{}s graph and the wallet\textquotesingle{}s graph. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDroneWallet_a19544bdf01708c0db6685bb9268856db}{Rotate}} (double angle)
+\begin{DoxyCompactList}\small\item\em Rotates the drone. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDroneWallet_a0f6c0beca6fa45a83610e377551d02bd}{Jump}} (double height)
+\begin{DoxyCompactList}\small\item\em Makes the drone jump. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+This class inherits from the \mbox{\hyperlink{classWalletDecorator}{Wallet\+Decorator}} class and constitutes the wallets that will be used by the Drones (\mbox{\hyperlink{classDrone}{Drone}} simulation drivers). \mbox{\hyperlink{classDrone}{Drone}} wallets can deposit money into banks or receive payments. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classDroneWallet_a704593c0366ed5ea7414c12ab34979f0}\label{classDroneWallet_a704593c0366ed5ea7414c12ab34979f0}} 
+\index{DroneWallet@{DroneWallet}!DroneWallet@{DroneWallet}}
+\index{DroneWallet@{DroneWallet}!DroneWallet@{DroneWallet}}
+\doxysubsubsection{\texorpdfstring{DroneWallet()}{DroneWallet()}}
+{\footnotesize\ttfamily Drone\+Wallet\+::\+Drone\+Wallet (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classDrone}{Drone}} $\ast$}]{entity\+\_\+ }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classDroneWallet}{Drone\+Wallet}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity\+\_\+} & the entity associated with this wallet \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classDroneWallet_a15773c4f657c66ef3d701f7958507a4a}\label{classDroneWallet_a15773c4f657c66ef3d701f7958507a4a}} 
+\index{DroneWallet@{DroneWallet}!Add@{Add}}
+\index{Add@{Add}!DroneWallet@{DroneWallet}}
+\doxysubsubsection{\texorpdfstring{Add()}{Add()}}
+{\footnotesize\ttfamily void Drone\+Wallet\+::\+Add (\begin{DoxyParamCaption}\item[{int}]{amount }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Virtual method for adding money to wallet. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em amount} & how much money to add to wallet \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classWalletDecorator_aa99bf84402fb94aa16afccb830a411fe}{Wallet\+Decorator}}.
+
+\mbox{\Hypertarget{classDroneWallet_a3db42aa1d1965e442d18d3a36a240e69}\label{classDroneWallet_a3db42aa1d1965e442d18d3a36a240e69}} 
+\index{DroneWallet@{DroneWallet}!GetAvailability@{GetAvailability}}
+\index{GetAvailability@{GetAvailability}!DroneWallet@{DroneWallet}}
+\doxysubsubsection{\texorpdfstring{GetAvailability()}{GetAvailability()}}
+{\footnotesize\ttfamily bool Drone\+Wallet\+::\+Get\+Availability (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Gets the availability of the drone. 
+
+\begin{DoxyReturn}{Returns}
+The availability of the drone 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classIEntity_a90348881691a37d5c3d63265ed3463b1}{I\+Entity}}.
+
+\mbox{\Hypertarget{classDroneWallet_a8837804cf9f3389fdb034e9b6f5c0e94}\label{classDroneWallet_a8837804cf9f3389fdb034e9b6f5c0e94}} 
+\index{DroneWallet@{DroneWallet}!GetCapacity@{GetCapacity}}
+\index{GetCapacity@{GetCapacity}!DroneWallet@{DroneWallet}}
+\doxysubsubsection{\texorpdfstring{GetCapacity()}{GetCapacity()}}
+{\footnotesize\ttfamily int Drone\+Wallet\+::\+Get\+Capacity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+How much money the entity can carry. 
+
+\begin{DoxyReturn}{Returns}
+The maximum capacity of the wallet 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDroneWallet_ad6a60e50fb476b4d844da3ed012b91e5}\label{classDroneWallet_ad6a60e50fb476b4d844da3ed012b91e5}} 
+\index{DroneWallet@{DroneWallet}!GetColor@{GetColor}}
+\index{GetColor@{GetColor}!DroneWallet@{DroneWallet}}
+\doxysubsubsection{\texorpdfstring{GetColor()}{GetColor()}}
+{\footnotesize\ttfamily std\+::string Drone\+Wallet\+::\+Get\+Color (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Gets the color of the drone. 
+
+\begin{DoxyReturn}{Returns}
+The color of the drone 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classIEntity_a1326f6c0e0377a4fbde8a8c02fb6ccb3}{I\+Entity}}.
+
+\mbox{\Hypertarget{classDroneWallet_a85fb9e43b7dc2ca4588af05d43aed8ef}\label{classDroneWallet_a85fb9e43b7dc2ca4588af05d43aed8ef}} 
+\index{DroneWallet@{DroneWallet}!GetDestination@{GetDestination}}
+\index{GetDestination@{GetDestination}!DroneWallet@{DroneWallet}}
+\doxysubsubsection{\texorpdfstring{GetDestination()}{GetDestination()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classVector3}{Vector3}} Drone\+Wallet\+::\+Get\+Destination (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Gets the destination of the drone. 
+
+\begin{DoxyReturn}{Returns}
+The destination of the drone 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classIEntity_a0dcaf865938ab1fb49c8389b5e580d90}{I\+Entity}}.
+
+\mbox{\Hypertarget{classDroneWallet_a32bb7a495808c2c5e48329ee6008c0fe}\label{classDroneWallet_a32bb7a495808c2c5e48329ee6008c0fe}} 
+\index{DroneWallet@{DroneWallet}!GetDetails@{GetDetails}}
+\index{GetDetails@{GetDetails}!DroneWallet@{DroneWallet}}
+\doxysubsubsection{\texorpdfstring{GetDetails()}{GetDetails()}}
+{\footnotesize\ttfamily Json\+Object Drone\+Wallet\+::\+Get\+Details (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Gets the details information of the drone. 
+
+\begin{DoxyReturn}{Returns}
+The details information of the drone 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classIEntity_a97c799400ce05e2ff2566adc4d7b9634}{I\+Entity}}.
+
+\mbox{\Hypertarget{classDroneWallet_a5845ca0373134d3aa253475a02fa270e}\label{classDroneWallet_a5845ca0373134d3aa253475a02fa270e}} 
+\index{DroneWallet@{DroneWallet}!GetDirection@{GetDirection}}
+\index{GetDirection@{GetDirection}!DroneWallet@{DroneWallet}}
+\doxysubsubsection{\texorpdfstring{GetDirection()}{GetDirection()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classVector3}{Vector3}} Drone\+Wallet\+::\+Get\+Direction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Gets the direction of the drone. 
+
+\begin{DoxyReturn}{Returns}
+The direction of the drone 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classIEntity_aa99a8fef8b22195a5113c38ef51f086d}{I\+Entity}}.
+
+\mbox{\Hypertarget{classDroneWallet_a9adb6c2110d93691d085756198ba337b}\label{classDroneWallet_a9adb6c2110d93691d085756198ba337b}} 
+\index{DroneWallet@{DroneWallet}!GetMoney@{GetMoney}}
+\index{GetMoney@{GetMoney}!DroneWallet@{DroneWallet}}
+\doxysubsubsection{\texorpdfstring{GetMoney()}{GetMoney()}}
+{\footnotesize\ttfamily int Drone\+Wallet\+::\+Get\+Money (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+method for returning the amount of money in the wallet 
+
+\begin{DoxyReturn}{Returns}
+Amount of money in wallet 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDroneWallet_a51fa37d89ab61fbdb5a57ec5d03a9476}\label{classDroneWallet_a51fa37d89ab61fbdb5a57ec5d03a9476}} 
+\index{DroneWallet@{DroneWallet}!GetNearestEntity@{GetNearestEntity}}
+\index{GetNearestEntity@{GetNearestEntity}!DroneWallet@{DroneWallet}}
+\doxysubsubsection{\texorpdfstring{GetNearestEntity()}{GetNearestEntity()}}
+{\footnotesize\ttfamily void Drone\+Wallet\+::\+Get\+Nearest\+Entity (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{classIEntity}{I\+Entity}} $\ast$ $>$}]{scheduler }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the nearest entity in the scheduler. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em scheduler} & Vector containing all the entities in the system \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDroneWallet_aadc4338a2ad607c56771a0582e2db4f3}\label{classDroneWallet_aadc4338a2ad607c56771a0582e2db4f3}} 
+\index{DroneWallet@{DroneWallet}!GetPosition@{GetPosition}}
+\index{GetPosition@{GetPosition}!DroneWallet@{DroneWallet}}
+\doxysubsubsection{\texorpdfstring{GetPosition()}{GetPosition()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classVector3}{Vector3}} Drone\+Wallet\+::\+Get\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Gets the position of the drone. 
+
+\begin{DoxyReturn}{Returns}
+The position of the drone 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classIEntity_a9bc32587aab91761fc0e718612498199}{I\+Entity}}.
+
+\mbox{\Hypertarget{classDroneWallet_a85b0ec86758bd3b939f6f3322393bb9d}\label{classDroneWallet_a85b0ec86758bd3b939f6f3322393bb9d}} 
+\index{DroneWallet@{DroneWallet}!GetSpeed@{GetSpeed}}
+\index{GetSpeed@{GetSpeed}!DroneWallet@{DroneWallet}}
+\doxysubsubsection{\texorpdfstring{GetSpeed()}{GetSpeed()}}
+{\footnotesize\ttfamily float Drone\+Wallet\+::\+Get\+Speed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Gets the speed of the drone. 
+
+\begin{DoxyReturn}{Returns}
+The speed of the drone 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classIEntity_a6520d2b1dc71d092bab38ef9f5cc9ff4}{I\+Entity}}.
+
+\mbox{\Hypertarget{classDroneWallet_a0f6c0beca6fa45a83610e377551d02bd}\label{classDroneWallet_a0f6c0beca6fa45a83610e377551d02bd}} 
+\index{DroneWallet@{DroneWallet}!Jump@{Jump}}
+\index{Jump@{Jump}!DroneWallet@{DroneWallet}}
+\doxysubsubsection{\texorpdfstring{Jump()}{Jump()}}
+{\footnotesize\ttfamily void Drone\+Wallet\+::\+Jump (\begin{DoxyParamCaption}\item[{double}]{height }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Makes the drone jump. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em height} & The height at which the drone should jump \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classIEntity_a4e8eb64a324e1196be039c5e2a293b7a}{I\+Entity}}.
+
+\mbox{\Hypertarget{classDroneWallet_aa306937e430502bb35e821a06bfc64f9}\label{classDroneWallet_aa306937e430502bb35e821a06bfc64f9}} 
+\index{DroneWallet@{DroneWallet}!Remove@{Remove}}
+\index{Remove@{Remove}!DroneWallet@{DroneWallet}}
+\doxysubsubsection{\texorpdfstring{Remove()}{Remove()}}
+{\footnotesize\ttfamily void Drone\+Wallet\+::\+Remove (\begin{DoxyParamCaption}\item[{int}]{amount }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Virtual method for removing money from wallet -\/ paying or depositing. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em amount} & how much money to remove from wallet \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classWalletDecorator_a998af697c2b6274bec1ee717fdc50f52}{Wallet\+Decorator}}.
+
+\mbox{\Hypertarget{classDroneWallet_a19544bdf01708c0db6685bb9268856db}\label{classDroneWallet_a19544bdf01708c0db6685bb9268856db}} 
+\index{DroneWallet@{DroneWallet}!Rotate@{Rotate}}
+\index{Rotate@{Rotate}!DroneWallet@{DroneWallet}}
+\doxysubsubsection{\texorpdfstring{Rotate()}{Rotate()}}
+{\footnotesize\ttfamily void Drone\+Wallet\+::\+Rotate (\begin{DoxyParamCaption}\item[{double}]{angle }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Rotates the drone. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em angle} & The angle by which the drone should be rotated \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classIEntity_a4c109baa4179c28422623a7d3b2e9f82}{I\+Entity}}.
+
+\mbox{\Hypertarget{classDroneWallet_a8d4cfca56fab582bd601b37bcc96f967}\label{classDroneWallet_a8d4cfca56fab582bd601b37bcc96f967}} 
+\index{DroneWallet@{DroneWallet}!SetColor@{SetColor}}
+\index{SetColor@{SetColor}!DroneWallet@{DroneWallet}}
+\doxysubsubsection{\texorpdfstring{SetColor()}{SetColor()}}
+{\footnotesize\ttfamily void Drone\+Wallet\+::\+Set\+Color (\begin{DoxyParamCaption}\item[{std\+::string}]{col\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Sets the color of the drone. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em col\+\_\+} & The new color of the drone \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classIEntity_a61b62fe1126f473d8ebb524c70c57a39}{I\+Entity}}.
+
+\mbox{\Hypertarget{classDroneWallet_ad31c9d7c6ebe20f3a29abc8ec29789f2}\label{classDroneWallet_ad31c9d7c6ebe20f3a29abc8ec29789f2}} 
+\index{DroneWallet@{DroneWallet}!SetDestination@{SetDestination}}
+\index{SetDestination@{SetDestination}!DroneWallet@{DroneWallet}}
+\doxysubsubsection{\texorpdfstring{SetDestination()}{SetDestination()}}
+{\footnotesize\ttfamily void Drone\+Wallet\+::\+Set\+Destination (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVector3}{Vector3}}}]{des\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Sets the destination of the drone. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em des\+\_\+} & The new destination of the drone \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classIEntity_aa473000823f673e9d7b89aed3cd3fc5c}{I\+Entity}}.
+
+\mbox{\Hypertarget{classDroneWallet_a79a434a45c9dd2c9ecfe045053d4e187}\label{classDroneWallet_a79a434a45c9dd2c9ecfe045053d4e187}} 
+\index{DroneWallet@{DroneWallet}!SetDirection@{SetDirection}}
+\index{SetDirection@{SetDirection}!DroneWallet@{DroneWallet}}
+\doxysubsubsection{\texorpdfstring{SetDirection()}{SetDirection()}}
+{\footnotesize\ttfamily void Drone\+Wallet\+::\+Set\+Direction (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVector3}{Vector3}}}]{dir\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Sets the direction of the drone. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dir\+\_\+} & The new direction of the drone \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classIEntity_a64bfaa448a929ca71693ff3e2edb9d97}{I\+Entity}}.
+
+\mbox{\Hypertarget{classDroneWallet_a3a0468e9d080c7a022c5b6aaa9fcd9be}\label{classDroneWallet_a3a0468e9d080c7a022c5b6aaa9fcd9be}} 
+\index{DroneWallet@{DroneWallet}!SetGraph@{SetGraph}}
+\index{SetGraph@{SetGraph}!DroneWallet@{DroneWallet}}
+\doxysubsubsection{\texorpdfstring{SetGraph()}{SetGraph()}}
+{\footnotesize\ttfamily void Drone\+Wallet\+::\+Set\+Graph (\begin{DoxyParamCaption}\item[{const I\+Graph $\ast$}]{graph }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Sets the robot\textquotesingle{}s graph and the wallet\textquotesingle{}s graph. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & The I\+Graph object to be used. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classIEntity_a50b01c5c4fab1632c0289e30aa77faf2}{I\+Entity}}.
+
+\mbox{\Hypertarget{classDroneWallet_ae6bc343361f6f9d82a3527a17d4bd7b6}\label{classDroneWallet_ae6bc343361f6f9d82a3527a17d4bd7b6}} 
+\index{DroneWallet@{DroneWallet}!SetPosition@{SetPosition}}
+\index{SetPosition@{SetPosition}!DroneWallet@{DroneWallet}}
+\doxysubsubsection{\texorpdfstring{SetPosition()}{SetPosition()}}
+{\footnotesize\ttfamily void Drone\+Wallet\+::\+Set\+Position (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVector3}{Vector3}}}]{pos\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Sets the position of the drone. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos\+\_\+} & The new position of the drone \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classIEntity_af0475048b09dc13ed6cf8e7c7be2ae6b}{I\+Entity}}.
+
+\mbox{\Hypertarget{classDroneWallet_ac6e97fc46dc82115ae450eec2c269280}\label{classDroneWallet_ac6e97fc46dc82115ae450eec2c269280}} 
+\index{DroneWallet@{DroneWallet}!Update@{Update}}
+\index{Update@{Update}!DroneWallet@{DroneWallet}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Drone\+Wallet\+::\+Update (\begin{DoxyParamCaption}\item[{double}]{dt,  }\item[{std\+::vector$<$ \mbox{\hyperlink{classIEntity}{I\+Entity}} $\ast$ $>$}]{scheduler }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Updates the drone\textquotesingle{}s position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dt} & Delta time \\
+\hline
+{\em scheduler} & Vector containing all the entities in the system \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classIEntity_a9a8e8588fd85c7b0d813d60686d4dc2c}{I\+Entity}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/horst105/csci-\/3081w-\/\+S23/hw4/\+Team-\/010-\/19-\/homework4/libs/transit/include/Drone\+Wallet.\+h\item 
+/home/horst105/csci-\/3081w-\/\+S23/hw4/\+Team-\/010-\/19-\/homework4/libs/transit/src/Drone\+Wallet.\+cc\end{DoxyCompactItemize}

@@ -56,7 +56,7 @@ void Drone::GetNearestEntity(std::vector<IEntity*> scheduler) {
 
     toRobot = new BeelineStrategy(position, destination);
     
-    holdPos = GetPosition(); //changed holdPos into getnearestentity
+    holdPos = GetPosition(); //changed holdPos into getnearestentity, need for data collection
 
     std::string strat = nearestEntity->GetStrategyName();
     if (strat == "astar")
@@ -90,7 +90,6 @@ void Drone::Update(double dt, std::vector<IEntity*> scheduler) {
       DataCollection* dc = DataCollection::getInstance();
       dc->writeDeliveryDist(this, (holdPos.Distance(GetPosition())));
       holdPos = GetPosition(); //holding the position of picking the drone up to record trip distance
-      //std::cout << "holdPos after pickup: " << holdPos.Magnitude() << std::endl;
     }
   } else if (toFinalDestination) {
     toFinalDestination->Move(this, dt);
@@ -104,23 +103,20 @@ void Drone::Update(double dt, std::vector<IEntity*> scheduler) {
       delete toFinalDestination;
       toFinalDestination = nullptr;
 
-      //csv testing
+      //singleton data collection
       DataCollection* dc = DataCollection::getInstance();
-      int moneyTest = (holdPos.Distance(GetPosition())) * 0.1;
-      dc->writeRobotMoneyGiven(nearestEntity, moneyTest);
+      int moneyTest = (holdPos.Distance(GetPosition())) * 0.1; //calculates the money
+      dc->writeRobotMoneyGiven(nearestEntity, moneyTest); //have to call this before nearestEntity is deleted
 
       nearestEntity = nullptr;
       available = true;
       pickedUp = false;
 
       //singleton stuff
-      //std::cout << "holdPos before finish write: " << holdPos.Magnitude() << std::endl;
-      //std::cout << "getPosition() before finish write: " << GetPosition().Magnitude() << std::endl;
-      //DataCollection* dc = DataCollection::getInstance();
-      dc->writeDeliveryDist(this, (holdPos.Distance(GetPosition()))); //total distance drone has travelled, what is unit (m, km, etc.)?
-      dc->writeNumDelTrip(this); //total amount of robot delivery trips completed
-      dc->calcDelDistPerTrip(this); //calculating delivery distance per trip
-      dc->writeToCSV(); //placeholder for testing. a button will be made later
+      dc->writeDeliveryDist(this, (holdPos.Distance(GetPosition())));
+      dc->writeNumDelTrip(this); 
+      dc->calcDelDistPerTrip(this);
+      dc->writeToCSV();
     }
   }
 }

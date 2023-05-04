@@ -1,0 +1,479 @@
+\hypertarget{classRobotWallet}{}\doxysection{Robot\+Wallet Class Reference}
+\label{classRobotWallet}\index{RobotWallet@{RobotWallet}}
+
+
+This class inherits from the \mbox{\hyperlink{classWalletDecorator}{Wallet\+Decorator}} class and constitutes the wallets that will be used by the Robots (\mbox{\hyperlink{classDrone}{Drone}} simulation passengers). \mbox{\hyperlink{classRobot}{Robot}} wallets can withdraw money from banks or make payments to \mbox{\hyperlink{classDrone}{Drone}} wallets.  
+
+
+
+
+{\ttfamily \#include $<$Robot\+Wallet.\+h$>$}
+
+
+
+Inheritance diagram for Robot\+Wallet\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=176pt]{classRobotWallet__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Robot\+Wallet\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=215pt]{classRobotWallet__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classRobotWallet_a8dd6ee38152ce3468c3933b52e671377}{Robot\+Wallet}} (\mbox{\hyperlink{classRobot}{Robot}} $\ast$entity\+\_\+)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classRobotWallet}{Robot\+Wallet}} object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRobotWallet_ac61d0878eeb9d6fa35304ac0cdaf3819}\label{classRobotWallet_ac61d0878eeb9d6fa35304ac0cdaf3819}} 
+\mbox{\hyperlink{classRobotWallet_ac61d0878eeb9d6fa35304ac0cdaf3819}{$\sim$\+Robot\+Wallet}} ()
+\begin{DoxyCompactList}\small\item\em Destructor for the \mbox{\hyperlink{classRobotWallet}{Robot\+Wallet}} class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRobotWallet_add73c845e87818e273948629be2a3295}{Add}} (int amount)
+\begin{DoxyCompactList}\small\item\em Virtual method for adding money to wallet. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRobotWallet_a0b25c509a51c23e9e178b81ec21f6256}{Remove}} (int amount)
+\begin{DoxyCompactList}\small\item\em Virtual method for removing money from wallet -\/ paying or depositing. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRobotWallet_ab1a1e3a132f7f32f74e0be5145ec64f7}{Update}} (double dt, std\+::vector$<$ \mbox{\hyperlink{classIEntity}{I\+Entity}} $\ast$ $>$ scheduler, int cost)
+\begin{DoxyCompactList}\small\item\em Updates the robot if it needs to go to a bank. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classRobotWallet_ac5540abc2fcf95b7f25064371676ad34}{Get\+Capacity}} ()
+\begin{DoxyCompactList}\small\item\em How much money the entity can carry. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classRobotWallet_a25cb45fa659770177324dfdd300cc7f1}{Get\+Money}} ()
+\begin{DoxyCompactList}\small\item\em method for returning the amount of money in the wallet \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVector3}{Vector3}} \mbox{\hyperlink{classRobotWallet_acc5ca1fb5223577a37cc90243a07cfa9}{Get\+Position}} () const
+\begin{DoxyCompactList}\small\item\em Gets the robot\textquotesingle{}s position. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVector3}{Vector3}} \mbox{\hyperlink{classRobotWallet_a6c3a8030e4f6e466c692caf5aa418581}{Get\+Direction}} () const
+\begin{DoxyCompactList}\small\item\em Gets the robot\textquotesingle{}s direction. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVector3}{Vector3}} \mbox{\hyperlink{classRobotWallet_aab2026a1caafb876ae65f52cdcb84bd7}{Get\+Destination}} () const
+\begin{DoxyCompactList}\small\item\em Gets the robot\textquotesingle{}s destination. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classRobotWallet_ae4a79aa956c505272eaea737f75825d2}{Get\+Availability}} () const
+\begin{DoxyCompactList}\small\item\em Gets the robot\textquotesingle{}s availability. \end{DoxyCompactList}\item 
+Json\+Object \mbox{\hyperlink{classRobotWallet_a1dbc49f500f59f443bc0864334a26703}{Get\+Details}} ()
+\begin{DoxyCompactList}\small\item\em Gets the robot\textquotesingle{}s details. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classRobotWallet_a275d8e6157b1a3e0ae64cba3b3996fe9}{Get\+Speed}} () const
+\begin{DoxyCompactList}\small\item\em Gets the robot\textquotesingle{}s speed. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classRobotWallet_a886e075e0dfe07469143d4be31c87726}{Get\+Strategy\+Name}} () const
+\begin{DoxyCompactList}\small\item\em Get the Strategy Name. \end{DoxyCompactList}\item 
+Json\+Object \mbox{\hyperlink{classRobotWallet_a1a3d7b354738d41fa1818d7a55a67f48}{Get\+Details}} () const
+\begin{DoxyCompactList}\small\item\em Gets the robot\textquotesingle{}s details. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRobotWallet_a78d0cbbaa1f1b4a84e3e16e95cdf2d8f}{Set\+Strategy\+Name}} (std\+::string strategy\+Name\+\_\+)
+\begin{DoxyCompactList}\small\item\em Set the Strategy Name. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRobotWallet_abb0d42e3382c52027bacf0f817c0e583}{Set\+Availability}} (bool choice)
+\begin{DoxyCompactList}\small\item\em Sets the robot\textquotesingle{}s availability. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRobotWallet_a0ddce12a8b11e7d3888771aa6d4a9c9e}{Set\+Position}} (\mbox{\hyperlink{classVector3}{Vector3}} pos\+\_\+)
+\begin{DoxyCompactList}\small\item\em Sets the robot\textquotesingle{}s position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRobotWallet_af4aa613af7c0bd3278bb0fa4f365da25}{Set\+Direction}} (\mbox{\hyperlink{classVector3}{Vector3}} dir\+\_\+)
+\begin{DoxyCompactList}\small\item\em Sets the robot\textquotesingle{}s direction. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRobotWallet_a95fbf5e356549cd9dc4113c9d663ed8b}{Set\+Destination}} (\mbox{\hyperlink{classVector3}{Vector3}} des\+\_\+)
+\begin{DoxyCompactList}\small\item\em Sets the robot\textquotesingle{}s destination. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRobotWallet_a77da1c809f57cd8557c2e50a2a2a39f4}{Set\+Graph}} (const I\+Graph $\ast$graph)
+\begin{DoxyCompactList}\small\item\em Sets the robot\textquotesingle{}s graph and the wallet\textquotesingle{}s graph. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRobotWallet_a66ef41e0586b93b46551baef00eadfdd}{Rotate}} (double angle)
+\begin{DoxyCompactList}\small\item\em Rotates the robot. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRobotWallet_ad8ac9877d69d2942d763f2c5f89233db}{Update}} (double dt, std\+::vector$<$ \mbox{\hyperlink{classIEntity}{I\+Entity}} $\ast$ $>$ scheduler)
+\begin{DoxyCompactList}\small\item\em Updates the entity\textquotesingle{}s position in the physical system. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+This class inherits from the \mbox{\hyperlink{classWalletDecorator}{Wallet\+Decorator}} class and constitutes the wallets that will be used by the Robots (\mbox{\hyperlink{classDrone}{Drone}} simulation passengers). \mbox{\hyperlink{classRobot}{Robot}} wallets can withdraw money from banks or make payments to \mbox{\hyperlink{classDrone}{Drone}} wallets. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classRobotWallet_a8dd6ee38152ce3468c3933b52e671377}\label{classRobotWallet_a8dd6ee38152ce3468c3933b52e671377}} 
+\index{RobotWallet@{RobotWallet}!RobotWallet@{RobotWallet}}
+\index{RobotWallet@{RobotWallet}!RobotWallet@{RobotWallet}}
+\doxysubsubsection{\texorpdfstring{RobotWallet()}{RobotWallet()}}
+{\footnotesize\ttfamily Robot\+Wallet\+::\+Robot\+Wallet (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRobot}{Robot}} $\ast$}]{entity\+\_\+ }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classRobotWallet}{Robot\+Wallet}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity\+\_\+} & the entity associated with this wallet \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classRobotWallet_add73c845e87818e273948629be2a3295}\label{classRobotWallet_add73c845e87818e273948629be2a3295}} 
+\index{RobotWallet@{RobotWallet}!Add@{Add}}
+\index{Add@{Add}!RobotWallet@{RobotWallet}}
+\doxysubsubsection{\texorpdfstring{Add()}{Add()}}
+{\footnotesize\ttfamily void Robot\+Wallet\+::\+Add (\begin{DoxyParamCaption}\item[{int}]{amount }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Virtual method for adding money to wallet. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em amount} & how much money to add to wallet \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classWalletDecorator_aa99bf84402fb94aa16afccb830a411fe}{Wallet\+Decorator}}.
+
+\mbox{\Hypertarget{classRobotWallet_ae4a79aa956c505272eaea737f75825d2}\label{classRobotWallet_ae4a79aa956c505272eaea737f75825d2}} 
+\index{RobotWallet@{RobotWallet}!GetAvailability@{GetAvailability}}
+\index{GetAvailability@{GetAvailability}!RobotWallet@{RobotWallet}}
+\doxysubsubsection{\texorpdfstring{GetAvailability()}{GetAvailability()}}
+{\footnotesize\ttfamily bool Robot\+Wallet\+::\+Get\+Availability (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Gets the robot\textquotesingle{}s availability. 
+
+\begin{DoxyReturn}{Returns}
+The robot\textquotesingle{}s availability 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classIEntity_a90348881691a37d5c3d63265ed3463b1}{I\+Entity}}.
+
+\mbox{\Hypertarget{classRobotWallet_ac5540abc2fcf95b7f25064371676ad34}\label{classRobotWallet_ac5540abc2fcf95b7f25064371676ad34}} 
+\index{RobotWallet@{RobotWallet}!GetCapacity@{GetCapacity}}
+\index{GetCapacity@{GetCapacity}!RobotWallet@{RobotWallet}}
+\doxysubsubsection{\texorpdfstring{GetCapacity()}{GetCapacity()}}
+{\footnotesize\ttfamily int Robot\+Wallet\+::\+Get\+Capacity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+How much money the entity can carry. 
+
+\begin{DoxyReturn}{Returns}
+The maximum capacity of the wallet 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRobotWallet_aab2026a1caafb876ae65f52cdcb84bd7}\label{classRobotWallet_aab2026a1caafb876ae65f52cdcb84bd7}} 
+\index{RobotWallet@{RobotWallet}!GetDestination@{GetDestination}}
+\index{GetDestination@{GetDestination}!RobotWallet@{RobotWallet}}
+\doxysubsubsection{\texorpdfstring{GetDestination()}{GetDestination()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classVector3}{Vector3}} Robot\+Wallet\+::\+Get\+Destination (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Gets the robot\textquotesingle{}s destination. 
+
+\begin{DoxyReturn}{Returns}
+The robot\textquotesingle{}s destination 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classIEntity_a0dcaf865938ab1fb49c8389b5e580d90}{I\+Entity}}.
+
+\mbox{\Hypertarget{classRobotWallet_a1dbc49f500f59f443bc0864334a26703}\label{classRobotWallet_a1dbc49f500f59f443bc0864334a26703}} 
+\index{RobotWallet@{RobotWallet}!GetDetails@{GetDetails}}
+\index{GetDetails@{GetDetails}!RobotWallet@{RobotWallet}}
+\doxysubsubsection{\texorpdfstring{GetDetails()}{GetDetails()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Json\+Object Robot\+Wallet\+::\+Get\+Details (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the robot\textquotesingle{}s details. 
+
+\begin{DoxyReturn}{Returns}
+The robot\textquotesingle{}s details 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRobotWallet_a1a3d7b354738d41fa1818d7a55a67f48}\label{classRobotWallet_a1a3d7b354738d41fa1818d7a55a67f48}} 
+\index{RobotWallet@{RobotWallet}!GetDetails@{GetDetails}}
+\index{GetDetails@{GetDetails}!RobotWallet@{RobotWallet}}
+\doxysubsubsection{\texorpdfstring{GetDetails()}{GetDetails()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Json\+Object Robot\+Wallet\+::\+Get\+Details (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Gets the robot\textquotesingle{}s details. 
+
+\begin{DoxyReturn}{Returns}
+The robot\textquotesingle{}s details 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classIEntity_a97c799400ce05e2ff2566adc4d7b9634}{I\+Entity}}.
+
+\mbox{\Hypertarget{classRobotWallet_a6c3a8030e4f6e466c692caf5aa418581}\label{classRobotWallet_a6c3a8030e4f6e466c692caf5aa418581}} 
+\index{RobotWallet@{RobotWallet}!GetDirection@{GetDirection}}
+\index{GetDirection@{GetDirection}!RobotWallet@{RobotWallet}}
+\doxysubsubsection{\texorpdfstring{GetDirection()}{GetDirection()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classVector3}{Vector3}} Robot\+Wallet\+::\+Get\+Direction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Gets the robot\textquotesingle{}s direction. 
+
+\begin{DoxyReturn}{Returns}
+The robot\textquotesingle{}s direction 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classIEntity_aa99a8fef8b22195a5113c38ef51f086d}{I\+Entity}}.
+
+\mbox{\Hypertarget{classRobotWallet_a25cb45fa659770177324dfdd300cc7f1}\label{classRobotWallet_a25cb45fa659770177324dfdd300cc7f1}} 
+\index{RobotWallet@{RobotWallet}!GetMoney@{GetMoney}}
+\index{GetMoney@{GetMoney}!RobotWallet@{RobotWallet}}
+\doxysubsubsection{\texorpdfstring{GetMoney()}{GetMoney()}}
+{\footnotesize\ttfamily int Robot\+Wallet\+::\+Get\+Money (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+method for returning the amount of money in the wallet 
+
+\begin{DoxyReturn}{Returns}
+Amount of money in wallet 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRobotWallet_acc5ca1fb5223577a37cc90243a07cfa9}\label{classRobotWallet_acc5ca1fb5223577a37cc90243a07cfa9}} 
+\index{RobotWallet@{RobotWallet}!GetPosition@{GetPosition}}
+\index{GetPosition@{GetPosition}!RobotWallet@{RobotWallet}}
+\doxysubsubsection{\texorpdfstring{GetPosition()}{GetPosition()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classVector3}{Vector3}} Robot\+Wallet\+::\+Get\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Gets the robot\textquotesingle{}s position. 
+
+\begin{DoxyReturn}{Returns}
+The robot\textquotesingle{}s position 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classIEntity_a9bc32587aab91761fc0e718612498199}{I\+Entity}}.
+
+\mbox{\Hypertarget{classRobotWallet_a275d8e6157b1a3e0ae64cba3b3996fe9}\label{classRobotWallet_a275d8e6157b1a3e0ae64cba3b3996fe9}} 
+\index{RobotWallet@{RobotWallet}!GetSpeed@{GetSpeed}}
+\index{GetSpeed@{GetSpeed}!RobotWallet@{RobotWallet}}
+\doxysubsubsection{\texorpdfstring{GetSpeed()}{GetSpeed()}}
+{\footnotesize\ttfamily float Robot\+Wallet\+::\+Get\+Speed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Gets the robot\textquotesingle{}s speed. 
+
+\begin{DoxyReturn}{Returns}
+The robot\textquotesingle{}s speed 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classIEntity_a6520d2b1dc71d092bab38ef9f5cc9ff4}{I\+Entity}}.
+
+\mbox{\Hypertarget{classRobotWallet_a886e075e0dfe07469143d4be31c87726}\label{classRobotWallet_a886e075e0dfe07469143d4be31c87726}} 
+\index{RobotWallet@{RobotWallet}!GetStrategyName@{GetStrategyName}}
+\index{GetStrategyName@{GetStrategyName}!RobotWallet@{RobotWallet}}
+\doxysubsubsection{\texorpdfstring{GetStrategyName()}{GetStrategyName()}}
+{\footnotesize\ttfamily std\+::string Robot\+Wallet\+::\+Get\+Strategy\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Get the Strategy Name. 
+
+\begin{DoxyReturn}{Returns}
+Streategy name 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classIEntity_a14badced4c9d744bcc210cb3c1260ee1}{I\+Entity}}.
+
+\mbox{\Hypertarget{classRobotWallet_a0b25c509a51c23e9e178b81ec21f6256}\label{classRobotWallet_a0b25c509a51c23e9e178b81ec21f6256}} 
+\index{RobotWallet@{RobotWallet}!Remove@{Remove}}
+\index{Remove@{Remove}!RobotWallet@{RobotWallet}}
+\doxysubsubsection{\texorpdfstring{Remove()}{Remove()}}
+{\footnotesize\ttfamily void Robot\+Wallet\+::\+Remove (\begin{DoxyParamCaption}\item[{int}]{amount }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Virtual method for removing money from wallet -\/ paying or depositing. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em amount} & how much money to remove from wallet \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classWalletDecorator_a998af697c2b6274bec1ee717fdc50f52}{Wallet\+Decorator}}.
+
+\mbox{\Hypertarget{classRobotWallet_a66ef41e0586b93b46551baef00eadfdd}\label{classRobotWallet_a66ef41e0586b93b46551baef00eadfdd}} 
+\index{RobotWallet@{RobotWallet}!Rotate@{Rotate}}
+\index{Rotate@{Rotate}!RobotWallet@{RobotWallet}}
+\doxysubsubsection{\texorpdfstring{Rotate()}{Rotate()}}
+{\footnotesize\ttfamily void Robot\+Wallet\+::\+Rotate (\begin{DoxyParamCaption}\item[{double}]{angle }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Rotates the robot. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em angle} & The angle by which the robot should be rotated \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classIEntity_a4c109baa4179c28422623a7d3b2e9f82}{I\+Entity}}.
+
+\mbox{\Hypertarget{classRobotWallet_abb0d42e3382c52027bacf0f817c0e583}\label{classRobotWallet_abb0d42e3382c52027bacf0f817c0e583}} 
+\index{RobotWallet@{RobotWallet}!SetAvailability@{SetAvailability}}
+\index{SetAvailability@{SetAvailability}!RobotWallet@{RobotWallet}}
+\doxysubsubsection{\texorpdfstring{SetAvailability()}{SetAvailability()}}
+{\footnotesize\ttfamily void Robot\+Wallet\+::\+Set\+Availability (\begin{DoxyParamCaption}\item[{bool}]{choice }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Sets the robot\textquotesingle{}s availability. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em choice} & The new availability of the robot \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classIEntity_adf3acdf4764f5ff25f89d7814e39551c}{I\+Entity}}.
+
+\mbox{\Hypertarget{classRobotWallet_a95fbf5e356549cd9dc4113c9d663ed8b}\label{classRobotWallet_a95fbf5e356549cd9dc4113c9d663ed8b}} 
+\index{RobotWallet@{RobotWallet}!SetDestination@{SetDestination}}
+\index{SetDestination@{SetDestination}!RobotWallet@{RobotWallet}}
+\doxysubsubsection{\texorpdfstring{SetDestination()}{SetDestination()}}
+{\footnotesize\ttfamily void Robot\+Wallet\+::\+Set\+Destination (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVector3}{Vector3}}}]{des\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Sets the robot\textquotesingle{}s destination. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em des\+\_\+} & The new destination of the robot \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classIEntity_aa473000823f673e9d7b89aed3cd3fc5c}{I\+Entity}}.
+
+\mbox{\Hypertarget{classRobotWallet_af4aa613af7c0bd3278bb0fa4f365da25}\label{classRobotWallet_af4aa613af7c0bd3278bb0fa4f365da25}} 
+\index{RobotWallet@{RobotWallet}!SetDirection@{SetDirection}}
+\index{SetDirection@{SetDirection}!RobotWallet@{RobotWallet}}
+\doxysubsubsection{\texorpdfstring{SetDirection()}{SetDirection()}}
+{\footnotesize\ttfamily void Robot\+Wallet\+::\+Set\+Direction (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVector3}{Vector3}}}]{dir\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Sets the robot\textquotesingle{}s direction. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dir\+\_\+} & The new direction of the robot \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classIEntity_a64bfaa448a929ca71693ff3e2edb9d97}{I\+Entity}}.
+
+\mbox{\Hypertarget{classRobotWallet_a77da1c809f57cd8557c2e50a2a2a39f4}\label{classRobotWallet_a77da1c809f57cd8557c2e50a2a2a39f4}} 
+\index{RobotWallet@{RobotWallet}!SetGraph@{SetGraph}}
+\index{SetGraph@{SetGraph}!RobotWallet@{RobotWallet}}
+\doxysubsubsection{\texorpdfstring{SetGraph()}{SetGraph()}}
+{\footnotesize\ttfamily void Robot\+Wallet\+::\+Set\+Graph (\begin{DoxyParamCaption}\item[{const I\+Graph $\ast$}]{graph }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Sets the robot\textquotesingle{}s graph and the wallet\textquotesingle{}s graph. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & The I\+Graph object to be used. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classIEntity_a50b01c5c4fab1632c0289e30aa77faf2}{I\+Entity}}.
+
+\mbox{\Hypertarget{classRobotWallet_a0ddce12a8b11e7d3888771aa6d4a9c9e}\label{classRobotWallet_a0ddce12a8b11e7d3888771aa6d4a9c9e}} 
+\index{RobotWallet@{RobotWallet}!SetPosition@{SetPosition}}
+\index{SetPosition@{SetPosition}!RobotWallet@{RobotWallet}}
+\doxysubsubsection{\texorpdfstring{SetPosition()}{SetPosition()}}
+{\footnotesize\ttfamily void Robot\+Wallet\+::\+Set\+Position (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVector3}{Vector3}}}]{pos\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Sets the robot\textquotesingle{}s position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos\+\_\+} & The new position of the robot \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classIEntity_af0475048b09dc13ed6cf8e7c7be2ae6b}{I\+Entity}}.
+
+\mbox{\Hypertarget{classRobotWallet_a78d0cbbaa1f1b4a84e3e16e95cdf2d8f}\label{classRobotWallet_a78d0cbbaa1f1b4a84e3e16e95cdf2d8f}} 
+\index{RobotWallet@{RobotWallet}!SetStrategyName@{SetStrategyName}}
+\index{SetStrategyName@{SetStrategyName}!RobotWallet@{RobotWallet}}
+\doxysubsubsection{\texorpdfstring{SetStrategyName()}{SetStrategyName()}}
+{\footnotesize\ttfamily void Robot\+Wallet\+::\+Set\+Strategy\+Name (\begin{DoxyParamCaption}\item[{std\+::string}]{strategy\+Name\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Set the Strategy Name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em strategy\+Name\+\_\+} & Strategy name \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classIEntity_a933def05f85783fddbf05e8257cc8880}{I\+Entity}}.
+
+\mbox{\Hypertarget{classRobotWallet_ad8ac9877d69d2942d763f2c5f89233db}\label{classRobotWallet_ad8ac9877d69d2942d763f2c5f89233db}} 
+\index{RobotWallet@{RobotWallet}!Update@{Update}}
+\index{Update@{Update}!RobotWallet@{RobotWallet}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Robot\+Wallet\+::\+Update (\begin{DoxyParamCaption}\item[{double}]{dt,  }\item[{std\+::vector$<$ \mbox{\hyperlink{classIEntity}{I\+Entity}} $\ast$ $>$}]{scheduler }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Updates the entity\textquotesingle{}s position in the physical system. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dt} & The time step of the update. \\
+\hline
+{\em scheduler} & The list of all entities in the system. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classIEntity_a9a8e8588fd85c7b0d813d60686d4dc2c}{I\+Entity}}.
+
+\mbox{\Hypertarget{classRobotWallet_ab1a1e3a132f7f32f74e0be5145ec64f7}\label{classRobotWallet_ab1a1e3a132f7f32f74e0be5145ec64f7}} 
+\index{RobotWallet@{RobotWallet}!Update@{Update}}
+\index{Update@{Update}!RobotWallet@{RobotWallet}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Robot\+Wallet\+::\+Update (\begin{DoxyParamCaption}\item[{double}]{dt,  }\item[{std\+::vector$<$ \mbox{\hyperlink{classIEntity}{I\+Entity}} $\ast$ $>$}]{scheduler,  }\item[{int}]{cost }\end{DoxyParamCaption})}
+
+
+
+Updates the robot if it needs to go to a bank. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dt} & Delta time \\
+\hline
+{\em scheduler} & Vector containing all the entities in the system \\
+\hline
+{\em cost} & Cost of trip \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/horst105/csci-\/3081w-\/\+S23/hw4/\+Team-\/010-\/19-\/homework4/libs/transit/include/Robot\+Wallet.\+h\item 
+/home/horst105/csci-\/3081w-\/\+S23/hw4/\+Team-\/010-\/19-\/homework4/libs/transit/src/Robot\+Wallet.\+cc\end{DoxyCompactItemize}

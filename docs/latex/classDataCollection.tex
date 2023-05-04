@@ -1,0 +1,181 @@
+\hypertarget{classDataCollection}{}\doxysection{Data\+Collection Class Reference}
+\label{classDataCollection}\index{DataCollection@{DataCollection}}
+
+
+This class is the singleton Data Collection class This class collects and analyzes data regarding the drone, tips, banks, and other simulation entities.  
+
+
+
+
+{\ttfamily \#include $<$Data\+Collection.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classDataCollection_a9b9255ce56dbe9bb37184cd81b46f1f7}{Data\+Collection}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new single$\ast$ Data Collection object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classDataCollection_ad827a7c32193b2852a54ba72036865fb}{Data\+Collection}} (\mbox{\hyperlink{classDataCollection}{Data\+Collection}} \&other)=delete
+\begin{DoxyCompactList}\small\item\em Deletes the copy constuctor for the singleton object, ensuring there is only one. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDataCollection_af8e754f8ec66f4b1e4df6c60005c3554}{operator=}} (const \mbox{\hyperlink{classDataCollection}{Data\+Collection}} \&data)=delete
+\begin{DoxyCompactList}\small\item\em Deletes the assignment constuctor for the singleton object, ensuring there is only one. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classDataCollection_ab51334bac2a9cadc5d0c02142fa752a9}{$\sim$\+Data\+Collection}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classDataCollection}{Data\+Collection}} Deconstructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDataCollection_a529b948d7fca10b92e8fd7232075386d}\label{classDataCollection_a529b948d7fca10b92e8fd7232075386d}} 
+void \mbox{\hyperlink{classDataCollection_a529b948d7fca10b92e8fd7232075386d}{write\+Delivery\+Dist}} (\mbox{\hyperlink{classIEntity}{I\+Entity}} $\ast$dr, float dist)
+\begin{DoxyCompactList}\small\item\em Records the distance of the drone. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDataCollection_aea42d7e6ce158415cfa94ee3a2d4d703}\label{classDataCollection_aea42d7e6ce158415cfa94ee3a2d4d703}} 
+void \mbox{\hyperlink{classDataCollection_aea42d7e6ce158415cfa94ee3a2d4d703}{write\+Drone\+Total\+Money}} (\mbox{\hyperlink{classIEntity}{I\+Entity}} $\ast$dr, int money)
+\begin{DoxyCompactList}\small\item\em Records the money of the drone. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDataCollection_af2124da9547fd3ebfb5609989e23a2e1}\label{classDataCollection_af2124da9547fd3ebfb5609989e23a2e1}} 
+void \mbox{\hyperlink{classDataCollection_af2124da9547fd3ebfb5609989e23a2e1}{write\+Robot\+Money\+Given}} (\mbox{\hyperlink{classIEntity}{I\+Entity}} $\ast$rb, float money)
+\begin{DoxyCompactList}\small\item\em Records the trip cost of each robot. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDataCollection_aafa732f281afb45e6411ed8d6b361aa5}\label{classDataCollection_aafa732f281afb45e6411ed8d6b361aa5}} 
+void \mbox{\hyperlink{classDataCollection_aafa732f281afb45e6411ed8d6b361aa5}{write\+Num\+Del\+Trip}} (\mbox{\hyperlink{classIEntity}{I\+Entity}} $\ast$dr)
+\begin{DoxyCompactList}\small\item\em Records the number of delivery trips of the drone. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDataCollection_afdc11120d1796c3a87bbf5e17f717ca1}\label{classDataCollection_afdc11120d1796c3a87bbf5e17f717ca1}} 
+void \mbox{\hyperlink{classDataCollection_afdc11120d1796c3a87bbf5e17f717ca1}{write\+Num\+Bank\+Trip}} (\mbox{\hyperlink{classIEntity}{I\+Entity}} $\ast$dr)
+\begin{DoxyCompactList}\small\item\em Records the number of bank trips of the drone. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDataCollection_aa9cc2365716bf47e9a8966f44f73e486}\label{classDataCollection_aa9cc2365716bf47e9a8966f44f73e486}} 
+void \mbox{\hyperlink{classDataCollection_aa9cc2365716bf47e9a8966f44f73e486}{write\+Money\+Deposited}} (\mbox{\hyperlink{classIEntity}{I\+Entity}} $\ast$dr, int money)
+\begin{DoxyCompactList}\small\item\em Records the money deposited into the bank of the drone. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDataCollection_aefdf276a662c99faacd9b591ed386bdb}\label{classDataCollection_aefdf276a662c99faacd9b591ed386bdb}} 
+void \mbox{\hyperlink{classDataCollection_aefdf276a662c99faacd9b591ed386bdb}{write\+Bank\+Visit}} (\mbox{\hyperlink{classIEntity}{I\+Entity}} $\ast$bk)
+\begin{DoxyCompactList}\small\item\em Records the number of visits in each bank. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classDataCollection_a3a6656951c7f992ed98df2c78af8f210}{calc\+Del\+Dist\+Per\+Trip}} (\mbox{\hyperlink{classIEntity}{I\+Entity}} $\ast$dr)
+\begin{DoxyCompactList}\small\item\em Calculates the distance per trips of the drone. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classDataCollection_a5ca49cb3aa27f25c9557ead08e8a07d8}{calc\+Money\+Per\+Trip}} ()
+\begin{DoxyCompactList}\small\item\em Calculates the money per trips of the drone. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classDataCollection_a3538c571649fda695223921f481b3829}{calc\+Popular\+Bank}} ()
+\begin{DoxyCompactList}\small\item\em Calculates the most popular bank. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classDataCollection_acd520f26088d06cbf076fbb358bdd269}{calc\+Money\+Per\+Deposit}} ()
+\begin{DoxyCompactList}\small\item\em Calculates the money per deposit of the drone. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDataCollection_ae4f9397e52c8ec7d8564ed9d594e86f3}\label{classDataCollection_ae4f9397e52c8ec7d8564ed9d594e86f3}} 
+void \mbox{\hyperlink{classDataCollection_ae4f9397e52c8ec7d8564ed9d594e86f3}{write\+To\+C\+SV}} ()
+\begin{DoxyCompactList}\small\item\em Publishes all of the taken data and calculations onto the csv. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classDataCollection}{Data\+Collection}} $\ast$ \mbox{\hyperlink{classDataCollection_ac0189a8895cf8d0d97611985436baf51}{get\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em Everytime data collection needs to occur, the instance needs to be referenced in order to use writing and analysis functions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class is the singleton Data Collection class This class collects and analyzes data regarding the drone, tips, banks, and other simulation entities. 
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classDataCollection_a9b9255ce56dbe9bb37184cd81b46f1f7}\label{classDataCollection_a9b9255ce56dbe9bb37184cd81b46f1f7}} 
+\index{DataCollection@{DataCollection}!DataCollection@{DataCollection}}
+\index{DataCollection@{DataCollection}!DataCollection@{DataCollection}}
+\doxysubsubsection{\texorpdfstring{DataCollection()}{DataCollection()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Data\+Collection\+::\+Data\+Collection (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct a new single$\ast$ Data Collection object. 
+
+\mbox{\Hypertarget{classDataCollection_ad827a7c32193b2852a54ba72036865fb}\label{classDataCollection_ad827a7c32193b2852a54ba72036865fb}} 
+\index{DataCollection@{DataCollection}!DataCollection@{DataCollection}}
+\index{DataCollection@{DataCollection}!DataCollection@{DataCollection}}
+\doxysubsubsection{\texorpdfstring{DataCollection()}{DataCollection()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Data\+Collection\+::\+Data\+Collection (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classDataCollection}{Data\+Collection}} \&}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+Deletes the copy constuctor for the singleton object, ensuring there is only one. 
+
+\mbox{\Hypertarget{classDataCollection_ab51334bac2a9cadc5d0c02142fa752a9}\label{classDataCollection_ab51334bac2a9cadc5d0c02142fa752a9}} 
+\index{DataCollection@{DataCollection}!````~DataCollection@{$\sim$DataCollection}}
+\index{````~DataCollection@{$\sim$DataCollection}!DataCollection@{DataCollection}}
+\doxysubsubsection{\texorpdfstring{$\sim$DataCollection()}{~DataCollection()}}
+{\footnotesize\ttfamily Data\+Collection\+::$\sim$\+Data\+Collection (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{classDataCollection}{Data\+Collection}} Deconstructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classDataCollection_a3a6656951c7f992ed98df2c78af8f210}\label{classDataCollection_a3a6656951c7f992ed98df2c78af8f210}} 
+\index{DataCollection@{DataCollection}!calcDelDistPerTrip@{calcDelDistPerTrip}}
+\index{calcDelDistPerTrip@{calcDelDistPerTrip}!DataCollection@{DataCollection}}
+\doxysubsubsection{\texorpdfstring{calcDelDistPerTrip()}{calcDelDistPerTrip()}}
+{\footnotesize\ttfamily double Data\+Collection\+::calc\+Del\+Dist\+Per\+Trip (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classIEntity}{I\+Entity}} $\ast$}]{dr }\end{DoxyParamCaption})}
+
+
+
+Calculates the distance per trips of the drone. 
+
+\begin{DoxyReturn}{Returns}
+The distance per trip value 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDataCollection_acd520f26088d06cbf076fbb358bdd269}\label{classDataCollection_acd520f26088d06cbf076fbb358bdd269}} 
+\index{DataCollection@{DataCollection}!calcMoneyPerDeposit@{calcMoneyPerDeposit}}
+\index{calcMoneyPerDeposit@{calcMoneyPerDeposit}!DataCollection@{DataCollection}}
+\doxysubsubsection{\texorpdfstring{calcMoneyPerDeposit()}{calcMoneyPerDeposit()}}
+{\footnotesize\ttfamily int Data\+Collection\+::calc\+Money\+Per\+Deposit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Calculates the money per deposit of the drone. 
+
+\begin{DoxyReturn}{Returns}
+The money per deposit value 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDataCollection_a5ca49cb3aa27f25c9557ead08e8a07d8}\label{classDataCollection_a5ca49cb3aa27f25c9557ead08e8a07d8}} 
+\index{DataCollection@{DataCollection}!calcMoneyPerTrip@{calcMoneyPerTrip}}
+\index{calcMoneyPerTrip@{calcMoneyPerTrip}!DataCollection@{DataCollection}}
+\doxysubsubsection{\texorpdfstring{calcMoneyPerTrip()}{calcMoneyPerTrip()}}
+{\footnotesize\ttfamily int Data\+Collection\+::calc\+Money\+Per\+Trip (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Calculates the money per trips of the drone. 
+
+\begin{DoxyReturn}{Returns}
+The money per trip value 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDataCollection_a3538c571649fda695223921f481b3829}\label{classDataCollection_a3538c571649fda695223921f481b3829}} 
+\index{DataCollection@{DataCollection}!calcPopularBank@{calcPopularBank}}
+\index{calcPopularBank@{calcPopularBank}!DataCollection@{DataCollection}}
+\doxysubsubsection{\texorpdfstring{calcPopularBank()}{calcPopularBank()}}
+{\footnotesize\ttfamily int Data\+Collection\+::calc\+Popular\+Bank (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Calculates the most popular bank. 
+
+\begin{DoxyReturn}{Returns}
+The integer value of the bank (\mbox{\hyperlink{classBank}{Bank}} 1, 2, 3, or 4) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDataCollection_ac0189a8895cf8d0d97611985436baf51}\label{classDataCollection_ac0189a8895cf8d0d97611985436baf51}} 
+\index{DataCollection@{DataCollection}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!DataCollection@{DataCollection}}
+\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{classDataCollection}{Data\+Collection}}$\ast$ Data\+Collection\+::get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Everytime data collection needs to occur, the instance needs to be referenced in order to use writing and analysis functions. 
+
+\begin{DoxyReturn}{Returns}
+An instance of the data collection object. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDataCollection_af8e754f8ec66f4b1e4df6c60005c3554}\label{classDataCollection_af8e754f8ec66f4b1e4df6c60005c3554}} 
+\index{DataCollection@{DataCollection}!operator=@{operator=}}
+\index{operator=@{operator=}!DataCollection@{DataCollection}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily void Data\+Collection\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classDataCollection}{Data\+Collection}} \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+Deletes the assignment constuctor for the singleton object, ensuring there is only one. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/horst105/csci-\/3081w-\/\+S23/hw4/\+Team-\/010-\/19-\/homework4/libs/transit/include/Data\+Collection.\+h\item 
+/home/horst105/csci-\/3081w-\/\+S23/hw4/\+Team-\/010-\/19-\/homework4/libs/transit/src/Data\+Collection.\+cc\end{DoxyCompactItemize}
