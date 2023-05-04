@@ -17,7 +17,7 @@ class WalletDecorator : public IEntity {
         int capacity;
         IEntity* entity;
         IStrategy* toBank = nullptr;
-        std::vector<IEntity*> entities = nullptr;
+        std::vector<IEntity*> entities;
     
     public:
         /**
