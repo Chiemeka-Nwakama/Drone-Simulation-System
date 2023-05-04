@@ -7,6 +7,7 @@ WalletDecorator::WalletDecorator(IEntity* entity) {
 WalletDecorator::~WalletDecorator() { delete toBank; }
 
 Vector3 WalletDecorator::GetNearestBank(std::vector<IEntity*> scheduler) {
+    std::cout << "In function" << std::endl;
   float minDis = std::numeric_limits<float>::max();
   IEntity* nearestEntity = nullptr;
   for (auto entity : scheduler) {
@@ -22,6 +23,7 @@ Vector3 WalletDecorator::GetNearestBank(std::vector<IEntity*> scheduler) {
     }
   }
   if (nearestEntity){
+    std::cout << "Found bank" << std::endl;
     return nearestEntity->GetPosition();
   }
   // if no banks are on the map
