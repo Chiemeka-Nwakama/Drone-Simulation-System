@@ -61,7 +61,6 @@ void SimulationModel::ScheduleTrip(JsonObject& details) {
     std::string typeTemp = detailsTemp["type"];
     // robot no longer needs to be available to be added to the scheduler
     if ((nameTemp.compare(name) == 0) && (typeTemp.compare("robot") == 0)) {
-      std::cout << typeTemp << std::endl;
       std::string strategyName = details["search"];
       entity->SetDestination(Vector3(end[0], end[1], end[2]));
       entity->SetStrategyName(strategyName);
