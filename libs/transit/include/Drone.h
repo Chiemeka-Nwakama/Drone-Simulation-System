@@ -6,7 +6,6 @@
 #include "IEntity.h"
 #include "IStrategy.h"
 #include "math/vector3.h"
-#include "DroneWallet.h"
 #include "DataCollection.h"
 
 // Represents a drone in a physical system.

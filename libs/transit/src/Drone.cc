@@ -10,7 +10,6 @@
 #include "DijkstraStrategy.h"
 #include "JumpDecorator.h"
 #include "SpinDecorator.h"
-
 #include "DataCollection.h"
 
 Drone::Drone(JsonObject& obj) : details(obj) {

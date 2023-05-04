@@ -1,5 +1,6 @@
 #include "WalletDecorator.h"
 #include "RobotWallet.h"
+#include "Robot.h"
 #include "AstarStrategy.h"
 #include "DfsStrategy.h"
 #include "DijkstraStrategy.h"
