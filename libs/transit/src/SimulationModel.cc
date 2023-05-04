@@ -63,7 +63,7 @@ void SimulationModel::ScheduleTrip(JsonObject& details) {
     if (this->start){
       for (int i = 0; i < bankNames.size(); i++){
         if (validName) break;
-        validName = validName.compare(bankNames.at(i));
+        validName = nameTemp.compare(bankNames.at(i));
       }
     }
     std::string typeTemp = detailsTemp["type"];
