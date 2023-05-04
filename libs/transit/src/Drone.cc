@@ -11,8 +11,6 @@
 #include "JumpDecorator.h"
 #include "SpinDecorator.h"
 
-#include "DataCollection.h"
-
 Drone::Drone(JsonObject& obj) : details(obj) {
   JsonArray pos(obj["position"]);
   position = {pos[0], pos[1], pos[2]};
@@ -55,8 +53,6 @@ void Drone::GetNearestEntity(std::vector<IEntity*> scheduler) {
     tripDistance = nearestEntity->GetPosition().Distance(nearestEntity->GetDestination());
 
     toRobot = new BeelineStrategy(position, destination);
-    
-    holdPos = GetPosition(); //changed holdPos into getnearestentity
 
     std::string strat = nearestEntity->GetStrategyName();
     if (strat == "astar")
@@ -76,7 +72,6 @@ void Drone::GetNearestEntity(std::vector<IEntity*> scheduler) {
 void Drone::Update(double dt, std::vector<IEntity*> scheduler) {
   if (available)
     GetNearestEntity(scheduler);
-    
 
   if (toRobot) {
     toRobot->Move(this, dt);
@@ -85,12 +80,6 @@ void Drone::Update(double dt, std::vector<IEntity*> scheduler) {
       delete toRobot;
       toRobot = nullptr;
       pickedUp = true;
-      
-      //singleton data additions
-      DataCollection* dc = DataCollection::getInstance();
-      dc->writeDeliveryDist(this, (holdPos.Distance(GetPosition())));
-      holdPos = GetPosition(); //holding the position of picking the drone up to record trip distance
-      //std::cout << "holdPos after pickup: " << holdPos.Magnitude() << std::endl;
     }
   } else if (toFinalDestination) {
     toFinalDestination->Move(this, dt);
@@ -103,25 +92,9 @@ void Drone::Update(double dt, std::vector<IEntity*> scheduler) {
     if (toFinalDestination->IsCompleted()) {
       delete toFinalDestination;
       toFinalDestination = nullptr;
-
-      //csv testing
-      DataCollection* dc = DataCollection::getInstance();
-      float moneyTest = (holdPos.Distance(GetPosition())) * 0.01;
-      dc->writeRobotMoneyGiven(nearestEntity, moneyTest);
-
       nearestEntity = nullptr;
       available = true;
       pickedUp = false;
-
-      //singleton stuff
-      //std::cout << "holdPos before finish write: " << holdPos.Magnitude() << std::endl;
-      //std::cout << "getPosition() before finish write: " << GetPosition().Magnitude() << std::endl;
-      //DataCollection* dc = DataCollection::getInstance();
-      dc->writeDeliveryDist(this, (holdPos.Distance(GetPosition()))); //total distance drone has travelled, what is unit (m, km, etc.)?
-      dc->writeNumDelTrip(this); //total amount of robot delivery trips completed
-      dc->calcDelDistPerTrip(this); //calculating delivery distance per trip
-      dc->writeToCSV(); //placeholder for testing. a button will be made later
-
     }
   }
 }
