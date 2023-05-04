@@ -52,9 +52,23 @@ void SimulationModel::ScheduleTrip(JsonObject& details) {
   for (auto entity : entities) {  // Add the entity to the scheduler
     JsonObject detailsTemp = entity->GetDetails();
     std::string nameTemp = detailsTemp["name"];
+    // make vector of all names including banks
+    std::vector<std::string> bankNames;
+    bankNames.push_back("bank1"); 
+    bankNames.push_back("bank2");
+    bankNames.push_back("bank3");
+    bankNames.push_back("back4");
+    bool validName = (nameTemp.compare(name) == 0);
+    // if first call, check bank names as well
+    if (start){
+      for (int i = 0; i < bankNames.size(); i++){
+        if (validName) break;
+        validName = validName.compare(bankNames.at(i));
+      }
+    }
     std::string typeTemp = detailsTemp["type"];
     // robot no longer needs to be available to be added to the scheduler
-    if (name.compare(nameTemp) == 0 && (typeTemp.compare("robot") == 0 || typeTemp.compare("bank") == 0)) {
+    if (validName && (typeTemp.compare("robot") == 0 || typeTemp.compare("bank") == 0)) {
       std::cout << typeTemp << std::endl;
       std::string strategyName = details["search"];
       entity->SetDestination(Vector3(end[0], end[1], end[2]));

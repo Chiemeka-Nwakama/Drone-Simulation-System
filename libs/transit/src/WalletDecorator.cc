@@ -14,7 +14,7 @@ Vector3 WalletDecorator::GetNearestBank(std::vector<IEntity*> scheduler) {
     // determine if the entity is a Bank
     JsonObject detailsTemp = entity->GetDetails();
     std::string typeTemp = detailsTemp["type"];
-    std::cout << typeTemp << std::endl;
+    //std::cout << typeTemp << std::endl;
     if (typeTemp.compare("bank") == 0) {
       float disToEntity = this->GetPosition().Distance(entity->GetPosition());
       if (disToEntity <= minDis) {
