@@ -66,7 +66,7 @@ class WalletDecorator : public IEntity {
          * 
          * @return The position of the nearest bank.
         */
-        Vector3 GetNearestBank(std::vector<IEntity*> scheduler) {}
+        Vector3 GetNearestBank(std::vector<IEntity*> scheduler);
 };
 
 #endif
