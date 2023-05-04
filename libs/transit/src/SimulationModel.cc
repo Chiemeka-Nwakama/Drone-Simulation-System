@@ -60,15 +60,15 @@ void SimulationModel::ScheduleTrip(JsonObject& details) {
       entity->SetDestination(Vector3(end[0], end[1], end[2]));
       entity->SetStrategyName(strategyName);
       scheduler.push_back(entity);
-      if (!start){ // if this is the first call, make sure that the banks are added
+      if (!this->start){ // if this is the first call, make sure that the banks are added
         break;
       }
     }
   }
   controller.SendEventToView("TripScheduled", details);
   // if this was the first call, set start to false
-  if (start) {
-    start = false;
+  if (this->start) {
+    this->start = false;
   }
 }
 
