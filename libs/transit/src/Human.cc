@@ -21,18 +21,18 @@ Human::~Human() {
 }
 
 void Human::CreateNewDestination() {
-    destination = {Random(-1400, 1500), position.y, Random(-800, 800)};
-    toDestination = new AstarStrategy(position, destination, graph);
+  destination = {Random(-1400, 1500), position.y, Random(-800, 800)};
+  toDestination = new AstarStrategy(position, destination, graph);
 }
 
 void Human::Update(double dt, std::vector<IEntity*> scheduler) {
-    if(toDestination) {
-        if(toDestination->IsCompleted()) {
-            CreateNewDestination();
-        } else {
-            toDestination->Move(this, dt);
-        }
+  if (toDestination) {
+    if (toDestination->IsCompleted()) {
+      CreateNewDestination();
     } else {
-        CreateNewDestination();
+      toDestination->Move(this, dt);
     }
+  } else {
+    CreateNewDestination();
+  }
 }

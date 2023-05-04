@@ -3,10 +3,10 @@
 
 #include <vector>
 
+#include "DataCollection.h"
 #include "IEntity.h"
 #include "math/vector3.h"
 #include "util/json.h"
-#include "DataCollection.h"
 
 /**
  * @class Robot
@@ -73,10 +73,10 @@ class Robot : public IEntity {
 
   /**
    * @brief Get the trip distance
-   * 
+   *
    * @return Distance of robot's trip from drone
-  */
- float GetTripDistance() const { return tripDistance; }
+   */
+  float GetTripDistance() const { return tripDistance; }
 
   /**
    * @brief Set the Strategy Name
@@ -114,8 +114,8 @@ class Robot : public IEntity {
   /**
    * @brief Sets the robot's trip distance
    * @param dis_ The new trip distance for the ride
-  */
- void SetTripDistance(float dis_) {tripDistance = dis_;}
+   */
+  void SetTripDistance(float dis_) { tripDistance = dis_; }
 
   /**
    * @brief Rotates the robot
@@ -133,5 +133,4 @@ class Robot : public IEntity {
   std::string strategyName;
   float tripDistance;
 };
-
 #endif  // ROBOT_H

@@ -1,8 +1,8 @@
 #ifndef DRONE_WALLET_H_
 #define DRONE_WALLET_H_
 
-#include "WalletDecorator.h"
 #include "Drone.h"
+#include "WalletDecorator.h"
 
 // Drone-specific function, implemented inherited, point to just drone, update
 // logic
@@ -101,7 +101,9 @@ class DroneWallet : public WalletDecorator {
    * @brief Gets the nearest entity in the scheduler
    * @param scheduler Vector containing all the entities in the system
    */
-  void GetNearestEntity(std::vector<IEntity*> scheduler) { entity->GetNearestEntity(scheduler); }
+  void GetNearestEntity(std::vector<IEntity*> scheduler) {
+    entity->GetNearestEntity(scheduler);
+  }
 
   /**
    * @brief Updates the drone's position
@@ -137,8 +139,11 @@ class DroneWallet : public WalletDecorator {
   /**
    * @brief Sets the robot's graph and the wallet's graph
    * @param graph The IGraph object to be used.
-  */
-  void SetGraph(const IGraph* graph) { this->graph = graph; entity->SetGraph(graph);}
+   */
+  void SetGraph(const IGraph* graph) {
+    this->graph = graph;
+    entity->SetGraph(graph);
+  }
 
   /**
    * @brief Rotates the drone

@@ -6,11 +6,11 @@
 
 #include "AstarStrategy.h"
 #include "BeelineStrategy.h"
+#include "DataCollection.h"
 #include "DfsStrategy.h"
 #include "DijkstraStrategy.h"
 #include "JumpDecorator.h"
 #include "SpinDecorator.h"
-#include "DataCollection.h"
 
 Drone::Drone(JsonObject& obj) : details(obj) {
   JsonArray pos(obj["position"]);
@@ -44,39 +44,39 @@ void Drone::GetNearestEntity(std::vector<IEntity*> scheduler) {
   }
 
   if (nearestEntity) {
-      // set availability to the nearest entity
+    // set availability to the nearest entity
     nearestEntity->SetAvailability(false);
     available = false;
     pickedUp = false;
 
     destination = nearestEntity->GetPosition();
     Vector3 finalDestination = nearestEntity->GetDestination();
-    tripDistance = nearestEntity->GetPosition().Distance(nearestEntity->GetDestination());
+    tripDistance =
+        nearestEntity->GetPosition().Distance(nearestEntity->GetDestination());
     std::cout << tripDistance << std::endl;
 
     toRobot = new BeelineStrategy(position, destination);
-    
-    holdPos = GetPosition(); //changed holdPos into getnearestentity, need for data collection
+
+    holdPos = GetPosition();  // changed holdPos into getnearestentity, need for
+                              // data collection
 
     std::string strat = nearestEntity->GetStrategyName();
     if (strat == "astar")
-      toFinalDestination =
-        new JumpDecorator(new AstarStrategy(destination, finalDestination, graph));
+      toFinalDestination = new JumpDecorator(
+          new AstarStrategy(destination, finalDestination, graph));
     else if (strat == "dfs")
-      toFinalDestination =
-        new SpinDecorator(new JumpDecorator(new DfsStrategy(destination, finalDestination, graph)));
+      toFinalDestination = new SpinDecorator(new JumpDecorator(
+          new DfsStrategy(destination, finalDestination, graph)));
     else if (strat == "dijkstra")
-      toFinalDestination =
-        new JumpDecorator(new SpinDecorator(new DijkstraStrategy(destination, finalDestination, graph)));
+      toFinalDestination = new JumpDecorator(new SpinDecorator(
+          new DijkstraStrategy(destination, finalDestination, graph)));
     else
       toFinalDestination = new BeelineStrategy(destination, finalDestination);
   }
 }
 
 void Drone::Update(double dt, std::vector<IEntity*> scheduler) {
-  if (available)
-    GetNearestEntity(scheduler);
-    
+  if (available) GetNearestEntity(scheduler);
 
   if (toRobot) {
     toRobot->Move(this, dt);
@@ -85,11 +85,12 @@ void Drone::Update(double dt, std::vector<IEntity*> scheduler) {
       delete toRobot;
       toRobot = nullptr;
       pickedUp = true;
-      
-      //singleton data additions
+
+      // singleton data additions
       DataCollection* dc = DataCollection::getInstance();
       dc->writeDeliveryDist(this, (holdPos.Distance(GetPosition())));
-      holdPos = GetPosition(); //holding the position of picking the drone up to record trip distance
+      holdPos = GetPosition();  // holding the position of picking the drone up
+                                // to record trip distance
     }
   } else if (toFinalDestination) {
     toFinalDestination->Move(this, dt);
@@ -103,18 +104,21 @@ void Drone::Update(double dt, std::vector<IEntity*> scheduler) {
       delete toFinalDestination;
       toFinalDestination = nullptr;
 
-      //singleton data collection
+      // singleton data collection
       DataCollection* dc = DataCollection::getInstance();
-      int moneyTest = (holdPos.Distance(GetPosition())) * 0.1; //calculates the money
-      dc->writeRobotMoneyGiven(nearestEntity, moneyTest); //have to call this before nearestEntity is deleted
+      int moneyTest =
+          (holdPos.Distance(GetPosition())) * 0.1;  // calculates the money
+      dc->writeRobotMoneyGiven(
+          nearestEntity,
+          moneyTest);  // have to call this before nearestEntity is deleted
 
       nearestEntity = nullptr;
       available = true;
       pickedUp = false;
 
-      //singleton stuff
+      // singleton stuff
       dc->writeDeliveryDist(this, (holdPos.Distance(GetPosition())));
-      dc->writeNumDelTrip(this); 
+      dc->writeNumDelTrip(this);
       dc->calcDelDistPerTrip(this);
       dc->writeToCSV();
     }

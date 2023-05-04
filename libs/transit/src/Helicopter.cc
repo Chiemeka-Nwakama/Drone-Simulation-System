@@ -21,8 +21,8 @@ Helicopter::~Helicopter() {
 }
 
 void Helicopter::CreateNewDestination() {
-    destination = {Random(-1400, 1500), position.y, Random(-800, 800)};
-    toDestination = new BeelineStrategy(position, destination);
+  destination = {Random(-1400, 1500), position.y, Random(-800, 800)};
+  toDestination = new BeelineStrategy(position, destination);
 }
 
 void Helicopter::Rotate(double angle) {
@@ -32,13 +32,13 @@ void Helicopter::Rotate(double angle) {
 }
 
 void Helicopter::Update(double dt, std::vector<IEntity*> scheduler) {
-    if(toDestination) {
-        if(toDestination->IsCompleted()) {
-            CreateNewDestination();
-        } else {
-            toDestination->Move(this, dt);
-        }
+  if (toDestination) {
+    if (toDestination->IsCompleted()) {
+      CreateNewDestination();
     } else {
-        CreateNewDestination();
+      toDestination->Move(this, dt);
     }
+  } else {
+    CreateNewDestination();
+  }
 }

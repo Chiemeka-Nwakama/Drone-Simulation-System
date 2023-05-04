@@ -57,5 +57,4 @@ class Bank : public IEntity {
   JsonObject details;
   Vector3 position;
 };
-
 #endif

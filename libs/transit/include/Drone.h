@@ -3,10 +3,10 @@
 
 #include <vector>
 
+#include "DataCollection.h"
 #include "IEntity.h"
 #include "IStrategy.h"
 #include "math/vector3.h"
-#include "DataCollection.h"
 
 // Represents a drone in a physical system.
 // Drones move using euler integration based on a specified
@@ -85,10 +85,10 @@ class Drone : public IEntity {
 
   /**
    * @brief Get the trip distance
-   * 
+   *
    * @return Distance of robot's trip from drone
-  */
- float GetTripDistance() const { return tripDistance; }
+   */
+  float GetTripDistance() const { return tripDistance; }
 
   /**
    * @brief Updates the drone's position
@@ -132,8 +132,8 @@ class Drone : public IEntity {
   /**
    * @brief Sets the robot's trip distance
    * @param dis_ The new trip distance for the ride
-  */
- void SetTripDistance(float dis_) {tripDistance = dis_;}
+   */
+  void SetTripDistance(float dis_) { tripDistance = dis_; }
 
   /**
    * @brief Rotates the drone
@@ -154,8 +154,7 @@ class Drone : public IEntity {
   Drone(const Drone& drone) = delete;
   Drone& operator=(const Drone& drone) = delete;
 
-  //adding for maps in constructor
-
+  // adding for maps in constructor
 
  private:
   JsonObject details;
@@ -171,8 +170,8 @@ class Drone : public IEntity {
   IEntity* nearestEntity = nullptr;
   IStrategy* toRobot = nullptr;
   IStrategy* toFinalDestination = nullptr;
-  Vector3 holdPos; //singleton holding vars
-  float tripDistance;  
+  Vector3 holdPos;  // singleton holding vars
+  float tripDistance;
 };
 
 #endif

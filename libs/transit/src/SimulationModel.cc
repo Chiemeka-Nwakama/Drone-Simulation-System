@@ -1,10 +1,10 @@
 #include "SimulationModel.h"
 
-#include "DroneFactory.h"
-#include "RobotFactory.h"
-#include "HumanFactory.h"
-#include "HelicopterFactory.h"
 #include "BankFactory.h"
+#include "DroneFactory.h"
+#include "HelicopterFactory.h"
+#include "HumanFactory.h"
+#include "RobotFactory.h"
 
 SimulationModel::SimulationModel(IController& controller)
     : controller(controller) {
@@ -42,8 +42,9 @@ void SimulationModel::CreateEntity(JsonObject& entity) {
   entities.push_back(myNewEntity);
 
   // If a wallet (Robot/Drone), update entities vector
-  if ((type.compare("robot") == 0) || (type.compare("drone") == 0)){
-    WalletDecorator* newWallet = (WalletDecorator *) myNewEntity;
+  if ((type.compare("robot") == 0) || (type.compare("drone") == 0)) {
+    WalletDecorator* newWallet =
+    reinterpret_cast<WalletDecorator*>(myNewEntity);
     newWallet->SetEntities(entities);
   }
 }
