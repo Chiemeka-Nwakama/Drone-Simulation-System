@@ -169,6 +169,14 @@ While overall layout is better laid out in the attached UML and .cc files, a gen
      <ol>
         <li> There is a writeToCSV button that can be pressed at any time to update/add data to the existing CSV file present in the code. Other than the user being able to update and view the collected data, all processing will be done automatically.
      </ol>
+    <li> Singleton data analysis:
+     <ol>
+        <li> After running the simulation through many different situaitons, its obvious to see that larger trips result in more money for the drone, and result in more total bank trips.
+        <li> Because of the road layout, you can also determine that trips outside the centeralized east bank result in more money and more bank visits, as it is difficult to traverse the edges of the map and get from west to east bank.
+        <li> The average amount of money made per trip is relatively high, and while it depends on the specific trips made, we resulted in about $70-$80 average trip costs after a good amount of delivery making.
+        <li> Due to the high cost of trips, bank visits are more common than expected. Some trips cost >$100, which results in both the robot needing to visit the bank before the trip, and the drone needing to deposit after the trip.
+        <li> Our most popular bank mostly depended on where the highest amount of trips ended, as the drone was the most common user of the bank. Banks on east bank were much more active though, due to the amount of area covered by each bank on east bank is larger than that of on west bank.
+     </ol>
 </ul>
 
 ## Sprint Retrospectives
