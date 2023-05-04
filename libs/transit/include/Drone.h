@@ -6,8 +6,6 @@
 #include "IEntity.h"
 #include "IStrategy.h"
 #include "math/vector3.h"
-#include "DroneWallet.h"
-#include "DataCollection.h"
 
 // Represents a drone in a physical system.
 // Drones move using euler integration based on a specified
@@ -155,9 +153,6 @@ class Drone : public IEntity {
   Drone(const Drone& drone) = delete;
   Drone& operator=(const Drone& drone) = delete;
 
-  //adding for maps in constructor
-
-
  private:
   JsonObject details;
   Vector3 position;
@@ -172,7 +167,6 @@ class Drone : public IEntity {
   IEntity* nearestEntity = nullptr;
   IStrategy* toRobot = nullptr;
   IStrategy* toFinalDestination = nullptr;
-  Vector3 holdPos; //singleton holding vars
   float tripDistance;  
 };
 
