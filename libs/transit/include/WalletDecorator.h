@@ -1,6 +1,8 @@
 #ifndef WALLET_DECORATOR_H_
 #define WALLET_DECORATOR_H_
 
+#include <vector>
+#include "math/vector3.h"
 #include "IEntity.h"
 #include "IStrategy.h"
 
@@ -15,6 +17,7 @@ class WalletDecorator : public IEntity {
         int capacity;
         IEntity* entity;
         IStrategy* toBank = nullptr;
+        std::vector<IEntity*> entities;
     
     public:
         /**
@@ -58,6 +61,20 @@ class WalletDecorator : public IEntity {
          * to prevent instantiation of bare WalletDecorator object. 
         */
         virtual ~WalletDecorator() = 0;
+
+        /**
+         * @brief Determines the position of the nearest bank in the simulation.
+         * 
+         * @return The position of the nearest bank.
+        */
+        Vector3 GetNearestBank();
+
+        /**
+         * @brief Sets the vector of entities accessed by the wallet decorator
+         * 
+         * @param entities_ The vector of entities
+        */
+       void SetEntities(std::vector<IEntity*> entities_) { entities = entities_; }
 };
 
 #endif

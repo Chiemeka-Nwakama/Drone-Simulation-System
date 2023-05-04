@@ -25,13 +25,8 @@ class IEntity {
    */
   IEntity() {
     static int currentId = 0;
-    
     id = currentId;
     currentId++;
-    bankPositions = { Vector3(1, 2, 3), Vector3(4, 5, 6), Vector3(7, 8, 9) };
-
-    
- 
   }
 
 
@@ -70,12 +65,6 @@ class IEntity {
    */
   virtual JsonObject GetDetails() const = 0;
 
-    /**
-   * @brief Gets the nearest Bank to this entity
-   * @return The position of the nearest bank
-   */
-  virtual Vector3 GetNearestBank();
-
   /**
    * @brief Gets the color of the drone
    * @return The color of the drone
@@ -97,7 +86,7 @@ class IEntity {
   /**
    * @brief Get the Strategy Name
    *
-   * @return Streategy name
+   * @return Strategy name
    */
   virtual std::string GetStrategyName() const {}
 

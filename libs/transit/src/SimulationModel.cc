@@ -40,6 +40,12 @@ void SimulationModel::CreateEntity(JsonObject& entity) {
   // Call AddEntity to add it to the view
   controller.AddEntity(*myNewEntity);
   entities.push_back(myNewEntity);
+
+  // If a wallet (Robot/Drone), update entities vector
+  if ((type.compare("robot") == 0) || (type.compare("drone") == 0)){
+    WalletDecorator* newWallet = (WalletDecorator *) myNewEntity;
+    newWallet->SetEntities(entities);
+  }
 }
 
 /// Schedules a trip for an object in the scene
@@ -54,12 +60,11 @@ void SimulationModel::ScheduleTrip(JsonObject& details) {
     std::string nameTemp = detailsTemp["name"];
     std::string typeTemp = detailsTemp["type"];
     // robot no longer needs to be available to be added to the scheduler
-    if (name.compare(nameTemp) == 0 && typeTemp.compare("robot") == 0) {
+    if ((nameTemp.compare(name) == 0) && (typeTemp.compare("robot") == 0)) {
       std::string strategyName = details["search"];
       entity->SetDestination(Vector3(end[0], end[1], end[2]));
       entity->SetStrategyName(strategyName);
       scheduler.push_back(entity);
-      break;
     }
   }
   controller.SendEventToView("TripScheduled", details);
