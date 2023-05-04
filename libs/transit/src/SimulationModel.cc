@@ -71,7 +71,6 @@ void SimulationModel::ScheduleTrip(JsonObject& details) {
     if (validName && (typeTemp.compare("robot") == 0 || typeTemp.compare("bank") == 0)) {
       std::cout << typeTemp << std::endl;
       std::string strategyName = details["search"];
-      std::cout << "Okay to here" << std::endl;
       entity->SetDestination(Vector3(end[0], end[1], end[2]));
       entity->SetStrategyName(strategyName);
       scheduler.push_back(entity);
@@ -81,6 +80,7 @@ void SimulationModel::ScheduleTrip(JsonObject& details) {
     }
   }
   controller.SendEventToView("TripScheduled", details);
+  std::cout << "Okay to here" << std::endl;
   // if this was the first call, set start to false
   if (this->start) {
     this->start = false;
