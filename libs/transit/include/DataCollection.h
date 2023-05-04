@@ -90,7 +90,7 @@ class DataCollection {
     void writeNumDelTrip(IEntity* dr);
     void writeNumBankTrip(IEntity* dr);
     void writeMoneyDeposited(IEntity* dr, int money);
-    void writeBankVisit(int check);
+    void writeBankVisit(IEntity* bk);
     // void writeTripCose(Robot, int);
 
     //analysis functions

@@ -19,6 +19,7 @@ static std::map<IEntity*, int> totalDelTrips;
 static std::map<IEntity*, int> totalBankTrips;
 static std::map<IEntity*, float> robotsAndMoney;
 static std::map<IEntity*, int> moneyDeposited;
+static std::map<IEntity*, int> bankVisits;
 
 // std::map<Drone, double> totalDistToBank;
 // std::map<Bank, int> numVisits;
@@ -32,10 +33,10 @@ static IEntity* droneNameBankTrip;
 static IEntity* droneNameDepos;
 
 //bank visit helpers
-int bank1Visits = 0;
-int bank2Visits = 0;
-int bank3Visits = 0;
-int bank4Visits = 0;
+// int bank1Visits = 0;
+// int bank2Visits = 0;
+// int bank3Visits = 0;
+// int bank4Visits = 0;
 
 
 
@@ -51,7 +52,7 @@ void DataCollection::writeDeliveryDist(IEntity* entity, float dist){
     else {
         totalDistTrav[entity] += dist;  
     }
-    std::cout << "Testing distance: " << totalDistTrav[entity] << std::endl;
+    //std::cout << "Testing distance: " << totalDistTrav[entity] << std::endl;
 }   
 
 void DataCollection::writeNumDelTrip(IEntity* entity){
@@ -63,7 +64,7 @@ void DataCollection::writeNumDelTrip(IEntity* entity){
     else {
         totalDelTrips[entity] += 1;  
     }
-    std::cout << "Testing delivery trip number: " << totalDelTrips[entity] << std::endl;
+    //std::cout << "Testing delivery trip number: " << totalDelTrips[entity] << std::endl;
 }
 
 void DataCollection::writeNumBankTrip(IEntity* entity){
@@ -75,13 +76,13 @@ void DataCollection::writeNumBankTrip(IEntity* entity){
     else {
         totalBankTrips[entity] += 1;  
     }
-    std::cout << "Testing bank trip number: " << totalBankTrips[entity] << std::endl;
+    //std::cout << "Testing bank trip number: " << totalBankTrips[entity] << std::endl;
 }  
 
 //not logically functional, adding it for testing with robots
 void DataCollection::writeRobotMoneyGiven(IEntity* entity, float money){
     robotsAndMoney.insert(std::pair<IEntity*, float>(entity, money));
-    std::cout << "Robot gave this much money: " << robotsAndMoney[entity] << std::endl;
+    //std::cout << "Robot gave this much money: " << robotsAndMoney[entity] << std::endl;
 }
 
 void DataCollection::writeDroneTotalMoney(IEntity* entity, int money){
@@ -92,7 +93,7 @@ void DataCollection::writeDroneTotalMoney(IEntity* entity, int money){
     else {
         totalMoney[entity] += money;  
     }
-    std::cout << "Testing total money paid: " << totalMoney[entity] << std::endl;
+    //std::cout << "Testing total money paid: " << totalMoney[entity] << std::endl;
 }
 
 void DataCollection::writeMoneyDeposited(IEntity* entity, int money){
@@ -103,86 +104,107 @@ void DataCollection::writeMoneyDeposited(IEntity* entity, int money){
     else {
         moneyDeposited[entity] += money;  
     }
-    std::cout << "Testing total money paid: " << moneyDeposited[entity] << std::endl;
+    //std::cout << "Testing total money paid: " << moneyDeposited[entity] << std::endl;
 }
 
-void DataCollection::writeBankVisit(int check){
-    if (check == 0){bank1Visits++;}
-    else if (check == 1){bank2Visits++;}
-    else if (check == 2){bank3Visits++;}
-    else if (check == 3){bank4Visits++;}
-    else {std::cout << "something went wrong in bank visits..." << std::endl;}
+void DataCollection::writeBankVisit(IEntity* bk){
+    if (bankVisits.find(bk) == bankVisits.end()){
+        bankVisits.insert(std::pair<IEntity*, int>(bk, 1));
+    }
+    else {
+        bankVisits[bk] += 1;
+    }
 }
 
 double DataCollection::calcDelDistPerTrip(IEntity* entity){
     //double distper = totalDistTrav[entity] / (totalDelTrips[entity] + totalBankTrips[entity]);
-    
-    double numerator;
-    for (auto& i: totalDistTrav){
-        numerator += i.second;
+    if ((totalDelTrips.size() == 0) && (totalBankTrips.size() == 0)){
+        return 0;
     }
-    
-    double denominator;
-    for (auto& i: totalDelTrips){
-        denominator += i.second;
-    }
-    for (auto& i: totalBankTrips){
-        denominator += i.second;
-    }
+    else {
+        double numerator;
+        for (auto& i: totalDistTrav){
+            numerator += i.second;
+        }
+        //std::cout << "numerator: " << numerator << std::endl;
+        
+        double denominator;
+        for (auto& i: totalDelTrips){
+            denominator += i.second;
+        }
+        for (auto& i: totalBankTrips){
+            denominator += i.second;
+        }
+        //std::cout << "denominator: " << denominator << std::endl;
 
-    double distper = numerator / denominator;
-    std::cout << "Delivery Distance per Trip: " << distper << std::endl;
-    return distper;
+        double distper = numerator / denominator;
+        //std::cout << "Delivery Distance per Trip: " << distper << std::endl;
+        return distper;
+    }
 }
 
 int DataCollection::calcMoneyPerTrip(){ 
     //double distper = totalDistTrav[entity] / (totalDelTrips[entity] + totalBankTrips[entity]);
-    std::cout << "--------------------" << std::endl;
-    int numerator;
-    for (auto& i: totalMoney){numerator += i.second;}
-    std::cout << "mpt numerator: " << numerator << std::endl;
-    
-    int denominator;
-    for (auto& i: totalDelTrips){denominator += i.second;}
-    for (auto& i: totalBankTrips){denominator += i.second;}
-    std::cout << "mpt denominator: " << denominator << std::endl;
+    //std::cout << "--------------------" << std::endl;
+    if ((totalDelTrips.size() == 0) && (totalBankTrips.size() == 0)){
+        return 0;
+    }
+    else {
+        int numerator;
+        for (auto& i: totalMoney){
+            numerator = i.second;
+        }
+        //std::cout << "mpt numerator: " << numerator << std::endl;
+        
+        double denominator;
+        for (auto& i: totalDelTrips){
+            denominator += i.second;
+        }
+        for (auto& i: totalBankTrips){
+            denominator += i.second;
+        }
+        //std::cout << "mpt denominator: " << denominator << std::endl;
 
-    int moneyper = numerator / denominator;
-    std::cout << "Money per Trip: " << moneyper << std::endl;
-    std::cout << "--------------------" << std::endl;
-    return moneyper;
+        int moneyper = numerator / denominator;
+        //std::cout << "Money per Trip: " << moneyper << std::endl;
+        //std::cout << "--------------------" << std::endl;
+        return moneyper;
+    }
 }
 
 int DataCollection::calcMoneyPerDeposit(){ 
-    //double distper = totalDistTrav[entity] / (totalDelTrips[entity] + totalBankTrips[entity]);
-    
-    int numerator;
-    for (auto& i: moneyDeposited){numerator += i.second;}
-    //std::cout << "mpt numerator: " << numerator << std::endl;
-    
-    int denominator;
-    for (auto& i: totalBankTrips){denominator += i.second;}
-    //std::cout << "mpt denominator: " << denominator << std::endl;
+    if (totalBankTrips.size() == 0){
+        return 0;
+    }
+    else {
+        int numerator;
+        for (auto& i: moneyDeposited){
+            numerator = i.second;
+        }
+        //std::cout << "mpd numerator: " << numerator << std::endl;
+        
+        int denominator;
+        for (auto& i: totalBankTrips){
+            denominator = i.second;
+        }
+        //std::cout << "mpd denominator: " << denominator << std::endl;
 
-    int moneyper = numerator / denominator;
-    std::cout << "Money per Deposit: " << moneyper << std::endl;
-    return moneyper;
+        int moneyper = numerator / denominator;
+        //std::cout << "Money per Deposit: " << moneyper << std::endl;
+        return moneyper;
+    }
 }
 
 int DataCollection::calcPopularBank(){
-    if ((bank1Visits >= bank2Visits) && (bank1Visits >= bank3Visits) && (bank1Visits >= bank4Visits)){
-        return 1;
+    int greatest = 0;
+    int returnVal = 0;
+    for (auto& i: bankVisits){
+        if (i.second >= greatest){
+            greatest = i.second;
+            returnVal++;
+        }
     }
-    if ((bank2Visits >= bank1Visits) && (bank2Visits >= bank3Visits) && (bank2Visits >= bank4Visits)){
-        return 2;
-    }
-    if ((bank3Visits >= bank2Visits) && (bank3Visits >= bank1Visits) && (bank3Visits >= bank4Visits)){
-        return 3;
-    }
-    if ((bank4Visits >= bank2Visits) && (bank4Visits >= bank3Visits) && (bank4Visits >= bank1Visits)){
-        return 4;
-    }
-    return 0;
+    return returnVal;
 }
 
  void DataCollection::writeToCSV(){
@@ -210,15 +232,23 @@ int DataCollection::calcPopularBank(){
     myfile << "Drone," << tDist << "," << tMon << "," << tDTrips << "," << tBTrips << "," << totalTrips << ", N/A," << tMDep << ", N/A," << calcDelDistPerTrip(droneName) << "," << calcMoneyPerTrip() << "," << calcMoneyPerDeposit() << "," << calcPopularBank() << "\n";
 
     //bank data
-    myfile << "Bank 1," << "N/A," << "N/A," << "N/A," << "N/A," << "N/A," << bank1Visits << "," << "N/A," << "N/A," << "N/A," << "N/A," << "N/A," << "N/A," << "\n";
-    myfile << "Bank 2," << "N/A," << "N/A," << "N/A," << "N/A," << "N/A," << bank2Visits << "," << "N/A," << "N/A," << "N/A," << "N/A," << "N/A," << "N/A," << "\n";
-    myfile << "Bank 3," << "N/A," << "N/A," << "N/A," << "N/A," << "N/A," << bank3Visits << "," << "N/A," << "N/A," << "N/A," << "N/A," << "N/A," << "N/A," << "\n";
-    myfile << "Bank 4," << "N/A," << "N/A," << "N/A," << "N/A," << "N/A," << bank4Visits << "," << "N/A," << "N/A," << "N/A," << "N/A," << "N/A," << "N/A," << "\n";
+    int bkVisits[4];
+
+    int bankCount = 1;
+    for (auto& k: bankVisits){
+        myfile << "Bank " << bankCount << "," << "N/A," << "N/A," << "N/A," << "N/A," << "N/A," << k.second << "," << "N/A," << "N/A," << "N/A," << "N/A," << "N/A," << "N/A," << "\n";
+        bankCount++;
+    }
+
+    // myfile << "Bank 1," << "N/A," << "N/A," << "N/A," << "N/A," << "N/A," << bank1Visits << "," << "N/A," << "N/A," << "N/A," << "N/A," << "N/A," << "N/A," << "\n";
+    // myfile << "Bank 2," << "N/A," << "N/A," << "N/A," << "N/A," << "N/A," << bank2Visits << "," << "N/A," << "N/A," << "N/A," << "N/A," << "N/A," << "N/A," << "\n";
+    // myfile << "Bank 3," << "N/A," << "N/A," << "N/A," << "N/A," << "N/A," << bank3Visits << "," << "N/A," << "N/A," << "N/A," << "N/A," << "N/A," << "N/A," << "\n";
+    // myfile << "Bank 4," << "N/A," << "N/A," << "N/A," << "N/A," << "N/A," << bank4Visits << "," << "N/A," << "N/A," << "N/A," << "N/A," << "N/A," << "N/A," << "\n";
     
     //robot data
     int count = 1;
     for (auto& i: robotsAndMoney){
-        myfile << "Robot " << count << "," << "N/A," << "N/A," << "N/A," << "N/A," << "N/A," << "N/A," << "N/A," << i.second << ", N/A" << "N/A," << "N/A," << "N/A,\n";
+        myfile << "Robot " << count << "," << "N/A," << "N/A," << "N/A," << "N/A," << "N/A," << "N/A," << "N/A," << i.second << ", N/A," << "N/A," << "N/A," << "N/A,\n";
         count++;
     }
 

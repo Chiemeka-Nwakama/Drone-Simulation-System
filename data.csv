@@ -1,7 +1,11 @@
 Enitity, Total Distance, Total Money Collected, Total Delivery Trips, Total Bank Trips, Total Trips, Bank Visits, Total Money Deposited, Trip Cost, Distance per Trip, Money per Trip, Money Per Deposit, Most Popular Bank 
-Drone,1495.9,95,1,0,1, N/A,0, N/A,1495.9,415822035,0,1
-Bank 1,N/A,N/A,N/A,N/A,N/A,0,N/A,N/A,N/A,N/A,N/A,N/A,
-Bank 2,N/A,N/A,N/A,N/A,N/A,0,N/A,N/A,N/A,N/A,N/A,N/A,
-Bank 3,N/A,N/A,N/A,N/A,N/A,1,N/A,N/A,N/A,N/A,N/A,N/A,
-Bank 4,N/A,N/A,N/A,N/A,N/A,0,N/A,N/A,N/A,N/A,N/A,N/A,
-Robot 1,N/A,N/A,N/A,97,N/A,etc.,N/A,N/A,etc.,
+Drone,12597.3,686,7,3,10, N/A,536, N/A,1520.5,68,178,2
+Bank 1,N/A,N/A,N/A,N/A,N/A,2,N/A,N/A,N/A,N/A,N/A,N/A,
+Bank 2,N/A,N/A,N/A,N/A,N/A,8,N/A,N/A,N/A,N/A,N/A,N/A,
+Robot 1,N/A,N/A,N/A,N/A,N/A,N/A,N/A,49, N/A,N/A,N/A,N/A,
+Robot 2,N/A,N/A,N/A,N/A,N/A,N/A,N/A,199, N/A,N/A,N/A,N/A,
+Robot 3,N/A,N/A,N/A,N/A,N/A,N/A,N/A,56, N/A,N/A,N/A,N/A,
+Robot 4,N/A,N/A,N/A,N/A,N/A,N/A,N/A,108, N/A,N/A,N/A,N/A,
+Robot 5,N/A,N/A,N/A,N/A,N/A,N/A,N/A,94, N/A,N/A,N/A,N/A,
+Robot 6,N/A,N/A,N/A,N/A,N/A,N/A,N/A,81, N/A,N/A,N/A,N/A,
+Robot 7,N/A,N/A,N/A,N/A,N/A,N/A,N/A,95, N/A,N/A,N/A,N/A,

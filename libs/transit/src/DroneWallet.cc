@@ -40,7 +40,6 @@ void DroneWallet::Update(double dt, std::vector<IEntity*> scheduler) {
             dc->writeMoneyDeposited(this, money);
             dc->writeNumBankTrip(this);
             dc->writeDeliveryDist(this, holdWalletPos.Distance(GetPosition()));
-
             Remove(money);
         }
     }

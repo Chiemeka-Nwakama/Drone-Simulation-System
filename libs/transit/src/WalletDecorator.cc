@@ -1,4 +1,5 @@
 #include "WalletDecorator.h"
+#include "DataCollection.h"
 
 WalletDecorator::WalletDecorator(IEntity* entity) {
     this->entity = entity;
@@ -25,6 +26,10 @@ Vector3 WalletDecorator::GetNearestBank() {
   }
   if (nearestEntity){
     std::cout << "Found bank" << std::endl;
+
+    DataCollection* dc = DataCollection::getInstance();
+    dc->writeBankVisit(nearestEntity);
+
     return nearestEntity->GetPosition();
   }
   // if no banks are on the map
