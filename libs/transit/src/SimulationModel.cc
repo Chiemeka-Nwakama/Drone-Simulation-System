@@ -53,17 +53,23 @@ void SimulationModel::ScheduleTrip(JsonObject& details) {
     JsonObject detailsTemp = entity->GetDetails();
     std::string nameTemp = detailsTemp["name"];
     std::string typeTemp = detailsTemp["type"];
-    std::cout << typeTemp << std::endl;
     // robot no longer needs to be available to be added to the scheduler
     if (name.compare(nameTemp) == 0 && (typeTemp.compare("robot") == 0 || typeTemp.compare("bank") == 0)) {
+      std::cout << typeTemp << std::endl;
       std::string strategyName = details["search"];
       entity->SetDestination(Vector3(end[0], end[1], end[2]));
       entity->SetStrategyName(strategyName);
       scheduler.push_back(entity);
-      break;
+      if (!start){ // if this is the first call, make sure that the banks are added
+        break;
+      }
     }
   }
   controller.SendEventToView("TripScheduled", details);
+  // if this was the first call, set start to false
+  if (start) {
+    start = false;
+  }
 }
 
 /// Updates the simulation
