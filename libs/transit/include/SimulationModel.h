@@ -68,7 +68,6 @@ class SimulationModel {
   std::vector<IEntity*> scheduler;
   const IGraph* graph;
   CompositeFactory* compFactory;
-  bool start;
 };
 
 #endif

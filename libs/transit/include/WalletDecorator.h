@@ -17,6 +17,7 @@ class WalletDecorator : public IEntity {
         int capacity;
         IEntity* entity;
         IStrategy* toBank = nullptr;
+        std::vector<IEntity*> entities = nullptr;
     
     public:
         /**
@@ -66,7 +67,14 @@ class WalletDecorator : public IEntity {
          * 
          * @return The position of the nearest bank.
         */
-        Vector3 GetNearestBank(std::vector<IEntity*> scheduler);
+        Vector3 GetNearestBank();
+
+        /**
+         * @brief Sets the vector of entities accessed by the wallet decorator
+         * 
+         * @param entities_ The vector of entities
+        */
+       void SetEntities(std::vector<IEntity*> entities_) { entities = entities_; }
 };
 
 #endif

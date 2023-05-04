@@ -40,6 +40,12 @@ void SimulationModel::CreateEntity(JsonObject& entity) {
   // Call AddEntity to add it to the view
   controller.AddEntity(*myNewEntity);
   entities.push_back(myNewEntity);
+
+  // If a wallet (Robot/Drone), update entities vector
+  if ((type.compare("robot") == 0) || (type.compare("drone") == 0)){
+    WalletDecorator* newWallet = (WalletDecorator *) myNewEntity;
+    newWallet->SetEntities(entities);
+  }
 }
 
 /// Schedules a trip for an object in the scene
@@ -52,39 +58,17 @@ void SimulationModel::ScheduleTrip(JsonObject& details) {
   for (auto entity : entities) {  // Add the entity to the scheduler
     JsonObject detailsTemp = entity->GetDetails();
     std::string nameTemp = detailsTemp["name"];
-    // make vector of all names including banks
-    std::vector<std::string> bankNames;
-    bankNames.push_back("bank1"); 
-    bankNames.push_back("bank2");
-    bankNames.push_back("bank3");
-    bankNames.push_back("back4");
-    bool validName = (nameTemp.compare(name) == 0);
-    // if first call, check bank names as well
-    if (this->start){
-      for (int i = 0; i < bankNames.size(); i++){
-        if (validName) break;
-        validName = nameTemp.compare(bankNames.at(i));
-      }
-    }
     std::string typeTemp = detailsTemp["type"];
     // robot no longer needs to be available to be added to the scheduler
-    if (validName && (typeTemp.compare("robot") == 0 || typeTemp.compare("bank") == 0)) {
+    if ((nameTemp.compare(name) == 0) && (typeTemp.compare("robot") == 0)) {
       std::cout << typeTemp << std::endl;
       std::string strategyName = details["search"];
       entity->SetDestination(Vector3(end[0], end[1], end[2]));
       entity->SetStrategyName(strategyName);
       scheduler.push_back(entity);
-      if (!this->start){ // if this is the first call, make sure that the banks are added
-        break;
-      }
     }
   }
   controller.SendEventToView("TripScheduled", details);
-  std::cout << "Okay to here" << std::endl;
-  // if this was the first call, set start to false
-  if (this->start) {
-    this->start = false;
-  }
 }
 
 /// Updates the simulation

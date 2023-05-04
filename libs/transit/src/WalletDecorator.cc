@@ -6,11 +6,10 @@ WalletDecorator::WalletDecorator(IEntity* entity) {
 
 WalletDecorator::~WalletDecorator() { delete toBank; }
 
-Vector3 WalletDecorator::GetNearestBank(std::vector<IEntity*> scheduler) {
-    std::cout << "In function" << std::endl;
+Vector3 WalletDecorator::GetNearestBank() {
   float minDis = std::numeric_limits<float>::max();
   IEntity* nearestEntity = nullptr;
-  for (auto entity : scheduler) {
+  for (auto entity : entities) {
     // determine if the entity is a Bank
     JsonObject detailsTemp = entity->GetDetails();
     std::string typeTemp = detailsTemp["type"];
