@@ -7,7 +7,7 @@ Member Names: Chiemeka Nwakama, Emma Ulrich, Madeline Mcginnis, Nicholas Horst
 
 Member x500s: nwaka013, ulric244, mcgin374, horst105
 
-Docker Hub Link: https://hub.docker.com/r/nickhorst7/hw401019
+Docker Hub Link: https://hub.docker.com/r/nickhorst7/csci3081hw4
 
 ## Project Overview
 ### What is this project about?
