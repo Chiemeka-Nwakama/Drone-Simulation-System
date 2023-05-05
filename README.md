@@ -183,6 +183,12 @@ While overall layout is better laid out in the attached UML and .cc files, a gen
 #### UML Diagram for Extended Simulation Model
 ![](Homework_4_UML.png)
 
+#### Youtube Video Demo
+https://youtu.be/Fbrnvap5Cwk
+
+#### Presentation Slides
+https://docs.google.com/presentation/d/14EWdpnz0n_lwX2aZQ7j3GJWvkQjjCcRpGlBHBbUp1FI/edit?usp=sharing
+
 ## Sprint Retrospectives
 #### Sprint 1 (4/11 - 4/21)
 <ul>
