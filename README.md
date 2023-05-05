@@ -179,6 +179,9 @@ While overall layout is better laid out in the attached UML and .cc files, a gen
      </ol>
 </ul>
 
+#### UML Diagram for Extended Simulation Model
+![](Homework_4_UML.png)
+
 ## Sprint Retrospectives
 #### Sprint 1 (4/11 - 4/21)
 <ul>
