@@ -111,7 +111,7 @@ class RobotWallet : public WalletDecorator {
    * @brief Gets the robot's details
    * @return The robot's details
    */
-  JsonObject GetDetails() const { return entity->GetDetails(); };
+  JsonObject GetDetails() const { return entity->GetDetails(); }
 
   /**
    * @brief Set the Strategy Name
