@@ -151,6 +151,12 @@ class IEntity {
    */
   virtual void Jump(double height) {}
 
+  virtual float Random(float Min, float Max) {
+    return ((static_cast<float>(std::rand()) / static_cast<float>(RAND_MAX)) *
+            (Max - Min)) +
+           Min;
+  }
+
  protected:
   int id;
   const IGraph* graph;
