@@ -116,6 +116,7 @@ While overall layout is better laid out in the attached UML and .cc files, a gen
         <li> Drones: The transportation vehicles to carry robots from one location to another.
         <li> Robots: The transportable placeholders that represent people.
         <li> Helicopter: A helicopter flies around the map, adding realism to our simluation.
+        <li> Human: A human model is also running around the map, adding realism to the simulaiton. You can use the "add human" button on the scheduling page to add more.
         <li> Banks: Drones must stop at banks periodically to deposit funds, more on this below.
      </ol>
     <li> As previously decribed, the user must schedule trips on the separate scheduler window. They do this by naming their trip, choosing their movement strategy (Dijkstra's, DFS, etc.), and selecting their pickup and dropoff locations on the map.
